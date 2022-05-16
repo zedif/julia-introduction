@@ -2,8 +2,12 @@
 site: sandpaper::sandpaper_site
 ---
 
-This is a new lesson built with [The Carpentries Workbench][workbench]. 
+This lesson teaches about the idiosyncrasies of the
+[Julia](http://julialang.org/) compared to other programming languages.
 
+TODO: MORE
 
-[workbench]: https://carpentries.github.io/sandpaper-docs
+# Required Previous Knowledge
 
+We assume that learners have experience with programming in general, but
+experience with Julia is not required.
