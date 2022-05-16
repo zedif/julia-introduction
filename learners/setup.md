@@ -2,48 +2,12 @@
 title: Setup
 ---
 
-Setup instructions live in this document. Please specify the tools and the data
-sets the Learner needs to have installed.
+# Setup
 
-## Data Sets
+To follow the lesson you need access to a Julia REPL. You can either use a
+Jupyter-Notebook, if provided by the lesson hosts, or a local Julia
+installation.
 
-Download the [data zip file](data/data.zip) and unzip it to your Desktop
-
-## Software Setup
-
-::::::::::::::::::::::::::::::::::::::: discussion
-
-### Details
-
-Setup for different systems can be presented in dropdown menus via a `solution`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### Windows
-
-Use PuTTY
-
-:::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### MacOS
-
-Use Terminal.app
-
-:::::::::::::::::::::::::
-
-
-:::::::::::::::: solution
-
-### Linux
-
-Use Terminal
-
-:::::::::::::::::::::::::
-
+Julia can be downloaded from [the official
+website](https://julialang.org/downloads/) for Windows, Linux, MacOS, and
+FreeBSD. It is also part of many Linux distribution’s package system.
