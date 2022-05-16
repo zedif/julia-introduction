@@ -7,16 +7,16 @@
 # dc: Data Carpentry
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
-carpentry: cp
+carpentry: swc
 
 # Overall title for pages.
-title: Lesson Title
+title: Introduction to Julia for Programmers
 
 # Date the lesson was created (this is empty by default)
 created: ~
 
 # Comma-separated list of keywords for the lesson
-keywords: software, data, lesson, The Carpentries
+keywords: Julia, programming, The Carpentries
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
@@ -26,29 +26,29 @@ life_cycle: pre-alpha
 license: CC-BY 4.0
 
 # Link to the source repository for this lesson
-source: https://github.com/carpentries/workbench-template-md
+source: https://github.com/zedif/julia-introduction
 
 # Default branch of your lesson
 branch: main
 
 # Who to contact if there are any issues
-contact: team@carpentries.org
+contact: philipp.matthias.schaefer@uni-jena.de
 
 # Navigation ------------------------------------------------
-# 
+#
 # Use the following menu items to specify the order of
 # individual pages in each dropdown section. Leave blank to
 # include all pages in the folder.
 #
 # Example -------------
-# 
+#
 # episodes:
 # - introduction.md
 # - first-steps.md
-# 
+#
 # learners:
 # - setup.md
-# 
+#
 # instructors:
 # - instructor-notes.md
 #
@@ -56,15 +56,14 @@ contact: team@carpentries.org
 # - one-learner.md
 # - another-learner.md
 
-# Order of episodes in your lesson 
-episodes: 
+# Order of episodes in your lesson
+episodes:
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
-
+profiles:
