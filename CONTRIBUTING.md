@@ -1,11 +1,8 @@
 # Contributing
 
-[Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source projects,
-and we welcome contributions of all kinds:
-new lessons,
-fixes to existing material,
-bug reports,
-and reviews of proposed changes are all welcome.
+If you wish to change this lesson, please work in
+<https://github.com/zedif/julia-introduction>, which can be viewed at
+<https://zedif.github.io/julia-introduction>.
 
 ## Contributor Agreement
 
@@ -144,8 +141,8 @@ You can also [reach us by email][contact].
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join
 [how-contribute]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
-[issues]: https://github.com/swcarpentry/shell-novice/issues/
-[repo]: https://github.com/swcarpentry/shell-novice/
+[issues]: https://github.com/zedif/julia-introduction/issues/
+[repo]: https://github.com/zedif/julia-introduction/
 [swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
 [swc-lessons]: http://software-carpentry.org/lessons/
 [swc-site]: http://software-carpentry.org/
