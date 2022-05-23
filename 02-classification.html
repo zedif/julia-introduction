@@ -316,12 +316,11 @@
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> foo(<span class="fl">3</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
-<p>And it only compiles the function for arguments of type <code>Int64</code>. We can look at the compilation results for different argument types using the macro</p>
-<p><code>@code_native</code>:</p>
+<p>And it only compiles the function for arguments of type <code>Int64</code>. We can look at the compilation results for different argument types using the function <code>code_native</code>:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="pp">@code_native</span> foo(<span class="fl">1</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> code_native(foo<span class="op">,</span> (<span class="dt">Int64</span><span class="op">,</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        .text</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> ┌ <span class="op">@</span> REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        endbr64</span>
@@ -330,7 +329,7 @@
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        nopl    (%rax<span class="op">,</span>%rax)</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> └</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="pp">@code_native</span> foo(<span class="fl">1.0</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> code_native(foo<span class="op">,</span> (<span class="dt">Float64</span><span class="op">,</span>))</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        .text</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> ┌ <span class="op">@</span> REPL[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        endbr64</span>
