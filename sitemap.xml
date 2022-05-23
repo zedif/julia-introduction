@@ -4,6 +4,21 @@
     <loc>https://zedif.github.io/julia-introduction/01-introduction.html</loc>
   </url>
   <url>
+    <loc>https://zedif.github.io/julia-introduction/02-classification.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/03-types.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/04-generic-functions.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/05-modules.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/06-packages.html</loc>
+  </url>
+  <url>
     <loc>https://zedif.github.io/julia-introduction/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
@@ -20,6 +35,21 @@
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/01-introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/02-classification.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/03-types.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/04-generic-functions.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/05-modules.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/06-packages.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/CODE_OF_CONDUCT.html</loc>
