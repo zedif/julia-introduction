@@ -87,12 +87,11 @@ Only when we call it for the first time, this happens.
 ```
 
 And it only compiles the function for arguments of type `Int64`. We can look at
-the compilation results for different argument types using the macro
-
-`@code_native`:
+the compilation results for different argument types using the function
+`code_native`:
 
 ```julia
-julia> @code_native foo(1)
+julia> code_native(foo, (Int64,))
         .text
 ; ┌ @ REPL[1]:1 within `foo`
         endbr64
@@ -101,7 +100,7 @@ julia> @code_native foo(1)
         nopl    (%rax,%rax)
 ; └
 
-julia> @code_native foo(1.0)
+julia> code_native(foo, (Float64,))
         .text
 ; ┌ @ REPL[2]:1 within `foo`
         endbr64
