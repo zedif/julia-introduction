@@ -392,3 +392,46 @@ types) using the function `eltype`:
 Int64
 ```
 
+## Structs
+
+Structs are what allows us to define our own types in Julia. In our first
+example we will created a parameterized type for 2-dimensional points:
+
+```julia
+> struct Point{X}
+         x::X
+         y::X
+  end
+```
+
+### Mutability
+
+Instances of structs are by default immutable.
+
+```julia
+> p = Point(1, 2)
+Point{Int64}(1, 2)
+
+> p.x = 3
+ERROR: setfield!: immutable struct of type Point cannot be changed
+Stacktrace:
+ [1] setproperty!(x::Point{Int64}, f::Symbol, v::Int64)
+   @ Base ./Base.jl:43
+ [2] top-level scope
+   @ REPL[3]:1
+```
+
+Putting the keyword `mutable` in front of the definition changes that:
+
+```
+> mutable struct MPoint{X}
+          x::X
+          y::Y
+  end
+
+> mp = MPoint(1, 2)
+MPoint{Int64}(1, 2)
+
+> mp.x = 3
+3
+```
