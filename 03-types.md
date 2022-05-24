@@ -278,38 +278,117 @@ own name:
 
 ### Arrays
 
-Next, we will have a look at array types, which are arguably one of the
-distinguishing features of the Julia programming language.
+Arrays and associated features are arguably the defining trait of the Julia
+programming language.
 
-One kind of one-dimensional arrays is called vectors:
+Julia supports arrays of arbitrary dimensions.
+
+We have zero-dimensional arrays (scalars):
 
 ```julia
-> [1, 2]
+> zeros(Int8, ()))
+0-dimensional Array{Int8, 0}:
+ 0
+```
+
+One-dimensional arrays are called vectors:
+
+```julia
+> ones(Int8, (2))
+2-element Vector{Int8}:
+ 1
+ 1
+```
+
+Two-dimensional arrays are called matrices:
+
+```julia
+julia> zeros(Int8, (2, 2))
+2×2 Matrix{Int8}:
+ 0  0
+ 0  0
+```
+
+And any higher dimensional arrays are just called arrays:
+
+```
+julia> zeros(Int8, (2, 2, 2))
+2×2×3 Array{Int8, 3}:
+[:, :, 1] =
+ 0  0
+ 0  0
+
+[:, :, 2] =
+ 0  0
+ 0  0
+```
+
+### Working with arrays
+
+Julia supports matrix operations with the usual operators:
+
+```julia
+> A = [[0, 1] [1, 0]]
+2×2 Matrix{Int64}:
+ 0  1
+ 1  0
+
+> b = [1, 2]
 2-element Vector{Int64}:
  1
  2
+
+> A * b
+2-element Vector{Int64}:
+ 2
+ 1
 ```
 
-There is another kind of one-dimensional array:
+Julia also supports a special syntax, the dot-operator, to element-wise apply
+functions to arrays:
 
 ```julia
-> [1 2]
+> [1, 4, 9, 16, 25] .> 7
+5-element BitVector:
+ 0
+ 0
+ 1
+ 1
+ 1
+```
+
+With the `@.` we can make every function call in an expression be applied
+element-wise:
+
+```julia
+> @. [1 1] * [1 1] + [1 1]
 1×2 Matrix{Int64}:
- 1  2
+ 2  2
+
+> [1 1] * [1 1] + [1 1]
+ERROR: DimensionMismatch("matrix A has dimensions (1,2), matrix B has dimensions (1,2)")
+Stacktrace:
+ [1] _generic_matmatmul!(C::Matrix{Int64}, tA::Char, tB::Char, A::Matrix{Int64}, B::Matrix{Int64}, _add::LinearAlgebra.MulAddMul{true, true, Bool, Bool})
+   @ LinearAlgebra /usr/share/julia/stdlib/v1.7/LinearAlgebra/src/matmul.jl:810
+ [2] generic_matmatmul!(C::Matrix{Int64}, tA::Char, tB::Char, A::Matrix{Int64}, B::Matrix{Int64}, _add::LinearAlgebra.MulAddMul{true, true, Bool, Bool})
+   @ LinearAlgebra /usr/share/julia/stdlib/v1.7/LinearAlgebra/src/matmul.jl:798
+ [3] mul!
+   @ /usr/share/julia/stdlib/v1.7/LinearAlgebra/src/matmul.jl:302 [inlined]
+ [4] mul!
+   @ /usr/share/julia/stdlib/v1.7/LinearAlgebra/src/matmul.jl:275 [inlined]
+ [5] *(A::Matrix{Int64}, B::Matrix{Int64})
+   @ LinearAlgebra /usr/share/julia/stdlib/v1.7/LinearAlgebra/src/matmul.jl:153
+ [6] top-level scope
+   @ REPL[2]:1
 ```
 
-The former represent what is sometimes called column vectors, while the latter
-represent row vectors. Julia allows us to do matrix arithmetic on them:
+### Element Types
+
+We can determine the element types of an array type (and some other container
+types) using the function `eltype`:
 
 ```julia
-> [1, 2] * [1 2]
-2×2 Matrix{Int64}:
- 1  2
- 2  4
-
-> [1 2] * [1, 2]
-1-element Vector{Int64}:
- 5
+> eltype([1, 2])
+Int64
 ```
 
-### Structs
