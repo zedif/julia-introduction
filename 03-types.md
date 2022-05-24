@@ -278,12 +278,12 @@ own name:
 
 ### Arrays
 
-Arrays and associated features are arguably the defining trait of the Julia
-programming language.
+Arrays and associated features are arguably one of the most important defining
+traits of the Julia programming language.
 
 Julia supports arrays of arbitrary dimensions.
 
-We have zero-dimensional arrays (scalars):
+We have 0-dimensional arrays (scalars):
 
 ```julia
 > zeros(Int8, ()))
@@ -291,7 +291,7 @@ We have zero-dimensional arrays (scalars):
  0
 ```
 
-One-dimensional arrays are called vectors:
+1-dimensional arrays are called vectors:
 
 ```julia
 > ones(Int8, (2))
@@ -300,7 +300,7 @@ One-dimensional arrays are called vectors:
  1
 ```
 
-Two-dimensional arrays are called matrices:
+2-dimensional arrays are called matrices:
 
 ```julia
 julia> zeros(Int8, (2, 2))
@@ -392,3 +392,46 @@ types) using the function `eltype`:
 Int64
 ```
 
+## Structs
+
+Structs are what allows us to define our own types in Julia. In our first
+example we will created a parameterized type for 2-dimensional points:
+
+```julia
+> struct Point{X}
+         x::X
+         y::X
+  end
+```
+
+### Mutability
+
+Instances of structs are by default immutable.
+
+```julia
+> p = Point(1, 2)
+Point{Int64}(1, 2)
+
+> p.x = 3
+ERROR: setfield!: immutable struct of type Point cannot be changed
+Stacktrace:
+ [1] setproperty!(x::Point{Int64}, f::Symbol, v::Int64)
+   @ Base ./Base.jl:43
+ [2] top-level scope
+   @ REPL[3]:1
+```
+
+Putting the keyword `mutable` in front of the definition changes that:
+
+```
+> mutable struct MPoint{X}
+          x::X
+          y::Y
+  end
+
+> mp = MPoint(1, 2)
+MPoint{Int64}(1, 2)
+
+> mp.x = 3
+3
+```
