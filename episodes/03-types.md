@@ -278,8 +278,8 @@ own name:
 
 ### Arrays
 
-Arrays and associated features are arguably the defining trait of the Julia
-programming language.
+Arrays and associated features are arguably one of the most important defining
+traits of the Julia programming language.
 
 Julia supports arrays of arbitrary dimensions.
 
