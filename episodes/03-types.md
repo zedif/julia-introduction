@@ -283,7 +283,7 @@ programming language.
 
 Julia supports arrays of arbitrary dimensions.
 
-We have zero-dimensional arrays (scalars):
+We have 0-dimensional arrays (scalars):
 
 ```julia
 > zeros(Int8, ()))
@@ -291,7 +291,7 @@ We have zero-dimensional arrays (scalars):
  0
 ```
 
-One-dimensional arrays are called vectors:
+1-dimensional arrays are called vectors:
 
 ```julia
 > ones(Int8, (2))
@@ -300,7 +300,7 @@ One-dimensional arrays are called vectors:
  1
 ```
 
-Two-dimensional arrays are called matrices:
+2-dimensional arrays are called matrices:
 
 ```julia
 julia> zeros(Int8, (2, 2))
