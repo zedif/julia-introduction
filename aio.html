@@ -440,7 +440,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-03-types"><p>Content from <a href="03-types.html">Types</a></p>
 <hr>
-<p> Last updated on 2022-05-23 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/03-types.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-05-24 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/03-types.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -452,7 +452,7 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>What types does Julia offer out of the box?</li>
+<li>What data types does Julia offer out of the box?</li>
 <li>How can we define our own types?</li>
 </ul>
 </div>
@@ -470,167 +470,181 @@ any links that you are not going to use.
 </div>
 </div>
 </div>
-<section id="types"><h2 class="section-heading">Types</h2>
+<p>Even though Julia is by default dynamic, types play an important role. We need to specify them to make use of the method dispatch feature, where one of Julia’s distinguishing features is that it offers multiple dispatch. We also need it to write high performance code.</p>
+<div id="callout1" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="method-dispatch-primer" class="callout-inner">
+<h3 class="callout-title">Method Dispatch Primer</h3>
+<div class="callout-content">
+<p>Method dispatch is the process of choosing which method of a function (more on that in a later episode) to execute based on the argument count and argument types.</p>
+<p>For example, adding two integers requires different code than adding to floating point numbers, and again different code than adding an integer to a floating point number.</p>
+</div>
+</div>
+</div>
+<section id="types-and-type-hierarchy"><h2 class="section-heading">Types and Type Hierarchy</h2>
 <hr class="half-width">
-<p>Even though Julia is by default dynamic, types play an important role when developing high-performance code. Specifying the type of a value helps the compiler to produce efficient code.</p>
-<p>We can the determine the type of a value using the function <code>typeof</code>. It will always return the type used to represent the value.</p>
+<p>Every value in Julia has a type. We can determine the type of a value using the function <code>typeof</code>.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">1</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> tyepof(<span class="dt">Int32</span>(<span class="fl">1</span>))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Int32</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">2.0</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Float64</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">2.0</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Float64</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">UnitRange</span>{<span class="dt">Int64</span>}</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(typeof)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>typeof(typeof) (singleton <span class="kw">type</span> of <span class="kw">function</span> typeof<span class="op">,</span> subtype of <span class="dt">Function</span>)</span></code></pre>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(typeof)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>typeof(typeof) (singleton <span class="kw">type</span> of <span class="kw">function</span> typeof<span class="op">,</span> subtype of <span class="dt">Function</span>)</span></code></pre>
 </div>
-<p>As we can see, functions are first-order objects. This allows for functional style programming, which is part of idiomatic Julia programming.</p>
-<p>Types for storing vectors and matrices are and important part of the language. Such a types element type is part of its type and can be determined programmatically as well:</p>
+<p>We can see that the default type for integers as well as floats is the respective 64-bit version. We can also see that functions are types just like any other. This allows to write functional code, which is part of idiomatic Julia.</p>
+<p>All types in Julia form a hierarchy with <code>Any</code> at the top. We can explore that hierarchy using the functions <code>supertype</code> and <code>supertypes</code>.</p>
+<p>We determine the type of the value represented by the number literal <code>1</code>.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">UnitRange</span>{<span class="dt">Int64</span>}</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> eltype(<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span></code></pre>
 </div>
-<p>All types in Julia form a hierarchy with <code>Any</code> at the top. We can explore that hierarchy using the function <code>supertype</code>.</p>
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">UnitRange</span>{<span class="dt">Int64</span>}</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertype(<span class="kw">ans</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">AbstractUnitRange</span>{<span class="dt">Int64</span>}</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertype(<span class="kw">ans</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dt">OrdinalRange</span>{<span class="dt">Int64</span><span class="op">,</span> <span class="dt">Int64</span>}</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertype(<span class="kw">ans</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="dt">AbstractRange</span>{<span class="dt">Int64</span>}</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertype(<span class="kw">ans</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="dt">AbstractVector</span>{<span class="dt">Int64</span>} (alias <span class="kw">for</span> <span class="dt">AbstractArray</span>{<span class="dt">Int64</span><span class="op">,</span> <span class="fl">1</span>})</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertype(<span class="kw">ans</span>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="dt">Any</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(typeof(<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>))</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>(<span class="dt">UnitRange</span>{<span class="dt">Int64</span>}<span class="op">,</span> <span class="dt">AbstractUnitRange</span>{<span class="dt">Int64</span>}<span class="op">,</span> <span class="dt">OrdinalRange</span>{<span class="dt">Int64</span><span class="op">,</span> <span class="dt">Int64</span>}<span class="op">,</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="dt">AbstractRange</span>{<span class="dt">Int64</span>}<span class="op">,</span> <span class="dt">AbstractVector</span>{<span class="dt">Int64</span>}<span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
-</div>
-</section><section id="data-types"><h2 class="section-heading">Data Types</h2>
+<p>The Julia REPL offers a special variable, <code>ans</code>, that always holds the result of the previous evaluation. We use it with <code>supertype</code> to climb up the type hierarchy:</p>
+<pre><code>&gt; supertype(ans)
+Signed
+
+&gt; supertype(ans)
+Integer
+
+&gt; supertype(ans)
+Real
+
+&gt; supertype(ans)
+Number
+
+&gt; supertype(ans)
+Any
+
+&gt; supertype(ans)
+Any</code></pre>
+<p><code>supertype</code> returns <code>Any</code> for input <code>Any</code> which happens to be at the top of the type hierarchy. It is an ancestor of every data type and so every value is of type <code>Any</code>.</p>
+<p>We can use <code>supertypes</code> to get the full inheritance chain of a type as a tuple of types.</p>
+<pre><code>&gt; supertypes(Int64
+(Int64, Signed, Integer, Real, Number, Any)</code></pre>
+</section><section id="number-types"><h2 class="section-heading">Number Types</h2>
 <hr class="half-width">
-<p>We will now quickly go through the available data types.</p>
-<div class="section level3">
-<h3 id="number-types">Number Types<a class="anchor" aria-label="anchor" href="#number-types"></a>
-</h3>
-<p>Julia provides various common number types. We begin with floats:</p>
-<div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Float16</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Float16</span><span class="op">,</span> <span class="dt">AbstractFloat</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Float32</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Float32</span><span class="op">,</span> <span class="dt">AbstractFloat</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Float64</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Float64</span><span class="op">,</span> <span class="dt">AbstractFloat</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">BigFloat</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigFloat</span><span class="op">,</span> <span class="dt">AbstractFloat</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
-</div>
-<p>Bool is a Number in Julia:</p>
+<p>Julia provides various common number types.</p>
+<p>There are four floating point number types:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Bool</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Bool</span><span class="op">,</span> <span class="dt">Integer</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Float16</span>(<span class="fl">1.0</span>) <span class="co"># This might be broken</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Float16</span>(<span class="fl">0.0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="ex">false</span> <span class="op">==</span> <span class="fl">0</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">true</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Float32</span>(<span class="fl">1.0</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0f0</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">0</span> <span class="op">+</span> <span class="ex">true</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Float64</span>(<span class="fl">1.0</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">BigFloat</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigFloat</span><span class="op">,</span> <span class="dt">AbstractFloat</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
 </div>
-<p>For integer types there are 8, 16, 32, 64, and 128 variants of signed and unsigned integers, for example:</p>
+<p><code>BigFloat</code> is an arbitrary precision floating point number type.</p>
+<p>And signed and unsigned integer types for 8, 16, 32, 64, and 128 bits, for example:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Int128</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Int128</span><span class="op">,</span> <span class="dt">Signed</span><span class="op">,</span> <span class="dt">Integer</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Int8</span>(<span class="fl">32</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fl">32</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">UInt32</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>(<span class="dt">UInt32</span><span class="op">,</span> <span class="dt">Signed</span><span class="op">,</span> <span class="dt">Integer</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">UInt32</span>(<span class="fl">42</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bn">0x0000002a</span></span></code></pre>
 </div>
-<p>In addition, there are arbitrary size integers:</p>
+<p>As for floating point numbers, there is an arbitrary precision integer type:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">BigInt</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigInt</span><span class="op">,</span> <span class="dt">Signed</span><span class="op">,</span> <span class="dt">Integer</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
 </div>
-<p>Then there are types for complex and rational numbers that are parameterized on subtypes of <code>Real</code> and <code>Integer</code> respectively:</p>
+<p>Bool is a number type in Julia:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Rational</span>{<span class="dt">Int8</span>})</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Rational</span>{<span class="dt">Int8</span>}<span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Bool</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Bool</span><span class="op">,</span> <span class="dt">Integer</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Complex</span>{<span class="dt">Bool</span>})</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Complex</span>{<span class="dt">Bool</span>}<span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="ex">false</span> <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">true</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Complex</span>{<span class="dt">Rational</span>{<span class="dt">Int8</span>}})</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Complex</span>{<span class="dt">Rational</span>{<span class="dt">Int8</span>}}<span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">0</span> <span class="op">+</span> <span class="ex">true</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
-<p>Finally, Julia has a type for represent the exact values of irrational constants:</p>
+<p>There are types for complex and rational numbers that are parameterized on subtypes of <code>Real</code> and <code>Integer</code> respectively:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(π)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span>π}</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Rational</span>{<span class="dt">Int64</span>}</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="cn">pi</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span>π}</span></code></pre>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Complex</span>{<span class="dt">Bool</span>}(<span class="fl">1</span><span class="op">,</span> <span class="fl">0</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Complex</span>(<span class="ex">true</span><span class="op">,</span> <span class="ex">false</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Complex</span>(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span><span class="op">,</span> <span class="op">-</span><span class="fl">1</span><span class="op">//</span><span class="fl">5</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">//</span><span class="fl">7</span> <span class="op">-</span> <span class="fl">1</span><span class="op">//</span><span class="fl">5</span><span class="op">*</span><span class="cn">im</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="cn">im</span><span class="op">*</span><span class="cn">im</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span> <span class="op">*</span> <span class="fl">0im</span></span></code></pre>
 </div>
+<p>Finally, Julia has a type for represent the exact values of irrational constants:</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(π)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span>π}</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="cn">pi</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span>π}</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="strings">Strings<a class="anchor" aria-label="anchor" href="#strings"></a>
 </h3>
 <p>There are types for strings and characters:</p>
-<div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="st">"Hello"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="st">"Hello"</span>[<span class="fl">1</span>])</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Char</span></span></code></pre>
-</div>
-<div id="callout1" class="callout callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<div id="indicies-start-at-1" class="callout-inner">
-<h3 class="callout-title">Indicies start at 1</h3>
-<div class="callout-content">
-<p>In Julia indexing starts with 1 instead of the more common 0. So, for example, to get the second element of an array, one would use the index <code>2</code>:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span><span class="op">,</span> <span class="fl">3</span><span class="op">,</span> <span class="fl">5</span>][<span class="fl">2</span>]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="st">"Hello"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span></span></code></pre>
+</div>
+<pre><code>&gt; typeof("Hello"[3])
+Char</code></pre>
+<div id="challenge1" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="indexing-in-julia" class="callout-inner">
+<h3 class="callout-title">Indexing in Julia</h3>
+<div class="callout-content">
+<p>What does the following expression evaluate to:</p>
+<pre><code>[2, 3, 5][2]</code></pre>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<p>In Julia indexing starts with 1 instead of the more common 0. So, for example, to get the second element of an array, one would use the index <code>2</code>:</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span><span class="op">,</span> <span class="fl">3</span><span class="op">,</span> <span class="fl">5</span>][<span class="fl">2</span>]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -639,54 +653,54 @@ any links that you are not going to use.
 <div class="section level3">
 <h3 id="named-tuples">(Named) Tuples<a class="anchor" aria-label="anchor" href="#named-tuples"></a>
 </h3>
-<p>As a simple fixed length ordered container that allows to mix types of elements arbitrarily, Julia features tuples. Their behavior is similar to that of tuples in C++ and Python or lists in many Lisp dialects.</p>
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> (<span class="fl">1</span><span class="op">,</span> <span class="st">"a"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="st">"a"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof((<span class="fl">1</span><span class="op">,</span> <span class="st">"a"</span>))</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span><span class="op">,</span> <span class="dt">String</span>}</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(typeof((<span class="fl">1</span><span class="op">,</span> <span class="st">"a"</span>)))</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Tuple</span>{<span class="dt">Int64</span><span class="op">,</span> <span class="dt">String</span>}<span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
-</div>
-<p>We can use tuples to return multiple values from a function:</p>
-<div class="codewrapper sourceCode" id="cb13">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1() <span class="op">=</span> (<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>t1 (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1()</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span></code></pre>
-</div>
-<p>The elements of tuples can be accessed through decomposition and indexing:</p>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a<span class="op">,</span> b <span class="op">=</span> t1()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1()[<span class="fl">1</span>]</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
-</div>
-<p>In addition to plain tuples, there are named tuples, where every element has its own name:</p>
+<p>Julia features a type for tuples, similar to tuples in C++ and Python or lists in many Lisp dialects. Tuples is a fixed length ordered container whose elements may have any type. The syntax is the same as in Python:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v <span class="op">=</span> (x <span class="op">=</span> <span class="fl">1</span><span class="op">,</span> y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>(x <span class="op">=</span> <span class="fl">1</span><span class="op">,</span> y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof((<span class="fl">1</span><span class="op">,</span> <span class="st">"a"</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span><span class="op">,</span> <span class="dt">String</span>}</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v[<span class="fl">2</span>]</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof((<span class="fl">1</span>))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v.y</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span></code></pre>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof((<span class="fl">1</span><span class="op">,</span>))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span>}</span></code></pre>
+</div>
+<p>We can use tuples to return multiple values from a function:</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1() <span class="op">=</span> (<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>t1 (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span></code></pre>
+</div>
+<p>The elements of tuples can be accessed through decomposition and indexing:</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a<span class="op">,</span> b <span class="op">=</span> t1()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1()[<span class="fl">1</span>]</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
+</div>
+<p>In addition to plain tuples, there are named tuples, where every element has its own name:</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v <span class="op">=</span> (x <span class="op">=</span> <span class="fl">1</span><span class="op">,</span> y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>(x <span class="op">=</span> <span class="fl">1</span><span class="op">,</span> y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v[<span class="fl">2</span>]</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v.y</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -694,34 +708,34 @@ any links that you are not going to use.
 </h3>
 <p>Next, we will have a look at array types, which are arguably one of the distinguishing features of the Julia programming language.</p>
 <p>One kind of one-dimensional arrays is called vectors:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>]</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span></span></code></pre>
 </div>
 <p>There is another kind of one-dimensional array:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span> <span class="fl">2</span>]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span>×<span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span>  <span class="fl">2</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span> <span class="fl">2</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span>×<span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span>  <span class="fl">2</span></span></code></pre>
 </div>
 <p>The former represent what is sometimes called column vectors, while the latter represent row vectors. Julia allows us to do matrix arithmetic on them:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">2</span>]</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span>×<span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span>  <span class="fl">2</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span>  <span class="fl">4</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span> <span class="fl">2</span>] <span class="op">*</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>]</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a> <span class="fl">5</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">2</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span>×<span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span>  <span class="fl">2</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span>  <span class="fl">4</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span> <span class="fl">2</span>] <span class="op">*</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>]</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a> <span class="fl">5</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -826,7 +840,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/aio.html",
-  "dateCreated": "2022-05-23",
+  "dateCreated": "2022-05-24",
   "dateModified": "2022-05-24",
   "datePublished": "2022-05-24"
 }
