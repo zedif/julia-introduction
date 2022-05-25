@@ -1,6 +1,6 @@
 ---
 title: "Types"
-teaching: 0
+teaching: 30
 exercises: 0
 ---
 
@@ -303,7 +303,7 @@ We have 0-dimensional arrays (scalars):
 2-dimensional arrays are called matrices:
 
 ```julia
-julia> zeros(Int8, (2, 2))
+> zeros(Int8, (2, 2))
 2×2 Matrix{Int8}:
  0  0
  0  0
@@ -312,7 +312,7 @@ julia> zeros(Int8, (2, 2))
 And any higher dimensional arrays are just called arrays:
 
 ```
-julia> zeros(Int8, (2, 2, 2))
+> zeros(Int8, (2, 2, 2))
 2×2×3 Array{Int8, 3}:
 [:, :, 1] =
  0  0
@@ -435,3 +435,54 @@ MPoint{Int64}(1, 2)
 > mp.x = 3
 3
 ```
+
+### Constructors
+
+We already used the default constructor of a struct. It takes as many arguments
+as the struct has fields and assigns them to the fields in the order they are
+specified.
+
+We can also define further or alternate constructors; either as part of the
+struct definition, inner constructor, or separately, outer constructor.
+
+We will start with a separate, parameterless constructor for our `Point` struct:
+
+```julia
+> Point() = Point(0, 0)
+Point
+
+> Point()
+Point{Int64}(0, 0)
+```
+
+In this case we get an additional constructor.
+
+When we define constructors as part of the struct definition, the default
+constructor does not exist.
+
+```julia
+> struct Foo
+      x
+      Foo() = new(0)
+  end
+
+> Foo()
+Foo(0)
+
+> Foo(1)
+ERROR: MethodError: no method matching Foo(::Int64)
+Closest candidates are:
+  Foo() at REPL[11]:3
+Stacktrace:
+ [1] top-level scope
+   @ REPL[3]:1
+```
+
+Note, that we need to use a preexisting constructor to define an outer
+constructor, while we use the keyword `new` as if we were calling the default
+constructor when defining inner constructors.
+
+## More Types
+
+The Julia language provides a lot more types; for example `CartesianIndex`,
+`IOStream`, or `Atomic{T}`. We again refer to the documentation.
