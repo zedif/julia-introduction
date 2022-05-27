@@ -105,3 +105,159 @@ C++. There the appropriate method (except for dispatch on the first argument) is
 determined at compile time based on the parameter types. In the case of Julia
 this happens at runtime and thus allows to add further methods to a generic
 functions in a running image of a Julia process.
+
+## Arguments
+
+In Julia arguments are pass-by-sharing, also known as -by-pointer or
+-by-reference. For values of immutable types this may be optimized to
+pass-by-value if the values fit into a single register. But because of the
+immutability this is indistinguishable.
+
+We already saw that we can add type annotations to parameters:
+
+```julia
+> annotated(x::Int8) = x
+annotated (generic function with 1 method)
+```
+
+Julia also supports optional arguments:
+
+```julia
+> with_optional(x = 1) = 1
+with_optional (generic function with 2 methods)
+
+> with_optional(3)
+3
+
+> with_optional(1)
+1
+```
+
+Note that `with_optional` immediately has two methods:
+
+```julia
+> methods(with_optional)
+# 2 methods for generic function "with_optional":
+[1] with_optional() in Main at REPL[1]:1
+[2] with_optional(x) in Main at REPL[1]:1
+```
+
+This shows that optional arguments are implemented through multiple methods of a
+generic function with different parameter lists. In fact, `with_optional()` is
+defined as `= with_optional(1)`. Thus, changing the definition of
+`with_optional(x)` will change the behavior of `with_optional()`:
+
+```julia
+> with_optional(x) = x + x
+with_optional (generic function with 2 methods)
+
+> with_optional()
+2
+```
+
+Julia also supports keyword arguments:
+
+```julia
+> with_keyword(;x) = x
+with_keyword (generic function with 1 method)
+
+> with_keyword(x = 1)
+1
+```
+
+Keyword parameters are defined after the other parameters separated by `;`. They
+can have default values as well. Keyword parameters are not involved in method
+dispatch.
+
+Another, less common feature, is restructuring for tuple parameters:
+
+```julia
+> destructured((a, b)) = a + b
+destructured (generic function with 1 method)
+
+> t = (1, 2)
+(1, 2)
+
+> destructured(t)
+3
+```
+
+Note that any additional elements of a tuple with be silently ignored, but we
+get an error, when the tuple is to short:
+
+```julia
+> destructured((1, 2, 3))
+3
+
+> destructured((1,))
+ERROR: BoundsError: attempt to access Tuple{Int64} at index [2]
+Stacktrace:
+ [1] indexed_iterate
+   @ ./tuple.jl:89 [inlined]
+ [2] destructured(::Tuple{Int64})
+   @ Main ./REPL[1]:1
+ [3] top-level scope
+   @ REPL[5]:1
+```
+
+## Anonymous Functions
+
+For short, one-off functions Julia implements anonymous functions:
+
+```julia
+> map(x -> x + 1, [1, 2, ])
+3-element Vector{Int64}:
+ 2
+ 3
+ 4
+```
+
+There is also a long form:
+
+```julia
+> (function(x)
+       x
+   end)(3)
+3
+```
+
+For functions passed as a first argument to another function, there is special
+syntax that makes providing multiple line functions look clean:
+
+```julia
+> map([1, 2, 3]) do x
+      if x == 1
+         println("one")
+      else
+         println("not one")
+      end
+  end
+one
+not one
+not one
+3-element Vector{Nothing}:
+ nothing
+ nothing
+ nothing
+```
+
+## Function Composition
+
+Julia has an operator, `∘`, for function composition. You can write it in the
+Julia-REPL typing `\circ<tab>`. It is useful to create function arguments that
+are just compositions of other functions:
+
+```julia
+> map(sqrt ∘ sum, [[1, 1], [2, 2]])
+2-element Vector{Float64}:
+ 1.4142135623730951
+ 2.0
+```
+
+An alternate method to `f(g(x))` for composition with a concrete value is the
+operator `|>`:
+
+```julia
+> [2, 2] |> sum |> sqrt
+2.0
+```
