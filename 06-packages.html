@@ -176,12 +176,19 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         Packages
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+        
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#dependency-management">Dependency Management</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -228,22 +235,75 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Packages</h1>
-        <p> Last updated on 2022-05-23 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/06-packages.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-05-30 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/06-packages.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 
         
 
-<p>TODO</p>
+<p>While the module is an organizational unit within a project, packages are the distribution units of packages.</p>
+<section id="dependency-management"><h2 class="section-heading">Dependency Management</h2>
+<hr class="half-width"><p>To install a package, we type <code>]</code> in the Julia REPL to switch to package mode. The prompt changes from <code>julia&gt;</code> to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing <code>C-c</code>.</p>
+<p>The prompt in the package mode tells us which environment is currently active (<code>@v1.7</code>). The default environment is named after the running Julia version. We can install packages into this environment for general experimentation. Our projects have their own environments, as we will see in a bit.</p>
+<p>First, let us have a look at the status of the current environment:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; status
+      Status `~/.julia/environments/v1.7/Project.toml`</code></pre>
+<p>This shows us the location of the Project.toml that describes the environment. It also lists explicitly installed packages, in our case currently none.</p>
+<p>To install a package we run the command <code>add</code>:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; add Memoize
+   Resolving package versions...
+    Updating `~/.julia/environments/v1.7/Project.toml`
+  [c03570c3] + Memoize v0.4.4
+    Updating `~/.julia/environments/v1.7/Manifest.toml`
+  [1914dd2f] + MacroTools v0.5.9
+  [c03570c3] + Memoize v0.4.4
+(@v1.7) pkg&gt; status
+      Status `~/.julia/environments/v1.7/Project.toml`
+    [c03570c3] Memoize v0.4.4</code></pre>
+<p>The command updates two files, <code>Project.toml</code> and <code>Manifest.toml</code>, and seems to install two packages, <code>Memoize</code> and <code>MacroTools</code>, the latter probably a dependency of the former. Now <code>status</code> shows us that we have installed <code>Memoize</code> (but tells us nothing about <code>MacroTools</code>.</p>
+<p>We can update a package using the <code>update</code> command:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; update Memoize
+    Updating registry at `~/.julia/registries/General.toml`
+  No Changes to `~/.julia/environments/v1.7/Project.toml`
+  No Changes to `~/.julia/environments/v1.7/Manifest.toml`</code></pre>
+<p>And we can remove installed packages again with <code>rm</code>:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; rm Memoize
+    Updating `~/.julia/environments/v1.7/Project.toml`
+  [c03570c3] - Memoize v0.4.4
+    Updating `~/.julia/environments/v1.7/Manifest.toml`
+  [1914dd2f] - MacroTools v0.5.9
+  [c03570c3] - Memoize v0.4.4</code></pre>
+<p>To import a package, we need to know what packages there are. There is a <a href="https://github.com/JuliaRegistries/General" class="external-link">general package registry</a> which can be searched through multiple front-ends, for example <a href="https://juliahub.com/ui/Packages" class="external-link uri">https://juliahub.com/ui/Packages</a> .</p>
+<p>If we want to install a package that is not in the general (or any other) registry, we can point to a git source instead:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; add https://github.com/JuliaLang/Example.jl#master
+     Cloning git-repo `https://github.com/JuliaLang/Example.jl`
+    Updating git-repo `https://github.com/JuliaLang/Example.jl`
+   Resolving package versions...
+    Updating `~/.julia/environments/v1.7/Project.toml`
+  [7876af07] + Example v0.5.4 `https://github.com/JuliaLang/Example.jl#master`
+    Updating `~/.julia/environments/v1.7/Manifest.toml`
+  [7876af07] + Example v0.5.4 `https://github.com/JuliaLang/Example.jl#master`
+Precompiling project...
+   1 dependency successfully precompiled in 0 seconds (20 already precompiled)</code></pre>
+<p>All commands discussed here have a lot more options. Particularly important might be the ability to install specific versions or branches of packages. The shell provides documentation for every command when running <code>help &lt;command&gt;</code>, for example:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; help update
+  [up|update] [-p|--project]  [opts] pkg[=uuid] [@version] ...
+  [up|update] [-m|--manifest] [opts] pkg[=uuid] [@version] ...
+
+  opts: --major | --minor | --patch | --fixed
+
+  Update pkg within the constraints of the indicated version specifications. These specifications are of the form
+  @1, @1.2 or @1.2.3, allowing any version with a prefix that matches, or ranges thereof, such as @1.2-3.4.5. In
+  --project mode, package specifications only match project packages, while in --manifest mode they match any
+  manifest package. Bound level options force the following packages to be upgraded only within the current major,
+  minor, patch version; if the --fixed upgrade level is given, then the following packages will not be upgraded at
+  all.</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-
-
-
-      </div> <!-- / div.lesson-content -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="05-modules.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -267,8 +327,8 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.5" class="external-link">sandpaper (0.5.5)</a>,
-        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.7)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.7" class="external-link">sandpaper (0.5.7)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.1.13" class="external-link">varnish (0.1.13)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -289,9 +349,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/06-packages.html",
   "identifier": "https://zedif.github.io/julia-introduction/06-packages.html",
-  "dateCreated": "2022-05-25",
-  "dateModified": "2022-05-23",
-  "datePublished": "2022-05-25"
+  "dateCreated": "2022-05-30",
+  "dateModified": "2022-05-30",
+  "datePublished": "2022-05-30"
 }
 
   </script><script>

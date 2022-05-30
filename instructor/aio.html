@@ -643,7 +643,7 @@ Char</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>In Julia indexing starts with 1 instead of the more common 0. So, for example, to get the second element of an array, one would use the index <code>2</code>:</p>
 <div class="codewrapper sourceCode" id="cb14">
@@ -910,7 +910,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-04-generic-functions"><p>Content from <a href="04-generic-functions.html">Generic Functions</a></p>
 <hr>
-<p> Last updated on 2022-05-25 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/04-generic-functions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-05-30 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/04-generic-functions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 0 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -1008,26 +1008,346 @@ any links that you are not going to use.
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
 <p>Multiple dispatch is similar to function overloading in languages like Java and C++. There the appropriate method (except for dispatch on the first argument) is determined at compile time based on the parameter types. In the case of Julia this happens at runtime and thus allows to add further methods to a generic functions in a running image of a Julia process.</p>
+</div>
+</section><section id="arguments"><h2 class="section-heading">Arguments</h2>
+<hr class="half-width">
+<p>In Julia arguments are pass-by-sharing, also known as -by-pointer or -by-reference. For values of immutable types this may be optimized to pass-by-value if the values fit into a single register. But because of the immutability this is indistinguishable.</p>
+<p>We already saw that we can add type annotations to parameters:</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> annotated(x<span class="op">::</span><span class="dt">Int8</span>) <span class="op">=</span> x</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>annotated (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span></code></pre>
+</div>
+<p>Julia also supports optional arguments:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional(x <span class="op">=</span> <span class="fl">1</span>) <span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>with_optional (generic <span class="kw">function</span> with <span class="fl">2</span> methods)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional(<span class="fl">3</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional(<span class="fl">1</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
+</div>
+<p>Note that <code>with_optional</code> immediately has two methods:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> methods(with_optional)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 methods for generic function "with_optional":</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1</span>] with_optional() <span class="kw">in</span> <span class="bu">Main</span> at REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>[<span class="fl">2</span>] with_optional(x) <span class="kw">in</span> <span class="bu">Main</span> at REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+</div>
+<p>This shows that optional arguments are implemented through multiple methods of a generic function with different parameter lists. In fact, <code>with_optional()</code> is defined as <code>= with_optional(1)</code>. Thus, changing the definition of <code>with_optional(x)</code> will change the behavior of <code>with_optional()</code>:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional(x) <span class="op">=</span> x <span class="op">+</span> x</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>with_optional (generic <span class="kw">function</span> with <span class="fl">2</span> methods)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span></span></code></pre>
+</div>
+<p>Julia also supports keyword arguments:</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_keyword(<span class="op">;</span>x) <span class="op">=</span> x</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>with_keyword (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_keyword(x <span class="op">=</span> <span class="fl">1</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
+</div>
+<p>Keyword parameters are defined after the other parameters separated by <code>;</code>. They can have default values as well. Keyword parameters are not involved in method dispatch.</p>
+<p>Another, less common feature, is restructuring for tuple parameters:</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> destructured((a<span class="op">,</span> b)) <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>destructured (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t <span class="op">=</span> (<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> destructured(t)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
+</div>
+<p>Note that any additional elements of a tuple with be silently ignored, but we get an error, when the tuple is to short:</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> destructured((<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span><span class="op">,</span> <span class="fl">3</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> destructured((<span class="fl">1</span><span class="op">,</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">BoundsError</span><span class="op">:</span> attempt to access <span class="dt">Tuple</span>{<span class="dt">Int64</span>} at index [<span class="fl">2</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] indexed_iterate</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> <span class="op">./</span>tuple.jl<span class="op">:</span><span class="fl">89</span> [inlined]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] destructured(<span class="op">::</span><span class="dt">Tuple</span>{<span class="dt">Int64</span>})</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> <span class="bu">Main</span> <span class="op">./</span>REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a> [<span class="fl">3</span>] top<span class="op">-</span>level scope</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">5</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+</div>
+</section><section id="anonymous-functions"><h2 class="section-heading">Anonymous Functions</h2>
+<hr class="half-width">
+<p>For short, one-off functions Julia implements anonymous functions:</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> map(x <span class="op">-&gt;</span> x <span class="op">+</span> <span class="fl">1</span><span class="op">,</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span><span class="op">,</span> ])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">3</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a> <span class="fl">4</span></span></code></pre>
+</div>
+<p>There is also a long form:</p>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> (<span class="kw">function</span>(x)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       x</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">end</span>)(<span class="fl">3</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
+</div>
+<p>For functions passed as a first argument to another function, there is special syntax that makes providing multiple line functions look clean:</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> map([<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span><span class="op">,</span> <span class="fl">3</span>]) <span class="kw">do</span> x</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> x <span class="op">==</span> <span class="fl">1</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         println(<span class="st">"one"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">else</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         println(<span class="st">"not one"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">end</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>one</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>not one</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>not one</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Nothing</span>}<span class="op">:</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a> <span class="cn">nothing</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a> <span class="cn">nothing</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a> <span class="cn">nothing</span></span></code></pre>
+</div>
+</section><section id="function-composition"><h2 class="section-heading">Function Composition</h2>
+<hr class="half-width">
+<p>Julia has an operator, <code>∘</code>, for function composition. You can write it in the Julia-REPL typing <code>\circ&lt;tab&gt;</code>. It is useful to create function arguments that are just compositions of other functions:</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> map(sqrt ∘ sum<span class="op">,</span> [[<span class="fl">1</span><span class="op">,</span> <span class="fl">1</span>]<span class="op">,</span> [<span class="fl">2</span><span class="op">,</span> <span class="fl">2</span>]])</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1.4142135623730951</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">2.0</span></span></code></pre>
+</div>
+<p>An alternate method to <code>f(g(x))</code> for composition with a concrete value is the operator <code>|&gt;</code>:</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span><span class="op">,</span> <span class="fl">2</span>] <span class="op">|&gt;</span> sum <span class="op">|&gt;</span> sqrt</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span></code></pre>
+</div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</div>
 </section></section><section id="aio-05-modules"><p>Content from <a href="05-modules.html">Modules</a></p>
 <hr>
-<p> Last updated on 2022-05-23 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/05-modules.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-05-30 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/05-modules.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 0 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>TODO</p></section><section id="aio-06-packages"><p>Content from <a href="06-packages.html">Packages</a></p>
+<p>Julia organizes code into modules and packages. A package is the distribution unit. Libraries and applications are usually distributed as packages. Modules are for organizing code within a package.</p>
+<p>In this episode we will learn about modules. Modules are used for namespace management.</p>
+<p>A module starts with the keyword <code>module</code>, a name end ends with <code>end</code>. Let us open a file called <code>main.jl</code> in an empty directory and add the following code:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre>
+</div>
+<p>Unlike in Python, a file can contain multiple modules, so module name and file name do not have to fit in any way to one another.</p>
+<p>But, for examples sake, we will put the actual contents of our module in another file. We create an empty file <code>vectors.jl</code> in the same folder and include it using the <code>include</code> function in our module, so that <code>main.jl</code> will look as follows:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>include(<span class="st">"vectors.jl"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre>
+</div>
+<p>When <code>main.jl</code> is loaded in any way all the code in <code>vectors.jl</code> will be evaluated in the scope of the <code>OurVectors</code> module. On could potentially split the code of a module into several files this way.</p>
+<p>Also note, that it is idiomatic to not indent the code in a module relative to the <code>module</code> statement. Module names are usually set in upper camel-case.</p>
+<p>We will now add a function to <code>vectors.jl</code>:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>length(v) <span class="op">=</span> sqrt(sum(v))</span></code></pre>
+</div>
+<p>Next, we try to use it in <code>main.jl</code> by appending</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+</div>
+<p>and running the file with</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> julia main.jl</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span></span></code></pre>
+</div>
+<p>We expected <code>3</code> but got <code>1</code>. Julia calls the standard library function <code>length</code> instead of our module’s function. To use our function outside the module, we need to first export it from the module and then use it outside the module:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">export</span> length</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>include(<span class="st">"vectors.jl"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> .OurVectors</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+</div>
+<p>We need to add the <code>.</code> in front of the module name, because otherwise Julia would look for a package named <code>OurVectors</code> which it would not find. The <code>.</code> tells it to look for a module relative to the current one.</p>
+<p>We put the <code>export</code> keyword at the top of the module, so that is the first information an user of the module sees.</p>
+<p>Running the example, we get</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> julia main.jl</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">WARNING:</span> both OurVectors and Base export <span class="st">"length"</span><span class="kw">;</span> <span class="ex">uses</span> of it in module Main must be qualified</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> LoadError: UndefVarError: length not defined</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Stacktrace:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">[1]</span> top-level scope</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="ex">@</span> ~/temp/main.jl:11</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="er">in</span> <span class="ex">expression</span> starting at /home/user/project/main.jl:11</span></code></pre>
+</div>
+<p><code>Base</code> is a module provided by Julia and <code>Base.length</code> is the function that returns the element count of various container or iterator types. This conflicts with us using the exported <code>length</code> of our module. Instead we have to write</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>println(OurVectors.length([<span class="fl">3</span>]))</span></code></pre>
+</div>
+<p>which gets us</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">$</span> julia main.jl</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
+</div>
+<p>Alternatively, we can import the function into the current module’s namespace:</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> .OurVectors<span class="op">:</span> length</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+</div>
+<p>This, of course, is very unsafe, since it overrides a standard library function. Instead we could give it a new name in the current module:</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> .OurVectors<span class="op">:</span> length as vlength</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>println(vlength([<span class="fl">3</span>]))</span></code></pre>
+</div>
+<p>All this shows that each module has its own namespace, but we can import names directly or with a new name from module one into another.</p>
+<p>We can force users to always use our <code>length</code> prefixed by the module name <code>OurVectors</code> by not exporting it. It is still accessible, but it can no longer be imported by name or brought into another namespace via <code>using</code>.</p>
+<p>The difference between <code>using</code> and <code>import</code> is that, by default, <code>using</code> makes the module itself and all exported names available in the using module namespace, wheres <code>import</code> only makes the module available. Then <code>using</code> can be modified to only import specific names (including the module itself) and <code>import</code> can be modified to import additional names. In both cases the imported entities can be renamed using the keyword <code>as</code>.</p>
+<section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules</h2>
+<hr class="half-width">
+<p>Whenever we create a module, the modules <code>Core</code> and <code>Base</code> are automatically contained as if imported with <code>using</code>. If a module is declared with the <code>baremodule</code> keyword instead, they are not contained.</p>
+<p>In addition to <code>Core</code> and <code>Base</code> a Julia distribution comes with further standard modules that do not have to be installed explicitly; among them <code>Test</code>. In addition, <code>Base</code> has several submodules, e.g. <code>Base.Threads</code>.</p>
+<p><code>Main</code> is the top level module of the REPL.</p>
+<!-- 
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use. 
+ -->
+</section></section><section id="aio-06-packages"><p>Content from <a href="06-packages.html">Packages</a></p>
 <hr>
-<p> Last updated on 2022-05-23 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/06-packages.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-05-30 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/06-packages.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 0 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>TODO</p></section>
+<p>While the module is an organizational unit within a project, packages are the distribution units of packages.</p>
+<section id="dependency-management"><h2 class="section-heading">Dependency Management</h2>
+<hr class="half-width">
+<p>To install a package, we type <code>]</code> in the Julia REPL to switch to package mode. The prompt changes from <code>julia&gt;</code> to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing <code>C-c</code>.</p>
+<p>The prompt in the package mode tells us which environment is currently active (<code>@v1.7</code>). The default environment is named after the running Julia version. We can install packages into this environment for general experimentation. Our projects have their own environments, as we will see in a bit.</p>
+<p>First, let us have a look at the status of the current environment:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; status
+      Status `~/.julia/environments/v1.7/Project.toml`</code></pre>
+<p>This shows us the location of the Project.toml that describes the environment. It also lists explicitly installed packages, in our case currently none.</p>
+<p>To install a package we run the command <code>add</code>:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; add Memoize
+   Resolving package versions...
+    Updating `~/.julia/environments/v1.7/Project.toml`
+  [c03570c3] + Memoize v0.4.4
+    Updating `~/.julia/environments/v1.7/Manifest.toml`
+  [1914dd2f] + MacroTools v0.5.9
+  [c03570c3] + Memoize v0.4.4
+(@v1.7) pkg&gt; status
+      Status `~/.julia/environments/v1.7/Project.toml`
+    [c03570c3] Memoize v0.4.4</code></pre>
+<p>The command updates two files, <code>Project.toml</code> and <code>Manifest.toml</code>, and seems to install two packages, <code>Memoize</code> and <code>MacroTools</code>, the latter probably a dependency of the former. Now <code>status</code> shows us that we have installed <code>Memoize</code> (but tells us nothing about <code>MacroTools</code>.</p>
+<p>We can update a package using the <code>update</code> command:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; update Memoize
+    Updating registry at `~/.julia/registries/General.toml`
+  No Changes to `~/.julia/environments/v1.7/Project.toml`
+  No Changes to `~/.julia/environments/v1.7/Manifest.toml`</code></pre>
+<p>And we can remove installed packages again with <code>rm</code>:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; rm Memoize
+    Updating `~/.julia/environments/v1.7/Project.toml`
+  [c03570c3] - Memoize v0.4.4
+    Updating `~/.julia/environments/v1.7/Manifest.toml`
+  [1914dd2f] - MacroTools v0.5.9
+  [c03570c3] - Memoize v0.4.4</code></pre>
+<p>To import a package, we need to know what packages there are. There is a <a href="https://github.com/JuliaRegistries/General" class="external-link">general package registry</a> which can be searched through multiple front-ends, for example <a href="https://juliahub.com/ui/Packages" class="external-link uri">https://juliahub.com/ui/Packages</a> .</p>
+<p>If we want to install a package that is not in the general (or any other) registry, we can point to a git source instead:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; add https://github.com/JuliaLang/Example.jl#master
+     Cloning git-repo `https://github.com/JuliaLang/Example.jl`
+    Updating git-repo `https://github.com/JuliaLang/Example.jl`
+   Resolving package versions...
+    Updating `~/.julia/environments/v1.7/Project.toml`
+  [7876af07] + Example v0.5.4 `https://github.com/JuliaLang/Example.jl#master`
+    Updating `~/.julia/environments/v1.7/Manifest.toml`
+  [7876af07] + Example v0.5.4 `https://github.com/JuliaLang/Example.jl#master`
+Precompiling project...
+   1 dependency successfully precompiled in 0 seconds (20 already precompiled)</code></pre>
+<p>All commands discussed here have a lot more options. Particularly important might be the ability to install specific versions or branches of packages. The shell provides documentation for every command when running <code>help &lt;command&gt;</code>, for example:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; help update
+  [up|update] [-p|--project]  [opts] pkg[=uuid] [@version] ...
+  [up|update] [-m|--manifest] [opts] pkg[=uuid] [@version] ...
+
+  opts: --major | --minor | --patch | --fixed
+
+  Update pkg within the constraints of the indicated version specifications. These specifications are of the form
+  @1, @1.2 or @1.2.3, allowing any version with a prefix that matches, or ranges thereof, such as @1.2-3.4.5. In
+  --project mode, package specifications only match project packages, while in --manifest mode they match any
+  manifest package. Bound level options force the following packages to be upgraded only within the current major,
+  minor, patch version; if the --fixed upgrade level is given, then the following packages will not be upgraded at
+  all.</code></pre>
+<!-- 
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use. 
+ -->
+</section></section>
 </div>
     </main>
 </div>
@@ -1046,8 +1366,8 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.5" class="external-link">sandpaper (0.5.5)</a>,
-        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.7)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.7" class="external-link">sandpaper (0.5.7)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.1.13" class="external-link">varnish (0.1.13)</a>.</p>
 			</div>
 		</footer>
@@ -1069,9 +1389,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/aio.html",
-  "dateCreated": "2022-05-25",
-  "dateModified": "2022-05-25",
-  "datePublished": "2022-05-25"
+  "dateCreated": "2022-05-30",
+  "dateModified": "2022-05-30",
+  "datePublished": "2022-05-30"
 }
 
   </script><script>
