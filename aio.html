@@ -32,7 +32,16 @@
     <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav software"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
-      <div class="large-logo"><img alt="Software Carpentry" src="assets/images/software-logo.svg"></div>
+      <div class="large-logo">
+        <img alt="Software Carpentry" src="assets/images/software-logo.svg"><abbr class="icon" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="text-decoration: unset">
+           
+          <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #383838">Pre-Alpha
+            <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="color: #FF4955"></i>
+          </a>
+          <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+        </abbr>
+        
+      </div>
     </div>
     <div class="selector-container ">
       
@@ -636,7 +645,7 @@ Char</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In Julia indexing starts with 1 instead of the more common 0. So, for example, to get the second element of an array, one would use the index <code>2</code>:</p>
 <div class="codewrapper sourceCode" id="cb14">
@@ -1148,7 +1157,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-05-modules"><p>Content from <a href="05-modules.html">Modules</a></p>
 <hr>
-<p> Last updated on 2022-05-30 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/05-modules.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-01 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/05-modules.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1179,7 +1188,7 @@ any links that you are not going to use.
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>length(v) <span class="op">=</span> sqrt(sum(v))</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>length(v) <span class="op">=</span> sqrt(sum(v<span class="op">.^</span><span class="fl">2</span>))</span></code></pre>
 </div>
 <p>Next, we try to use it in <code>main.jl</code> by appending</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -1271,7 +1280,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-06-packages"><p>Content from <a href="06-packages.html">Packages</a></p>
 <hr>
-<p> Last updated on 2022-05-30 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/06-packages.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-01 | <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/06-packages.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1279,6 +1288,17 @@ any links that you are not going to use.
 <section id="dependency-management"><h2 class="section-heading">Dependency Management</h2>
 <hr class="half-width">
 <p>To install a package, we type <code>]</code> in the Julia REPL to switch to package mode. The prompt changes from <code>julia&gt;</code> to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing <code>C-c</code>.</p>
+<div id="callout1" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="pkg.jl" class="callout-inner">
+<h3 class="callout-title">Pkg.jl</h3>
+<div class="callout-content">
+<p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a> online.</p>
+</div>
+</div>
+</div>
 <p>The prompt in the package mode tells us which environment is currently active (<code>@v1.7</code>). The default environment is named after the running Julia version. We can install packages into this environment for general experimentation. Our projects have their own environments, as we will see in a bit.</p>
 <p>First, let us have a look at the status of the current environment:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; status
@@ -1333,6 +1353,194 @@ Precompiling project...
   manifest package. Bound level options force the following packages to be upgraded only within the current major,
   minor, patch version; if the --fixed upgrade level is given, then the following packages will not be upgraded at
   all.</code></pre>
+</section><section id="creating-packages"><h2 class="section-heading">Creating Packages</h2>
+<hr class="half-width">
+<p>After seeing how to use a package, we will have a look into creating one.</p>
+<p>Using the shell in the Julia REPL, activated by pressing <code>;</code>, we navigate to the folder in which, we want to create our project. For example</p>
+<pre class="shell"><code>shell&gt; cd ~/temp/
+/home/user/temp</code></pre>
+<p>We leave the shell again by pressing <code>C-c</code> and check that we are in the correct directory, by running <code>pwd()</code>:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp"</span></span></code></pre>
+</div>
+<p>Now, we go into package mode (press <code>]</code>) and generate a Julia package skeleton:</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; generate OurVectors
+  Generating  project OurVectors:
+    OurVectors/Project.toml
+    OurVectors/src/OurVectors.jl</code></pre>
+<p>The output tells us that two files were generated in a new directory with the project name that we provided. We leave the package mode again, to navigate Julia into the directory that was just created by pressing <code>C-c</code>:</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> cd(<span class="st">"OurVectors"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
+</div>
+<p>We will have a look at what was created in the shell (press <code>;</code>):</p>
+<pre class="shell"><code>shell&gt; tree
+.
+├── Project.toml
+└── src
+    └── OurVectors.jl
+
+1 directory, 2 files</code></pre>
+<p>Julia generated two files for us. <code>Project.toml</code> is the project configuration file in TOML Format, while <code>OurVectors.jl</code> in the subdirectory <code>src</code> is an initial source file.</p>
+<p>Let us first look at the configuration file:</p>
+<pre class="shell"><code>shell&gt; cat Project.toml
+name = "OurVectors"
+uuid = "53fd6d90-f326-4ab3-8600-de8f4fd33617"
+authors = ["Some One &lt;some.one@example.com&gt;"]
+version = "0.1.0"</code></pre>
+<p>It first states the name of the project (or package). A UUID randomly generated for the project follows. The authors field is based on your git configuration, falling back to a <a href="https://github.com/JuliaLang/Pkg.jl/blob/f5213cf0019e80004f40e721c16d8a900badb8e4/src/generate.jl#L25" class="external-link">series of environment variables</a>. Finally the initial version is given as <code>0.1.0</code>.</p>
+<p>The generated source file contains a module with an “Hello World” implementation:</p>
+<pre class="shell"><code>shell&gt; cat src/OurVectors.jl
+module OurVectors
+
+greet() = print("Hello World!")
+
+end # module</code></pre>
+</section><section id="tests"><h2 class="section-heading">Tests</h2>
+<hr class="half-width">
+<p>We edit the source file to contain our <code>length</code> function:</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>length(v) <span class="op">=</span> sqrt(sum(v<span class="op">.^</span><span class="fl">2</span>))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="co"># module</span></span></code></pre>
+</div>
+<p>Now, we want to write tests for our function. Idiomatically, tests are run by evaluating the file <code>test/runtests.jl</code> of a Julia project. We create such a file and make use of the <code>Test</code> package that comes bundled with Julia:</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> Test</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> OurVectors</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.length([<span class="fl">1</span>]) <span class="op">==</span> <span class="fl">1.0</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.length([<span class="fl">3</span><span class="op">,</span> <span class="fl">4</span>]) <span class="op">==</span> <span class="fl">5.0</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="pp">@test_throws</span> <span class="dt">MethodError</span> OurVectors.length([])</span></code></pre>
+</div>
+<p>To run the script we can use the package mode again. But before switching to it (by pressing <code>]</code>), we make sure that the working directory of our REPL is the project directory:</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
+</div>
+<p>This looks good. If we were in the wrong directory, we would use the function <code>cd</code> to change that.</p>
+<p>In package mode, we first have to make our project the current environment. To do that, we run</p>
+<pre class="shell"><code>(@v1.7) pkg&gt; activate .
+  Activating project at `~/temp/OurVectors`
+
+(OurVectors) pkg&gt;</code></pre>
+<p>Note, how the prompt changes when switching environments.</p>
+<p>To run tests, we can type <code>test</code> in package mode:</p>
+<pre class="shell"><code>(OurVectors) pkg&gt; test
+     Testing OurVectors
+      Status `/tmp/jl_Bx3UOG/Project.toml`
+  [53fd6d90] OurVectors v0.1.0 `~/temp/OurVectors`
+      Status `/tmp/jl_Bx3UOG/Manifest.toml`
+  [53fd6d90] OurVectors v0.1.0 `~/temp/OurVectors`
+     Testing Running tests...
+ERROR: LoadError: ArgumentError: Package Test not found in current path:
+- Run `import Pkg; Pkg.add("Test")` to install the Test package.
+
+Stacktrace:
+ [1] include(fname::String)
+   @ Base.MainInclude ./client.jl:451
+ [2] top-level scope
+   @ none:6
+in expression starting at /home/user/temp/OurVectors/test/runtests.jl:1
+ERROR: Package OurVectors errored during testing</code></pre>
+<p>This throws an error. Even though <code>Test</code> comes with the Julia installation, we still need to install it into our environment:</p>
+<pre class="shell"><code>(OurVectors) pkg&gt; add Test
+   Resolving package versions...
+    Updating `~/temp/OurVectors/Project.toml`
+  [8dfed614] + Test
+    Updating `~/temp/OurVectors/Manifest.toml`
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [8dfed614] + Test</code></pre>
+<p>This installs <code>Test</code> and its dependencies. It also seems to make changes to <code>Project.toml</code> and a yet unknown file called <code>Manifest.toml</code>. We will have a look at them in a minute. But first, we try to again run the tests:</p>
+<pre class="shell"><code>(OurVectors) pkg&gt; test
+     Testing OurVectors
+      Status `/tmp/jl_3CRrFm/Project.toml`
+  [53fd6d90] OurVectors v0.1.0 `~/temp/OurVectors`
+  [8dfed614] Test `@stdlib/Test`
+      Status `/tmp/jl_3CRrFm/Manifest.toml`
+  [53fd6d90] OurVectors v0.1.0 `~/temp/OurVectors`
+  [2a0f44e3] Base64 `@stdlib/Base64`
+  [b77e0a4c] InteractiveUtils `@stdlib/InteractiveUtils`
+  [56ddb016] Logging `@stdlib/Logging`
+  [d6f4376e] Markdown `@stdlib/Markdown`
+  [9a3f8284] Random `@stdlib/Random`
+  [ea8e919c] SHA `@stdlib/SHA`
+  [9e88b42a] Serialization `@stdlib/Serialization`
+  [8dfed614] Test `@stdlib/Test`
+     Testing Running tests...
+     Testing OurVectors tests passed</code></pre>
+<p>Now the test suite runs and our tests passed.</p>
+</section><section id="tracking-dependencies"><h2 class="section-heading">Tracking Dependencies</h2>
+<hr class="half-width">
+<p>Getting back to the file that changed, when we add <code>Test</code> to the project, we first have look at <code>Project.toml</code>:</p>
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="er">…</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">deps</span><span class="kw">]</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Test</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
+</div>
+<p>The file got a new section, <code>[deps]</code>, listing dependencies. We added <code>Test</code>, so it shows up in the list with its UUID.</p>
+<p>Now for the content of the new file, <code>Manifest.toml</code>:</p>
+<div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This file is machine-generated - editing it directly is not advised</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dt">julia_version</span> <span class="op">=</span> <span class="st">"1.7.3"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="dt">manifest_format</span> <span class="op">=</span> <span class="st">"2.0"</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Base64</span><span class="kw">]]</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">InteractiveUtils</span><span class="kw">]]</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Markdown"</span><span class="op">]</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"b77e0a4c-d291-57a0-90e8-8db25a27a240"</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Logging</span><span class="kw">]]</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"56ddb016-857b-54e1-b83d-db4d58db5568"</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Markdown</span><span class="kw">]]</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Base64"</span><span class="op">]</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"d6f4376e-aef5-505a-96c1-9c027394607a"</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Random</span><span class="kw">]]</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"SHA"</span><span class="op">,</span> <span class="st">"Serialization"</span><span class="op">]</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"9a3f8284-a2c9-5f02-9a11-845980a1fd5c"</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">SHA</span><span class="kw">]]</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"ea8e919c-243c-51af-8825-aaa63cd721ce"</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Serialization</span><span class="kw">]]</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"9e88b42a-f829-5b0c-bbe9-9e923198166b"</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Test</span><span class="kw">]]</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"InteractiveUtils"</span><span class="op">,</span> <span class="st">"Logging"</span><span class="op">,</span> <span class="st">"Random"</span><span class="op">,</span> <span class="st">"Serialization"</span><span class="op">]</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
+</div>
+<p>This file lists not only the explicitly installed dependencies, but the whole dependency tree.</p>
+<p>When we added the <code>Test</code> package, we did not specify a version. If we had done that, this would be recorded in <code>Manifest.toml</code>.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -1358,7 +1566,7 @@ any links that you are not going to use.
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.7" class="external-link">sandpaper (0.5.7)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.1.13" class="external-link">varnish (0.1.13)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.1.14" class="external-link">varnish (0.1.14)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -1379,9 +1587,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/aio.html",
-  "dateCreated": "2022-05-30",
-  "dateModified": "2022-05-31",
-  "datePublished": "2022-05-31"
+  "dateCreated": "2022-06-01",
+  "dateModified": "2022-06-01",
+  "datePublished": "2022-06-01"
 }
 
   </script><script>
