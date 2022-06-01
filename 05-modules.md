@@ -46,7 +46,7 @@ the `module` statement. Module names are usually set in upper camel-case.
 We will now add a function to `vectors.jl`:
 
 ```julia
-length(v) = sqrt(sum(v))
+length(v) = sqrt(sum(v.^2))
 ```
 
 Next, we try to use it in `main.jl` by appending
