@@ -355,6 +355,14 @@ functions to arrays:
  1
  1
  1
+
+> sqrt.([1, 4, 9, 16, 25])
+5-element Vector{Float64}:
+ 1.0
+ 2.0
+ 3.0
+ 4.0
+ 5.0
 ```
 
 With the `@.` we can make every function call in an expression be applied
