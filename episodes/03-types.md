@@ -24,7 +24,7 @@ write high performance code.
 
 ::: callout
 
-#### Method Dispatch Primer
+### Method Dispatch Primer
 
 Method dispatch is the process of choosing which method of a function (more
 on that in a later episode) to execute based on the argument count and argument
@@ -184,7 +184,7 @@ Irrational{:π}
 Irrational{:π}
 ```
 
-### Strings
+## Strings
 
 There are types for strings and characters:
 
@@ -200,7 +200,7 @@ Char
 
 ::: challenge
 
-#### Indexing in Julia
+### Indexing in Julia
 
 What does the following expression evaluate to:
 
@@ -222,7 +222,7 @@ to get the second element of an array, one would use the index `2`:
 
 :::
 
-### (Named) Tuples
+## (Named) Tuples
 
 Julia features a type for tuples, similar to tuples in C++ and Python or lists
 in many Lisp dialects. Tuples is a fixed length ordered container whose elements
@@ -276,7 +276,7 @@ own name:
 -1
 ```
 
-### Arrays
+## Arrays
 
 Arrays and associated features are arguably one of the most important defining
 traits of the Julia programming language.
