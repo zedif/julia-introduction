@@ -24,7 +24,7 @@ write high performance code.
 
 ::: callout
 
-#### Method Dispatch Primer
+### Method Dispatch Primer
 
 Method dispatch is the process of choosing which method of a function (more
 on that in a later episode) to execute based on the argument count and argument
@@ -184,7 +184,7 @@ Irrational{:π}
 Irrational{:π}
 ```
 
-### Strings
+## Strings
 
 There are types for strings and characters:
 
@@ -200,7 +200,7 @@ Char
 
 ::: challenge
 
-#### Indexing in Julia
+### Indexing in Julia
 
 What does the following expression evaluate to:
 
@@ -222,7 +222,7 @@ to get the second element of an array, one would use the index `2`:
 
 :::
 
-### (Named) Tuples
+## (Named) Tuples
 
 Julia features a type for tuples, similar to tuples in C++ and Python or lists
 in many Lisp dialects. Tuples is a fixed length ordered container whose elements
@@ -276,7 +276,7 @@ own name:
 -1
 ```
 
-### Arrays
+## Arrays
 
 Arrays and associated features are arguably one of the most important defining
 traits of the Julia programming language.
@@ -355,6 +355,14 @@ functions to arrays:
  1
  1
  1
+
+> sqrt.([1, 4, 9, 16, 25])
+5-element Vector{Float64}:
+ 1.0
+ 2.0
+ 3.0
+ 4.0
+ 5.0
 ```
 
 With the `@.` we can make every function call in an expression be applied
@@ -390,6 +398,61 @@ types) using the function `eltype`:
 ```julia
 > eltype([1, 2])
 Int64
+```
+
+### Generic Array types
+
+There are more types that behave similar to arrays. With strings we already saw
+one of them. Another are ranges:
+
+```julia
+> 1:10
+1:10
+
+> typeof(ans)
+UnitRange{Int64}
+
+> eltype(ans)
+Int64
+
+> (1:10)[9]
+9
+
+> collect(1:10)
+10-element Vector{Int64}:
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+
+> collect(1:3:10)
+4-element Vector{Int64}:
+  1
+  4
+  7
+ 10
+
+> typeof(1:3:10)
+StepRange{Int64}
+
+> range(-0.1, 0.1, length=3)
+-0.1:0.1:0.1
+
+> typeof(range(-0.1, 0.1, length=3))
+StepRangeLen{Float64, Base.TwicePrecision{Float64},
+Base.TwicePrecision{Float64}, Int64}
+
+> collect(range(-0.1, 0.1, length=3))
+3-element Vector{Float64}:
+ -0.1
+  0.0
+  0.1
 ```
 
 ## Structs
