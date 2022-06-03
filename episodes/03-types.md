@@ -400,6 +400,61 @@ types) using the function `eltype`:
 Int64
 ```
 
+### Generic Array types
+
+There are more types that behave similar to arrays. With strings we already saw
+one of them. Another are ranges:
+
+```julia
+> 1:10
+1:10
+
+> typeof(ans)
+UnitRange{Int64}
+
+> eltype(ans)
+Int64
+
+> (1:10)[9]
+9
+
+> collect(1:10)
+10-element Vector{Int64}:
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+
+> collect(1:3:10)
+4-element Vector{Int64}:
+  1
+  4
+  7
+ 10
+
+> typeof(1:3:10)
+StepRange{Int64}
+
+> range(-0.1, 0.1, length=3)
+-0.1:0.1:0.1
+
+> typeof(range(-0.1, 0.1, length=3))
+StepRangeLen{Float64, Base.TwicePrecision{Float64},
+Base.TwicePrecision{Float64}, Int64}
+
+> collect(range(-0.1, 0.1, length=3))
+3-element Vector{Float64}:
+ -0.1
+  0.0
+  0.1
+```
+
 ## Structs
 
 Structs are what allows us to define our own types in Julia. In our first
