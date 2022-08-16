@@ -309,14 +309,16 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="method-dispatch-primer" class="callout-inner">
-<h3 class="callout-title">Method Dispatch Primer</h3>
+<h3 class="callout-title">Method Dispatch Primer<a class="anchor" aria-label="anchor" href="#method-dispatch-primer"></a>
+</h3>
 <div class="callout-content">
 <p>Method dispatch is the process of choosing which method of a function (more on that in a later episode) to execute based on the argument count and argument types.</p>
 <p>For example, adding two integers requires different code than adding to floating point numbers, and again different code than adding an integer to a floating point number.</p>
 </div>
 </div>
 </div>
-<section id="types-and-type-hierarchy"><h2 class="section-heading">Types and Type Hierarchy</h2>
+<section id="types-and-type-hierarchy"><h2 class="section-heading">Types and Type Hierarchy<a class="anchor" aria-label="anchor" href="#types-and-type-hierarchy"></a>
+</h2>
 <hr class="half-width"><p>Every value in Julia has a type. We can determine the type of a value using the function <code>typeof</code>.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -361,7 +363,8 @@ Any</code></pre>
 <p>We can use <code>supertypes</code> to get the full inheritance chain of a type as a tuple of types.</p>
 <pre><code>&gt; supertypes(Int64
 (Int64, Signed, Integer, Real, Number, Any)</code></pre>
-</section><section id="number-types"><h2 class="section-heading">Number Types</h2>
+</section><section id="number-types"><h2 class="section-heading">Number Types<a class="anchor" aria-label="anchor" href="#number-types"></a>
+</h2>
 <hr class="half-width"><p>Julia provides various common number types.</p>
 <p>There are four floating point number types:</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -436,7 +439,8 @@ Any</code></pre>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="cn">pi</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span>π}</span></code></pre>
 </div>
-</section><section id="strings"><h2 class="section-heading">Strings</h2>
+</section><section id="strings"><h2 class="section-heading">Strings<a class="anchor" aria-label="anchor" href="#strings"></a>
+</h2>
 <hr class="half-width"><p>There are types for strings and characters:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -451,7 +455,8 @@ Char</code></pre>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="indexing-in-julia" class="callout-inner">
-<h3 class="callout-title">Indexing in Julia</h3>
+<h3 class="callout-title">Indexing in Julia<a class="anchor" aria-label="anchor" href="#indexing-in-julia"></a>
+</h3>
 <div class="callout-content">
 <p>What does the following expression evaluate to:</p>
 <pre><code>[2, 3, 5][2]</code></pre>
@@ -478,7 +483,8 @@ Char</code></pre>
 </div>
 </div>
 </div>
-</section><section id="named-tuples"><h2 class="section-heading">(Named) Tuples</h2>
+</section><section id="named-tuples"><h2 class="section-heading">(Named) Tuples<a class="anchor" aria-label="anchor" href="#named-tuples"></a>
+</h2>
 <hr class="half-width"><p>Julia features a type for tuples, similar to tuples in C++ and Python or lists in many Lisp dialects. Tuples is a fixed length ordered container whose elements may have any type. The syntax is the same as in Python:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -528,7 +534,8 @@ Char</code></pre>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v.y</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span></code></pre>
 </div>
-</section><section id="arrays"><h2 class="section-heading">Arrays</h2>
+</section><section id="arrays"><h2 class="section-heading">Arrays<a class="anchor" aria-label="anchor" href="#arrays"></a>
+</h2>
 <hr class="half-width"><p>Arrays and associated features are arguably one of the most important defining traits of the Julia programming language.</p>
 <p>Julia supports arrays of arbitrary dimensions.</p>
 <p>We have 0-dimensional arrays (scalars):</p>
@@ -698,7 +705,8 @@ Char</code></pre>
 <span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.1</span></span></code></pre>
 </div>
 </div>
-</section><section id="structs"><h2 class="section-heading">Structs</h2>
+</section><section id="structs"><h2 class="section-heading">Structs<a class="anchor" aria-label="anchor" href="#structs"></a>
+</h2>
 <hr class="half-width"><p>Structs are what allows us to define our own types in Julia. In our first example we will created a parameterized type for 2-dimensional points:</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -774,7 +782,8 @@ MPoint{Int64}(1, 2)
 </div>
 <p>Note, that we need to use a preexisting constructor to define an outer constructor, while we use the keyword <code>new</code> as if we were calling the default constructor when defining inner constructors.</p>
 </div>
-</section><section id="more-types"><h2 class="section-heading">More Types</h2>
+</section><section id="more-types"><h2 class="section-heading">More Types<a class="anchor" aria-label="anchor" href="#more-types"></a>
+</h2>
 <hr class="half-width"><p>The Julia language provides a lot more types; for example <code>CartesianIndex</code>, <code>IOStream</code>, or <code>Atomic{T}</code>. We again refer to the documentation.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -804,9 +813,9 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.9.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.2.3)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.9.3" class="external-link">sandpaper (0.9.3)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.1)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.4" class="external-link">varnish (0.2.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -828,7 +837,7 @@ any links that you are not going to use.
   "identifier": "https://zedif.github.io/julia-introduction/instructor/03-types.html",
   "dateCreated": "2022-06-03",
   "dateModified": "2022-06-07",
-  "datePublished": "2022-08-09"
+  "datePublished": "2022-08-16"
 }
 
   </script><script>

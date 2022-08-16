@@ -353,7 +353,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="repl" class="callout-inner">
-<h3 class="callout-title">REPL</h3>
+<h3 class="callout-title">REPL<a class="anchor" aria-label="anchor" href="#repl"></a>
+</h3>
 <div class="callout-content">
 <p>REPL is an acronym for Read-Eval-Print-Loop. A REPL reads a string from the user, evaluates it in some form, prints the result of the evaluation and loops back to the start.</p>
 <p>We we start, for example, Python in a console without arguments, we start a REPL; the prompt, <code>&gt;&gt;&gt;</code>, waiting to read our commands in the form of strings we type.</p>
@@ -392,10 +393,12 @@
 </div>
 </div>
 <p>In this episode we will place Julia within the world of programming languages.</p>
-<section id="high-level"><h2 class="section-heading">High-Level</h2>
+<section id="high-level"><h2 class="section-heading">High-Level<a class="anchor" aria-label="anchor" href="#high-level"></a>
+</h2>
 <hr class="half-width">
 <p>Julia is a high-level language, that is, it abstract away the details of the hardware that runs software written in the language. Other high-level languages are, for example, Java and Python.</p>
-</section><section id="dynamic"><h2 class="section-heading">Dynamic</h2>
+</section><section id="dynamic"><h2 class="section-heading">Dynamic<a class="anchor" aria-label="anchor" href="#dynamic"></a>
+</h2>
 <hr class="half-width">
 <p>Julia is dynamically typed by default. This puts it in the company of Python and distinguishes it from Java and C++.</p>
 <p>Even though it is dynamically typed by default, it does allow programmers to specify the type of a value, for example for method parameters or method return types. This is mainly necessary to make use of method dispatch based on argument types, a topic we will get to in a later episode. It also helps to ensure that no unintended uses of functions work. And, in some cases, it can <a href="https://docs.julialang.org/en/v1/manual/types/#Type-Declarations" class="external-link">improve performance</a>.</p>
@@ -426,10 +429,12 @@
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] top<span class="op">-</span>level scope</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">6</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
-</section><section id="garbage-collected"><h2 class="section-heading">Garbage Collected</h2>
+</section><section id="garbage-collected"><h2 class="section-heading">Garbage Collected<a class="anchor" aria-label="anchor" href="#garbage-collected"></a>
+</h2>
 <hr class="half-width">
 <p>Julia uses garbage collection for memory management.</p>
-</section><section id="compiled"><h2 class="section-heading">Compiled</h2>
+</section><section id="compiled"><h2 class="section-heading">Compiled<a class="anchor" aria-label="anchor" href="#compiled"></a>
+</h2>
 <hr class="half-width">
 <p>Julia is a compiled programming language. However, functions are compiled just-in-time for any given list argument types. For example, when we define a method, it does not get compiled.</p>
 <div class="codewrapper sourceCode" id="cb2">
@@ -469,7 +474,8 @@
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> └</span></code></pre>
 </div>
 <p>Since Julia always complies and never evaluates, the compiler is sometimes called a just-ahead-of-time compiler.</p>
-</section><section id="high-performance"><h2 class="section-heading">High-performance</h2>
+</section><section id="high-performance"><h2 class="section-heading">High-performance<a class="anchor" aria-label="anchor" href="#high-performance"></a>
+</h2>
 <hr class="half-width">
 <p>The <a href="https://julialang.org/blog/2012/02/why-we-created-julia/" class="external-link">intention behind developing Julia</a> was to create a fast dynamic language. And so it comes as no surprise that high-performance software can be written in Julia. The language is, by design, particularly well suited for dealing with (large) arrays of numbers. This makes it a good language for writing code for numerical analysis, optimization, and many forms of machine learning.</p>
 <p><a href="https://julialang.org/benchmarks/" class="external-link">Benchmarks on the language’s website</a> place its performance close to that of languages like C or Rust.</p>
@@ -517,14 +523,16 @@ any links that you are not going to use.
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="method-dispatch-primer" class="callout-inner">
-<h3 class="callout-title">Method Dispatch Primer</h3>
+<h3 class="callout-title">Method Dispatch Primer<a class="anchor" aria-label="anchor" href="#method-dispatch-primer"></a>
+</h3>
 <div class="callout-content">
 <p>Method dispatch is the process of choosing which method of a function (more on that in a later episode) to execute based on the argument count and argument types.</p>
 <p>For example, adding two integers requires different code than adding to floating point numbers, and again different code than adding an integer to a floating point number.</p>
 </div>
 </div>
 </div>
-<section id="types-and-type-hierarchy"><h2 class="section-heading">Types and Type Hierarchy</h2>
+<section id="types-and-type-hierarchy"><h2 class="section-heading">Types and Type Hierarchy<a class="anchor" aria-label="anchor" href="#types-and-type-hierarchy"></a>
+</h2>
 <hr class="half-width">
 <p>Every value in Julia has a type. We can determine the type of a value using the function <code>typeof</code>.</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -570,7 +578,8 @@ Any</code></pre>
 <p>We can use <code>supertypes</code> to get the full inheritance chain of a type as a tuple of types.</p>
 <pre><code>&gt; supertypes(Int64
 (Int64, Signed, Integer, Real, Number, Any)</code></pre>
-</section><section id="number-types"><h2 class="section-heading">Number Types</h2>
+</section><section id="number-types"><h2 class="section-heading">Number Types<a class="anchor" aria-label="anchor" href="#number-types"></a>
+</h2>
 <hr class="half-width">
 <p>Julia provides various common number types.</p>
 <p>There are four floating point number types:</p>
@@ -646,7 +655,8 @@ Any</code></pre>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="cn">pi</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span>π}</span></code></pre>
 </div>
-</section><section id="strings"><h2 class="section-heading">Strings</h2>
+</section><section id="strings"><h2 class="section-heading">Strings<a class="anchor" aria-label="anchor" href="#strings"></a>
+</h2>
 <hr class="half-width">
 <p>There are types for strings and characters:</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -662,7 +672,8 @@ Char</code></pre>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="indexing-in-julia" class="callout-inner">
-<h3 class="callout-title">Indexing in Julia</h3>
+<h3 class="callout-title">Indexing in Julia<a class="anchor" aria-label="anchor" href="#indexing-in-julia"></a>
+</h3>
 <div class="callout-content">
 <p>What does the following expression evaluate to:</p>
 <pre><code>[2, 3, 5][2]</code></pre>
@@ -689,7 +700,8 @@ Char</code></pre>
 </div>
 </div>
 </div>
-</section><section id="named-tuples"><h2 class="section-heading">(Named) Tuples</h2>
+</section><section id="named-tuples"><h2 class="section-heading">(Named) Tuples<a class="anchor" aria-label="anchor" href="#named-tuples"></a>
+</h2>
 <hr class="half-width">
 <p>Julia features a type for tuples, similar to tuples in C++ and Python or lists in many Lisp dialects. Tuples is a fixed length ordered container whose elements may have any type. The syntax is the same as in Python:</p>
 <div class="codewrapper sourceCode" id="cb15">
@@ -740,7 +752,8 @@ Char</code></pre>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v.y</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span></code></pre>
 </div>
-</section><section id="arrays"><h2 class="section-heading">Arrays</h2>
+</section><section id="arrays"><h2 class="section-heading">Arrays<a class="anchor" aria-label="anchor" href="#arrays"></a>
+</h2>
 <hr class="half-width">
 <p>Arrays and associated features are arguably one of the most important defining traits of the Julia programming language.</p>
 <p>Julia supports arrays of arbitrary dimensions.</p>
@@ -914,7 +927,8 @@ Char</code></pre>
 <span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.1</span></span></code></pre>
 </div>
 </div>
-</section><section id="structs"><h2 class="section-heading">Structs</h2>
+</section><section id="structs"><h2 class="section-heading">Structs<a class="anchor" aria-label="anchor" href="#structs"></a>
+</h2>
 <hr class="half-width">
 <p>Structs are what allows us to define our own types in Julia. In our first example we will created a parameterized type for 2-dimensional points:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -993,7 +1007,8 @@ MPoint{Int64}(1, 2)
 </div>
 <p>Note, that we need to use a preexisting constructor to define an outer constructor, while we use the keyword <code>new</code> as if we were calling the default constructor when defining inner constructors.</p>
 </div>
-</section><section id="more-types"><h2 class="section-heading">More Types</h2>
+</section><section id="more-types"><h2 class="section-heading">More Types<a class="anchor" aria-label="anchor" href="#more-types"></a>
+</h2>
 <hr class="half-width">
 <p>The Julia language provides a lot more types; for example <code>CartesianIndex</code>, <code>IOStream</code>, or <code>Atomic{T}</code>. We again refer to the documentation.</p>
 <!-- 
@@ -1034,7 +1049,8 @@ any links that you are not going to use.
 </div>
 </div>
 <p>Julia’s functions deserve their own episodes. Julia implements generic functions. A generic function is implemented by zero or more methods. When a (generic) function is called, a method that best fits to the provided arguments is selected and executed.</p>
-<section id="methods"><h2 class="section-heading">Methods</h2>
+<section id="methods"><h2 class="section-heading">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
+</h2>
 <hr class="half-width">
 <p>In the case of Julia the method is chosen based on the number of arguments and their types.</p>
 <p>This is used to provide implementations for specific argument types without having to litter the code with conditionals based on value types. An impressive example for the number of methods is the generic function <code>+</code>:</p>
@@ -1052,7 +1068,8 @@ any links that you are not going to use.
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="generic-methods-on-steroids" class="callout-inner">
-<h3 class="callout-title">Generic Methods on Steroids</h3>
+<h3 class="callout-title">Generic Methods on Steroids<a class="anchor" aria-label="anchor" href="#generic-methods-on-steroids"></a>
+</h3>
 <div class="callout-content">
 <p>For an example of a very complex generic function system you can have look at the <a href="https://en.wikipedia.org/wiki/Common_Lisp_Object_System" class="external-link">Common Lisp Object System</a> (CLOS). There methods can call less specific methods, there are so called before, after, and around methods, and all applicable methods can be combined in several ways (for example, summing the result of all applicable methods).</p>
 </div>
@@ -1101,7 +1118,8 @@ any links that you are not going to use.
 </div>
 <p>Multiple dispatch is similar to function overloading in languages like Java and C++. There the appropriate method (except for dispatch on the first argument) is determined at compile time based on the parameter types. In the case of Julia this happens at runtime and thus allows to add further methods to a generic functions in a running image of a Julia process.</p>
 </div>
-</section><section id="arguments"><h2 class="section-heading">Arguments</h2>
+</section><section id="arguments"><h2 class="section-heading">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a>
+</h2>
 <hr class="half-width">
 <p>In Julia arguments are pass-by-sharing, also known as -by-pointer or -by-reference. For values of immutable types this may be optimized to pass-by-value if the values fit into a single register. But because of the immutability this is indistinguishable.</p>
 <p>We already saw that we can add type annotations to parameters:</p>
@@ -1184,7 +1202,8 @@ any links that you are not going to use.
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a> [<span class="fl">3</span>] top<span class="op">-</span>level scope</span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">5</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
-</section><section id="anonymous-functions"><h2 class="section-heading">Anonymous Functions</h2>
+</section><section id="anonymous-functions"><h2 class="section-heading">Anonymous Functions<a class="anchor" aria-label="anchor" href="#anonymous-functions"></a>
+</h2>
 <hr class="half-width">
 <p>For short, one-off functions Julia implements anonymous functions:</p>
 <div class="codewrapper sourceCode" id="cb12">
@@ -1224,7 +1243,8 @@ any links that you are not going to use.
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a> <span class="cn">nothing</span></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a> <span class="cn">nothing</span></span></code></pre>
 </div>
-</section><section id="function-composition"><h2 class="section-heading">Function Composition</h2>
+</section><section id="function-composition"><h2 class="section-heading">Function Composition<a class="anchor" aria-label="anchor" href="#function-composition"></a>
+</h2>
 <hr class="half-width">
 <p>Julia has an operator, <code>∘</code>, for function composition. You can write it in the Julia-REPL typing <code>\circ&lt;tab&gt;</code>. It is useful to create function arguments that are just compositions of other functions:</p>
 <div class="codewrapper sourceCode" id="cb15">
@@ -1361,7 +1381,8 @@ any links that you are not going to use.
 <p>All this shows that each module has its own namespace, but we can import names directly or with a new name from module one into another.</p>
 <p>We can force users to always use our <code>length</code> prefixed by the module name <code>OurVectors</code> by not exporting it. It is still accessible, but it can no longer be imported by name or brought into another namespace via <code>using</code>.</p>
 <p>The difference between <code>using</code> and <code>import</code> is that, by default, <code>using</code> makes the module itself and all exported names available in the using module namespace, wheres <code>import</code> only makes the module available. Then <code>using</code> can be modified to only import specific names (including the module itself) and <code>import</code> can be modified to import additional names. In both cases the imported entities can be renamed using the keyword <code>as</code>.</p>
-<section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules</h2>
+<section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules<a class="anchor" aria-label="anchor" href="#bare-modules-and-standard-modules"></a>
+</h2>
 <hr class="half-width">
 <p>Whenever we create a module, the modules <code>Core</code> and <code>Base</code> are automatically contained as if imported with <code>using</code>. If a module is declared with the <code>baremodule</code> keyword instead, they are not contained.</p>
 <p>In addition to <code>Core</code> and <code>Base</code> a Julia distribution comes with further standard modules that do not have to be installed explicitly; among them <code>Test</code>. In addition, <code>Base</code> has several submodules, e.g. <code>Base.Threads</code>.</p>
@@ -1378,7 +1399,8 @@ any links that you are not going to use.
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <p>While the module is an organizational unit within a project, packages are the distribution units of packages.</p>
-<section id="dependency-management"><h2 class="section-heading">Dependency Management</h2>
+<section id="dependency-management"><h2 class="section-heading">Dependency Management<a class="anchor" aria-label="anchor" href="#dependency-management"></a>
+</h2>
 <hr class="half-width">
 <p>To install a package, we type <code>]</code> in the Julia REPL to switch to package mode. The prompt changes from <code>julia&gt;</code> to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing <code>C-c</code>.</p>
 <div id="callout1" class="callout callout">
@@ -1386,7 +1408,8 @@ any links that you are not going to use.
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="pkg.jl" class="callout-inner">
-<h3 class="callout-title">Pkg.jl</h3>
+<h3 class="callout-title">Pkg.jl<a class="anchor" aria-label="anchor" href="#pkg.jl"></a>
+</h3>
 <div class="callout-content">
 <p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a> online.</p>
 </div>
@@ -1446,7 +1469,8 @@ Precompiling project...
   manifest package. Bound level options force the following packages to be upgraded only within the current major,
   minor, patch version; if the --fixed upgrade level is given, then the following packages will not be upgraded at
   all.</code></pre>
-</section><section id="creating-packages"><h2 class="section-heading">Creating Packages</h2>
+</section><section id="creating-packages"><h2 class="section-heading">Creating Packages<a class="anchor" aria-label="anchor" href="#creating-packages"></a>
+</h2>
 <hr class="half-width">
 <p>After seeing how to use a package, we will have a look into creating one.</p>
 <p>Using the shell in the Julia REPL, activated by pressing <code>;</code>, we navigate to the folder in which, we want to create our project. For example</p>
@@ -1496,7 +1520,8 @@ module OurVectors
 greet() = print("Hello World!")
 
 end # module</code></pre>
-</section><section id="tests"><h2 class="section-heading">Tests</h2>
+</section><section id="tests"><h2 class="section-heading">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
+</h2>
 <hr class="half-width">
 <p>We edit the source file to contain our <code>length</code> function:</p>
 <div class="codewrapper sourceCode" id="cb14">
@@ -1584,7 +1609,8 @@ ERROR: Package OurVectors errored during testing</code></pre>
      Testing Running tests...
      Testing OurVectors tests passed</code></pre>
 <p>Now the test suite runs and our tests passed.</p>
-</section><section id="tracking-dependencies"><h2 class="section-heading">Tracking Dependencies</h2>
+</section><section id="tracking-dependencies"><h2 class="section-heading">Tracking Dependencies<a class="anchor" aria-label="anchor" href="#tracking-dependencies"></a>
+</h2>
 <hr class="half-width">
 <p>Getting back to the file that changed, when we add <code>Test</code> to the project, we first have look at <code>Project.toml</code>:</p>
 <div class="codewrapper sourceCode" id="cb21">
@@ -1649,7 +1675,8 @@ any links that you are not going to use.
 <p>Before we continue, we return to the default environment in our Julia REPL:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; activate
   Activating project at `~/.julia/environments/v1.7`</code></pre>
-<section id="c-interface"><h2 class="section-heading">C Interface</h2>
+<section id="c-interface"><h2 class="section-heading">C Interface<a class="anchor" aria-label="anchor" href="#c-interface"></a>
+</h2>
 <hr class="half-width">
 <p>To call a C function we can either use the function <code>ccall</code> or the macro <code>@ccall</code>. For example:</p>
 <div class="codewrapper sourceCode" id="cb2">
@@ -1688,7 +1715,8 @@ any links that you are not going to use.
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.g_basename(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
 </div>
-</section><section id="pycall"><h2 class="section-heading">PyCall</h2>
+</section><section id="pycall"><h2 class="section-heading">PyCall<a class="anchor" aria-label="anchor" href="#pycall"></a>
+</h2>
 <hr class="half-width">
 <p>To interface with python we can use the <code>PyCall</code> package. First, we need to install it to the current repository:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; add Pycall
@@ -1716,7 +1744,8 @@ any links that you are not going to use.
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="python-environments" class="callout-inner">
-<h3 class="callout-title">Python Environments</h3>
+<h3 class="callout-title">Python Environments<a class="anchor" aria-label="anchor" href="#python-environments"></a>
+</h3>
 <div class="callout-content">
 <p>We can control the version of Python that is used by Julia with the environment variable <code>PYTHON</code> in the Julia process.</p>
 <p>We could, for example, start the Julia process from a shell in which we activated a particular environment of the <code>venv</code> Python package. This would give the Julia process access to that environments Python version and installed packages.</p>
@@ -1739,7 +1768,8 @@ any links that you are not going to use.
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fl">2022</span><span class="op">-</span><span class="fl">06</span><span class="op">-</span><span class="fl">03</span> <span class="fl">14</span><span class="op">:</span><span class="fl">38</span><span class="op">:</span><span class="fl">05.903444</span></span></code></pre>
 </div>
-</section><section id="rcall"><h2 class="section-heading">RCall</h2>
+</section><section id="rcall"><h2 class="section-heading">RCall<a class="anchor" aria-label="anchor" href="#rcall"></a>
+</h2>
 <hr class="half-width">
 <p>A similar package exists for R with <code>RCall</code>. It even gives access to an R-REPL from within the Julia REPL, similar to package and shell mode.</p>
 <!-- 
@@ -1765,9 +1795,9 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.9.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.2.3)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.9.3" class="external-link">sandpaper (0.9.3)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.1)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.4" class="external-link">varnish (0.2.4)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -1789,8 +1819,8 @@ any links that you are not going to use.
   "url": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "dateCreated": "2022-06-03",
-  "dateModified": "2022-08-09",
-  "datePublished": "2022-08-09"
+  "dateModified": "2022-08-16",
+  "datePublished": "2022-08-16"
 }
 
   </script><script>

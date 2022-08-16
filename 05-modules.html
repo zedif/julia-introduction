@@ -381,7 +381,8 @@
 <p>All this shows that each module has its own namespace, but we can import names directly or with a new name from module one into another.</p>
 <p>We can force users to always use our <code>length</code> prefixed by the module name <code>OurVectors</code> by not exporting it. It is still accessible, but it can no longer be imported by name or brought into another namespace via <code>using</code>.</p>
 <p>The difference between <code>using</code> and <code>import</code> is that, by default, <code>using</code> makes the module itself and all exported names available in the using module namespace, wheres <code>import</code> only makes the module available. Then <code>using</code> can be modified to only import specific names (including the module itself) and <code>import</code> can be modified to import additional names. In both cases the imported entities can be renamed using the keyword <code>as</code>.</p>
-<section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules</h2>
+<section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules<a class="anchor" aria-label="anchor" href="#bare-modules-and-standard-modules"></a>
+</h2>
 <hr class="half-width"><p>Whenever we create a module, the modules <code>Core</code> and <code>Base</code> are automatically contained as if imported with <code>using</code>. If a module is declared with the <code>baremodule</code> keyword instead, they are not contained.</p>
 <p>In addition to <code>Core</code> and <code>Base</code> a Julia distribution comes with further standard modules that do not have to be installed explicitly; among them <code>Test</code>. In addition, <code>Base</code> has several submodules, e.g. <code>Base.Threads</code>.</p>
 <p><code>Main</code> is the top level module of the REPL.</p>
@@ -413,9 +414,9 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.9.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.2.3)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.9.3" class="external-link">sandpaper (0.9.3)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.1)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.4" class="external-link">varnish (0.2.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -437,7 +438,7 @@ any links that you are not going to use.
   "identifier": "https://zedif.github.io/julia-introduction/05-modules.html",
   "dateCreated": "2022-06-03",
   "dateModified": "2022-06-01",
-  "datePublished": "2022-08-09"
+  "datePublished": "2022-08-16"
 }
 
   </script><script>

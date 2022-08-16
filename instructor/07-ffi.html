@@ -281,7 +281,8 @@
 <p>Before we continue, we return to the default environment in our Julia REPL:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; activate
   Activating project at `~/.julia/environments/v1.7`</code></pre>
-<section id="c-interface"><h2 class="section-heading">C Interface</h2>
+<section id="c-interface"><h2 class="section-heading">C Interface<a class="anchor" aria-label="anchor" href="#c-interface"></a>
+</h2>
 <hr class="half-width"><p>To call a C function we can either use the function <code>ccall</code> or the macro <code>@ccall</code>. For example:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -319,7 +320,8 @@
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.g_basename(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
 </div>
-</section><section id="pycall"><h2 class="section-heading">PyCall</h2>
+</section><section id="pycall"><h2 class="section-heading">PyCall<a class="anchor" aria-label="anchor" href="#pycall"></a>
+</h2>
 <hr class="half-width"><p>To interface with python we can use the <code>PyCall</code> package. First, we need to install it to the current repository:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; add Pycall
     Updating registry at `~/.julia/registries/General.toml`
@@ -346,7 +348,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="python-environments" class="callout-inner">
-<h3 class="callout-title">Python Environments</h3>
+<h3 class="callout-title">Python Environments<a class="anchor" aria-label="anchor" href="#python-environments"></a>
+</h3>
 <div class="callout-content">
 <p>We can control the version of Python that is used by Julia with the environment variable <code>PYTHON</code> in the Julia process.</p>
 <p>We could, for example, start the Julia process from a shell in which we activated a particular environment of the <code>venv</code> Python package. This would give the Julia process access to that environments Python version and installed packages.</p>
@@ -369,7 +372,8 @@
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fl">2022</span><span class="op">-</span><span class="fl">06</span><span class="op">-</span><span class="fl">03</span> <span class="fl">14</span><span class="op">:</span><span class="fl">38</span><span class="op">:</span><span class="fl">05.903444</span></span></code></pre>
 </div>
-</section><section id="rcall"><h2 class="section-heading">RCall</h2>
+</section><section id="rcall"><h2 class="section-heading">RCall<a class="anchor" aria-label="anchor" href="#rcall"></a>
+</h2>
 <hr class="half-width"><p>A similar package exists for R with <code>RCall</code>. It even gives access to an R-REPL from within the Julia REPL, similar to package and shell mode.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -399,9 +403,9 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.9.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.2.3)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.9.3" class="external-link">sandpaper (0.9.3)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.1)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.4" class="external-link">varnish (0.2.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -423,7 +427,7 @@ any links that you are not going to use.
   "identifier": "https://zedif.github.io/julia-introduction/instructor/07-ffi.html",
   "dateCreated": "2022-06-03",
   "dateModified": "2022-06-03",
-  "datePublished": "2022-08-09"
+  "datePublished": "2022-08-16"
 }
 
   </script><script>

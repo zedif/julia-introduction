@@ -301,7 +301,8 @@
 </div>
 </div>
 <p>Julia’s functions deserve their own episodes. Julia implements generic functions. A generic function is implemented by zero or more methods. When a (generic) function is called, a method that best fits to the provided arguments is selected and executed.</p>
-<section id="methods"><h2 class="section-heading">Methods</h2>
+<section id="methods"><h2 class="section-heading">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
+</h2>
 <hr class="half-width"><p>In the case of Julia the method is chosen based on the number of arguments and their types.</p>
 <p>This is used to provide implementations for specific argument types without having to litter the code with conditionals based on value types. An impressive example for the number of methods is the generic function <code>+</code>:</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -318,7 +319,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="generic-methods-on-steroids" class="callout-inner">
-<h3 class="callout-title">Generic Methods on Steroids</h3>
+<h3 class="callout-title">Generic Methods on Steroids<a class="anchor" aria-label="anchor" href="#generic-methods-on-steroids"></a>
+</h3>
 <div class="callout-content">
 <p>For an example of a very complex generic function system you can have look at the <a href="https://en.wikipedia.org/wiki/Common_Lisp_Object_System" class="external-link">Common Lisp Object System</a> (CLOS). There methods can call less specific methods, there are so called before, after, and around methods, and all applicable methods can be combined in several ways (for example, summing the result of all applicable methods).</p>
 </div>
@@ -366,7 +368,8 @@
 </div>
 <p>Multiple dispatch is similar to function overloading in languages like Java and C++. There the appropriate method (except for dispatch on the first argument) is determined at compile time based on the parameter types. In the case of Julia this happens at runtime and thus allows to add further methods to a generic functions in a running image of a Julia process.</p>
 </div>
-</section><section id="arguments"><h2 class="section-heading">Arguments</h2>
+</section><section id="arguments"><h2 class="section-heading">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a>
+</h2>
 <hr class="half-width"><p>In Julia arguments are pass-by-sharing, also known as -by-pointer or -by-reference. For values of immutable types this may be optimized to pass-by-value if the values fit into a single register. But because of the immutability this is indistinguishable.</p>
 <p>We already saw that we can add type annotations to parameters:</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -448,7 +451,8 @@
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a> [<span class="fl">3</span>] top<span class="op">-</span>level scope</span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">5</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
-</section><section id="anonymous-functions"><h2 class="section-heading">Anonymous Functions</h2>
+</section><section id="anonymous-functions"><h2 class="section-heading">Anonymous Functions<a class="anchor" aria-label="anchor" href="#anonymous-functions"></a>
+</h2>
 <hr class="half-width"><p>For short, one-off functions Julia implements anonymous functions:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -487,7 +491,8 @@
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a> <span class="cn">nothing</span></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a> <span class="cn">nothing</span></span></code></pre>
 </div>
-</section><section id="function-composition"><h2 class="section-heading">Function Composition</h2>
+</section><section id="function-composition"><h2 class="section-heading">Function Composition<a class="anchor" aria-label="anchor" href="#function-composition"></a>
+</h2>
 <hr class="half-width"><p>Julia has an operator, <code>∘</code>, for function composition. You can write it in the Julia-REPL typing <code>\circ&lt;tab&gt;</code>. It is useful to create function arguments that are just compositions of other functions:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -532,9 +537,9 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.9.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.2.3)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.9.3" class="external-link">sandpaper (0.9.3)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.1)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.4" class="external-link">varnish (0.2.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -556,7 +561,7 @@ any links that you are not going to use.
   "identifier": "https://zedif.github.io/julia-introduction/instructor/04-generic-functions.html",
   "dateCreated": "2022-06-03",
   "dateModified": "2022-05-30",
-  "datePublished": "2022-08-09"
+  "datePublished": "2022-08-16"
 }
 
   </script><script>

@@ -277,14 +277,16 @@
         
 
 <p>While the module is an organizational unit within a project, packages are the distribution units of packages.</p>
-<section id="dependency-management"><h2 class="section-heading">Dependency Management</h2>
+<section id="dependency-management"><h2 class="section-heading">Dependency Management<a class="anchor" aria-label="anchor" href="#dependency-management"></a>
+</h2>
 <hr class="half-width"><p>To install a package, we type <code>]</code> in the Julia REPL to switch to package mode. The prompt changes from <code>julia&gt;</code> to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing <code>C-c</code>.</p>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="pkg.jl" class="callout-inner">
-<h3 class="callout-title">Pkg.jl</h3>
+<h3 class="callout-title">Pkg.jl<a class="anchor" aria-label="anchor" href="#pkg.jl"></a>
+</h3>
 <div class="callout-content">
 <p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a> online.</p>
 </div>
@@ -344,7 +346,8 @@ Precompiling project...
   manifest package. Bound level options force the following packages to be upgraded only within the current major,
   minor, patch version; if the --fixed upgrade level is given, then the following packages will not be upgraded at
   all.</code></pre>
-</section><section id="creating-packages"><h2 class="section-heading">Creating Packages</h2>
+</section><section id="creating-packages"><h2 class="section-heading">Creating Packages<a class="anchor" aria-label="anchor" href="#creating-packages"></a>
+</h2>
 <hr class="half-width"><p>After seeing how to use a package, we will have a look into creating one.</p>
 <p>Using the shell in the Julia REPL, activated by pressing <code>;</code>, we navigate to the folder in which, we want to create our project. For example</p>
 <pre class="shell"><code>shell&gt; cd ~/temp/
@@ -393,7 +396,8 @@ module OurVectors
 greet() = print("Hello World!")
 
 end # module</code></pre>
-</section><section id="tests"><h2 class="section-heading">Tests</h2>
+</section><section id="tests"><h2 class="section-heading">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
+</h2>
 <hr class="half-width"><p>We edit the source file to contain our <code>length</code> function:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -480,7 +484,8 @@ ERROR: Package OurVectors errored during testing</code></pre>
      Testing Running tests...
      Testing OurVectors tests passed</code></pre>
 <p>Now the test suite runs and our tests passed.</p>
-</section><section id="tracking-dependencies"><h2 class="section-heading">Tracking Dependencies</h2>
+</section><section id="tracking-dependencies"><h2 class="section-heading">Tracking Dependencies<a class="anchor" aria-label="anchor" href="#tracking-dependencies"></a>
+</h2>
 <hr class="half-width"><p>Getting back to the file that changed, when we add <code>Test</code> to the project, we first have look at <code>Project.toml</code>:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -557,9 +562,9 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.9.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.2.3)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.9.3" class="external-link">sandpaper (0.9.3)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.1)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.4" class="external-link">varnish (0.2.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -581,7 +586,7 @@ any links that you are not going to use.
   "identifier": "https://zedif.github.io/julia-introduction/06-packages.html",
   "dateCreated": "2022-06-03",
   "dateModified": "2022-06-01",
-  "datePublished": "2022-08-09"
+  "datePublished": "2022-08-16"
 }
 
   </script><script>
