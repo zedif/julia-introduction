@@ -305,89 +305,115 @@
 </div>
 </div>
 </div>
-<p>In this episode we will place Julia within the world of programming languages.</p>
+<p>In this episode we will place Julia within the world of programming
+languages.</p>
 <section id="high-level"><h2 class="section-heading">High-Level<a class="anchor" aria-label="anchor" href="#high-level"></a>
 </h2>
-<hr class="half-width"><p>Julia is a high-level language, that is, it abstract away the details of the hardware that runs software written in the language. Other high-level languages are, for example, Java and Python.</p>
+<hr class="half-width"><p>Julia is a high-level language, that is, it abstract away the details
+of the hardware that runs software written in the language. Other
+high-level languages are, for example, Java and Python.</p>
 </section><section id="dynamic"><h2 class="section-heading">Dynamic<a class="anchor" aria-label="anchor" href="#dynamic"></a>
 </h2>
-<hr class="half-width"><p>Julia is dynamically typed by default. This puts it in the company of Python and distinguishes it from Java and C++.</p>
-<p>Even though it is dynamically typed by default, it does allow programmers to specify the type of a value, for example for method parameters or method return types. This is mainly necessary to make use of method dispatch based on argument types, a topic we will get to in a later episode. It also helps to ensure that no unintended uses of functions work. And, in some cases, it can <a href="https://docs.julialang.org/en/v1/manual/types/#Type-Declarations" class="external-link">improve performance</a>.</p>
-<p>We will give it a try and define two methods, one with and one without specifying the parameter type:</p>
+<hr class="half-width"><p>Julia is dynamically typed by default. This puts it in the company of
+Python and distinguishes it from Java and C++.</p>
+<p>Even though it is dynamically typed by default, it does allow
+programmers to specify the type of a value, for example for method
+parameters or method return types. This is mainly necessary to make use
+of method dispatch based on argument types, a topic we will get to in a
+later episode. It also helps to ensure that no unintended uses of
+functions work. And, in some cases, it can <a href="https://docs.julialang.org/en/v1/manual/types/#Type-Declarations" class="external-link">improve
+performance</a>.</p>
+<p>We will give it a try and define two methods, one with and one
+without specifying the parameter type:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> identity(x) <span class="op">=</span> x</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">identity</span>(x) <span class="op">=</span> x</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>identity (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> identity(<span class="fl">2.0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">identity</span>(<span class="fl">2.0</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> identity(<span class="fl">2</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">identity</span>(<span class="fl">2</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> float_identity(x<span class="op">::</span><span class="dt">Float64</span>) <span class="op">=</span> x</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">float_identity</span>(x<span class="op">::</span><span class="dt">Float64</span>) <span class="op">=</span> x</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>float_identity (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> float_identity(<span class="fl">2.0</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">float_identity</span>(<span class="fl">2.0</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> float_identity(<span class="fl">2</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">MethodError</span><span class="op">:</span> no method matching float_identity(<span class="op">::</span><span class="dt">Int64</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">float_identity</span>(<span class="fl">2</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">MethodError</span><span class="op">:</span> no method matching <span class="fu">float_identity</span>(<span class="op">::</span><span class="dt">Int64</span>)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Closest candidates are<span class="op">:</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  float_identity(<span class="op">::</span><span class="dt">Float64</span>) at REPL[<span class="fl">4</span>]<span class="op">:</span><span class="fl">1</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">float_identity</span>(<span class="op">::</span><span class="dt">Float64</span>) at <span class="bu">REPL</span>[<span class="fl">4</span>]<span class="op">:</span><span class="fl">1</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] top<span class="op">-</span>level scope</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">6</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">6</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
 </section><section id="garbage-collected"><h2 class="section-heading">Garbage Collected<a class="anchor" aria-label="anchor" href="#garbage-collected"></a>
 </h2>
 <hr class="half-width"><p>Julia uses garbage collection for memory management.</p>
 </section><section id="compiled"><h2 class="section-heading">Compiled<a class="anchor" aria-label="anchor" href="#compiled"></a>
 </h2>
-<hr class="half-width"><p>Julia is a compiled programming language. However, functions are compiled just-in-time for any given list argument types. For example, when we define a method, it does not get compiled.</p>
+<hr class="half-width"><p>Julia is a compiled programming language. However, functions are
+compiled just-in-time for any given list argument types. For example,
+when we define a method, it does not get compiled.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> foo(x) <span class="op">=</span> x</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">foo</span>(x) <span class="op">=</span> x</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>foo (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span></code></pre>
 </div>
 <p>Only when we call it for the first time, this happens.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> foo(<span class="fl">3</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">foo</span>(<span class="fl">3</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
-<p>And it only compiles the function for arguments of type <code>Int64</code>. We can look at the compilation results for different argument types using the function <code>code_native</code>:</p>
+<p>And it only compiles the function for arguments of type
+<code>Int64</code>. We can look at the compilation results for different
+argument types using the function <code>code_native</code>:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> code_native(foo<span class="op">,</span> (<span class="dt">Int64</span><span class="op">,</span>))</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">code_native</span>(foo, (<span class="dt">Int64</span>,))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        .text</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> ┌ <span class="op">@</span> REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>; ┌ @ <span class="bu">REPL</span>[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        endbr64</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        movq    %rdi<span class="op">,</span> %rax</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        movq    <span class="op">%</span>rdi, <span class="op">%</span>rax</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        retq</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        nopl    (%rax<span class="op">,</span>%rax)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> └</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        nopl    (<span class="op">%</span>rax,<span class="op">%</span>rax)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>; └</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> code_native(foo<span class="op">,</span> (<span class="dt">Float64</span><span class="op">,</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">code_native</span>(foo, (<span class="dt">Float64</span>,))</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        .text</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> ┌ <span class="op">@</span> REPL[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>; ┌ @ <span class="bu">REPL</span>[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        endbr64</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        movabsq <span class="op">$</span>.rodata.cst8<span class="op">,</span> %rax</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        vmovsd  (%rax)<span class="op">,</span> %xmm0                   <span class="co"># xmm0 = mem[0],zero</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        movabsq <span class="op">$</span>.rodata.cst8, <span class="op">%</span>rax</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        vmovsd  (<span class="op">%</span>rax), <span class="op">%</span>xmm0                   <span class="co"># xmm0 = mem[0],zero</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        retq</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        nopw    %cs<span class="op">:</span>(%rax<span class="op">,</span>%rax)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> └</span></code></pre>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        nopw    <span class="op">%</span>cs<span class="op">:</span>(<span class="op">%</span>rax,<span class="op">%</span>rax)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>; └</span></code></pre>
 </div>
-<p>Since Julia always complies and never evaluates, the compiler is sometimes called a just-ahead-of-time compiler.</p>
+<p>Since Julia always complies and never evaluates, the compiler is
+sometimes called a just-ahead-of-time compiler.</p>
 </section><section id="high-performance"><h2 class="section-heading">High-performance<a class="anchor" aria-label="anchor" href="#high-performance"></a>
 </h2>
-<hr class="half-width"><p>The <a href="https://julialang.org/blog/2012/02/why-we-created-julia/" class="external-link">intention behind developing Julia</a> was to create a fast dynamic language. And so it comes as no surprise that high-performance software can be written in Julia. The language is, by design, particularly well suited for dealing with (large) arrays of numbers. This makes it a good language for writing code for numerical analysis, optimization, and many forms of machine learning.</p>
-<p><a href="https://julialang.org/benchmarks/" class="external-link">Benchmarks on the language’s website</a> place its performance close to that of languages like C or Rust.</p>
-<p>With <a href="https://juliagpu.org/cuda/" class="external-link">CUDA.jl</a> there is an officially supported library that allows to write code for Nvidia GPUs directly in Julia.</p>
+<hr class="half-width"><p>The <a href="https://julialang.org/blog/2012/02/why-we-created-julia/" class="external-link">intention
+behind developing Julia</a> was to create a fast dynamic language. And
+so it comes as no surprise that high-performance software can be written
+in Julia. The language is, by design, particularly well suited for
+dealing with (large) arrays of numbers. This makes it a good language
+for writing code for numerical analysis, optimization, and many forms of
+machine learning.</p>
+<p><a href="https://julialang.org/benchmarks/" class="external-link">Benchmarks on the
+language’s website</a> place its performance close to that of languages
+like C or Rust.</p>
+<p>With <a href="https://juliagpu.org/cuda/" class="external-link">CUDA.jl</a> there is an
+officially supported library that allows to write code for Nvidia GPUs
+directly in Julia.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -445,7 +471,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/instructor/02-classification.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/02-classification.html",
-  "dateCreated": "2022-10-11",
+  "dateCreated": "2022-11-08",
   "dateModified": "2022-05-23",
   "datePublished": "2022-11-08"
 }

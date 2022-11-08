@@ -283,10 +283,14 @@
 
         
 
-<p>While the module is an organizational unit within a project, packages are the distribution units of packages.</p>
+<p>While the module is an organizational unit within a project, packages
+are the distribution units of packages.</p>
 <section id="dependency-management"><h2 class="section-heading">Dependency Management<a class="anchor" aria-label="anchor" href="#dependency-management"></a>
 </h2>
-<hr class="half-width"><p>To install a package, we type <code>]</code> in the Julia REPL to switch to package mode. The prompt changes from <code>julia&gt;</code> to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing <code>C-c</code>.</p>
+<hr class="half-width"><p>To install a package, we type <code>]</code> in the Julia REPL to
+switch to package mode. The prompt changes from <code>julia&gt;</code>
+to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing
+<code>C-c</code>.</p>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -295,15 +299,23 @@
 <h3 class="callout-title">Pkg.jl<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a> online.</p>
+<p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a>
+online.</p>
 </div>
 </div>
 </div>
-<p>The prompt in the package mode tells us which environment is currently active (<code>@v1.7</code>). The default environment is named after the running Julia version. We can install packages into this environment for general experimentation. Our projects have their own environments, as we will see in a bit.</p>
-<p>First, let us have a look at the status of the current environment:</p>
+<p>The prompt in the package mode tells us which environment is
+currently active (<code>@v1.7</code>). The default environment is named
+after the running Julia version. We can install packages into this
+environment for general experimentation. Our projects have their own
+environments, as we will see in a bit.</p>
+<p>First, let us have a look at the status of the current
+environment:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; status
       Status `~/.julia/environments/v1.7/Project.toml`</code></pre>
-<p>This shows us the location of the Project.toml that describes the environment. It also lists explicitly installed packages, in our case currently none.</p>
+<p>This shows us the location of the Project.toml that describes the
+environment. It also lists explicitly installed packages, in our case
+currently none.</p>
 <p>To install a package we run the command <code>add</code>:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; add Memoize
    Resolving package versions...
@@ -315,7 +327,12 @@
 (@v1.7) pkg&gt; status
       Status `~/.julia/environments/v1.7/Project.toml`
     [c03570c3] Memoize v0.4.4</code></pre>
-<p>The command updates two files, <code>Project.toml</code> and <code>Manifest.toml</code>, and seems to install two packages, <code>Memoize</code> and <code>MacroTools</code>, the latter probably a dependency of the former. Now <code>status</code> shows us that we have installed <code>Memoize</code> (but tells us nothing about <code>MacroTools</code>.</p>
+<p>The command updates two files, <code>Project.toml</code> and
+<code>Manifest.toml</code>, and seems to install two packages,
+<code>Memoize</code> and <code>MacroTools</code>, the latter probably a
+dependency of the former. Now <code>status</code> shows us that we have
+installed <code>Memoize</code> (but tells us nothing about
+<code>MacroTools</code>.</p>
 <p>We can update a package using the <code>update</code> command:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; update Memoize
     Updating registry at `~/.julia/registries/General.toml`
@@ -328,8 +345,12 @@
     Updating `~/.julia/environments/v1.7/Manifest.toml`
   [1914dd2f] - MacroTools v0.5.9
   [c03570c3] - Memoize v0.4.4</code></pre>
-<p>To import a package, we need to know what packages there are. There is a <a href="https://github.com/JuliaRegistries/General" class="external-link">general package registry</a> which can be searched through multiple front-ends, for example <a href="https://juliahub.com/ui/Packages" class="external-link uri">https://juliahub.com/ui/Packages</a> .</p>
-<p>If we want to install a package that is not in the general (or any other) registry, we can point to a git source instead:</p>
+<p>To import a package, we need to know what packages there are. There
+is a <a href="https://github.com/JuliaRegistries/General" class="external-link">general
+package registry</a> which can be searched through multiple front-ends,
+for example <a href="https://juliahub.com/ui/Packages" class="external-link uri">https://juliahub.com/ui/Packages</a> .</p>
+<p>If we want to install a package that is not in the general (or any
+other) registry, we can point to a git source instead:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; add https://github.com/JuliaLang/Example.jl#master
      Cloning git-repo `https://github.com/JuliaLang/Example.jl`
     Updating git-repo `https://github.com/JuliaLang/Example.jl`
@@ -340,7 +361,10 @@
   [7876af07] + Example v0.5.4 `https://github.com/JuliaLang/Example.jl#master`
 Precompiling project...
    1 dependency successfully precompiled in 0 seconds (20 already precompiled)</code></pre>
-<p>All commands discussed here have a lot more options. Particularly important might be the ability to install specific versions or branches of packages. The shell provides documentation for every command when running <code>help &lt;command&gt;</code>, for example:</p>
+<p>All commands discussed here have a lot more options. Particularly
+important might be the ability to install specific versions or branches
+of packages. The shell provides documentation for every command when
+running <code>help &lt;command&gt;</code>, for example:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; help update
   [up|update] [-p|--project]  [opts] pkg[=uuid] [@version] ...
   [up|update] [-m|--manifest] [opts] pkg[=uuid] [@version] ...
@@ -355,32 +379,41 @@ Precompiling project...
   all.</code></pre>
 </section><section id="creating-packages"><h2 class="section-heading">Creating Packages<a class="anchor" aria-label="anchor" href="#creating-packages"></a>
 </h2>
-<hr class="half-width"><p>After seeing how to use a package, we will have a look into creating one.</p>
-<p>Using the shell in the Julia REPL, activated by pressing <code>;</code>, we navigate to the folder in which, we want to create our project. For example</p>
+<hr class="half-width"><p>After seeing how to use a package, we will have a look into creating
+one.</p>
+<p>Using the shell in the Julia REPL, activated by pressing
+<code>;</code>, we navigate to the folder in which, we want to create
+our project. For example</p>
 <pre class="shell"><code>shell&gt; cd ~/temp/
 /home/user/temp</code></pre>
-<p>We leave the shell again by pressing <code>C-c</code> and check that we are in the correct directory, by running <code>pwd()</code>:</p>
+<p>We leave the shell again by pressing <code>C-c</code> and check that
+we are in the correct directory, by running <code>pwd()</code>:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp"</span></span></code></pre>
 </div>
-<p>Now, we go into package mode (press <code>]</code>) and generate a Julia package skeleton:</p>
+<p>Now, we go into package mode (press <code>]</code>) and generate a
+Julia package skeleton:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; generate OurVectors
   Generating  project OurVectors:
     OurVectors/Project.toml
     OurVectors/src/OurVectors.jl</code></pre>
-<p>The output tells us that two files were generated in a new directory with the project name that we provided. We leave the package mode again, to navigate Julia into the directory that was just created by pressing <code>C-c</code>:</p>
+<p>The output tells us that two files were generated in a new directory
+with the project name that we provided. We leave the package mode again,
+to navigate Julia into the directory that was just created by pressing
+<code>C-c</code>:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> cd(<span class="st">"OurVectors"</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">cd</span>(<span class="st">"OurVectors"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
 </div>
-<p>We will have a look at what was created in the shell (press <code>;</code>):</p>
+<p>We will have a look at what was created in the shell (press
+<code>;</code>):</p>
 <pre class="shell"><code>shell&gt; tree
 .
 ├── Project.toml
@@ -388,15 +421,23 @@ Precompiling project...
     └── OurVectors.jl
 
 1 directory, 2 files</code></pre>
-<p>Julia generated two files for us. <code>Project.toml</code> is the project configuration file in TOML Format, while <code>OurVectors.jl</code> in the subdirectory <code>src</code> is an initial source file.</p>
+<p>Julia generated two files for us. <code>Project.toml</code> is the
+project configuration file in TOML Format, while
+<code>OurVectors.jl</code> in the subdirectory <code>src</code> is an
+initial source file.</p>
 <p>Let us first look at the configuration file:</p>
 <pre class="shell"><code>shell&gt; cat Project.toml
 name = "OurVectors"
 uuid = "53fd6d90-f326-4ab3-8600-de8f4fd33617"
 authors = ["Some One &lt;some.one@example.com&gt;"]
 version = "0.1.0"</code></pre>
-<p>It first states the name of the project (or package). A UUID randomly generated for the project follows. The authors field is based on your git configuration, falling back to a <a href="https://github.com/JuliaLang/Pkg.jl/blob/f5213cf0019e80004f40e721c16d8a900badb8e4/src/generate.jl#L25" class="external-link">series of environment variables</a>. Finally the initial version is given as <code>0.1.0</code>.</p>
-<p>The generated source file contains a module with an “Hello World” implementation:</p>
+<p>It first states the name of the project (or package). A UUID randomly
+generated for the project follows. The authors field is based on your
+git configuration, falling back to a <a href="https://github.com/JuliaLang/Pkg.jl/blob/f5213cf0019e80004f40e721c16d8a900badb8e4/src/generate.jl#L25" class="external-link">series
+of environment variables</a>. Finally the initial version is given as
+<code>0.1.0</code>.</p>
+<p>The generated source file contains a module with an “Hello World”
+implementation:</p>
 <pre class="shell"><code>shell&gt; cat src/OurVectors.jl
 module OurVectors
 
@@ -405,36 +446,44 @@ greet() = print("Hello World!")
 end # module</code></pre>
 </section><section id="tests"><h2 class="section-heading">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
 </h2>
-<hr class="half-width"><p>We edit the source file to contain our <code>length</code> function:</p>
+<hr class="half-width"><p>We edit the source file to contain our <code>length</code>
+function:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>length(v) <span class="op">=</span> sqrt(sum(v<span class="op">.^</span><span class="fl">2</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v) <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(v<span class="op">.^</span><span class="fl">2</span>))</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="co"># module</span></span></code></pre>
 </div>
-<p>Now, we want to write tests for our function. Idiomatically, tests are run by evaluating the file <code>test/runtests.jl</code> of a Julia project. We create such a file and make use of the <code>Test</code> package that comes bundled with Julia:</p>
+<p>Now, we want to write tests for our function. Idiomatically, tests
+are run by evaluating the file <code>test/runtests.jl</code> of a Julia
+project. We create such a file and make use of the <code>Test</code>
+package that comes bundled with Julia:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> Test</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> OurVectors</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Test</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">OurVectors</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.length([<span class="fl">1</span>]) <span class="op">==</span> <span class="fl">1.0</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.length([<span class="fl">3</span><span class="op">,</span> <span class="fl">4</span>]) <span class="op">==</span> <span class="fl">5.0</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="pp">@test_throws</span> <span class="dt">MethodError</span> OurVectors.length([])</span></code></pre>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.<span class="fu">length</span>([<span class="fl">1</span>]) <span class="op">==</span> <span class="fl">1.0</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.<span class="fu">length</span>([<span class="fl">3</span>, <span class="fl">4</span>]) <span class="op">==</span> <span class="fl">5.0</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="pp">@test_throws</span> <span class="dt">MethodError</span> OurVectors.<span class="fu">length</span>([])</span></code></pre>
 </div>
-<p>To run the script we can use the package mode again. But before switching to it (by pressing <code>]</code>), we make sure that the working directory of our REPL is the project directory:</p>
+<p>To run the script we can use the package mode again. But before
+switching to it (by pressing <code>]</code>), we make sure that the
+working directory of our REPL is the project directory:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
 </div>
-<p>This looks good. If we were in the wrong directory, we would use the function <code>cd</code> to change that.</p>
-<p>In package mode, we first have to make our project the current environment. To do that, we run</p>
+<p>This looks good. If we were in the wrong directory, we would use the
+function <code>cd</code> to change that.</p>
+<p>In package mode, we first have to make our project the current
+environment. To do that, we run</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; activate .
   Activating project at `~/temp/OurVectors`
 
@@ -458,7 +507,9 @@ Stacktrace:
    @ none:6
 in expression starting at /home/user/temp/OurVectors/test/runtests.jl:1
 ERROR: Package OurVectors errored during testing</code></pre>
-<p>This throws an error. Even though <code>Test</code> comes with the Julia installation, we still need to install it into our environment:</p>
+<p>This throws an error. Even though <code>Test</code> comes with the
+Julia installation, we still need to install it into our
+environment:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; add Test
    Resolving package versions...
     Updating `~/temp/OurVectors/Project.toml`
@@ -472,7 +523,10 @@ ERROR: Package OurVectors errored during testing</code></pre>
   [ea8e919c] + SHA
   [9e88b42a] + Serialization
   [8dfed614] + Test</code></pre>
-<p>This installs <code>Test</code> and its dependencies. It also seems to make changes to <code>Project.toml</code> and a yet unknown file called <code>Manifest.toml</code>. We will have a look at them in a minute. But first, we try to again run the tests:</p>
+<p>This installs <code>Test</code> and its dependencies. It also seems
+to make changes to <code>Project.toml</code> and a yet unknown file
+called <code>Manifest.toml</code>. We will have a look at them in a
+minute. But first, we try to again run the tests:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; test
      Testing OurVectors
       Status `/tmp/jl_3CRrFm/Project.toml`
@@ -493,7 +547,8 @@ ERROR: Package OurVectors errored during testing</code></pre>
 <p>Now the test suite runs and our tests passed.</p>
 </section><section id="tracking-dependencies"><h2 class="section-heading">Tracking Dependencies<a class="anchor" aria-label="anchor" href="#tracking-dependencies"></a>
 </h2>
-<hr class="half-width"><p>Getting back to the file that changed, when we add <code>Test</code> to the project, we first have look at <code>Project.toml</code>:</p>
+<hr class="half-width"><p>Getting back to the file that changed, when we add <code>Test</code>
+to the project, we first have look at <code>Project.toml</code>:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -501,7 +556,9 @@ ERROR: Package OurVectors errored during testing</code></pre>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">deps</span><span class="kw">]</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Test</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
 </div>
-<p>The file got a new section, <code>[deps]</code>, listing dependencies. We added <code>Test</code>, so it shows up in the list with its UUID.</p>
+<p>The file got a new section, <code>[deps]</code>, listing
+dependencies. We added <code>Test</code>, so it shows up in the list
+with its UUID.</p>
 <p>Now for the content of the new file, <code>Manifest.toml</code>:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -539,8 +596,11 @@ ERROR: Package OurVectors errored during testing</code></pre>
 <span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"InteractiveUtils"</span><span class="op">,</span> <span class="st">"Logging"</span><span class="op">,</span> <span class="st">"Random"</span><span class="op">,</span> <span class="st">"Serialization"</span><span class="op">]</span></span>
 <span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
 </div>
-<p>This file lists not only the explicitly installed dependencies, but the whole dependency tree.</p>
-<p>When we added the <code>Test</code> package, we did not specify a version. If we had done that, this would be recorded in <code>Manifest.toml</code>.</p>
+<p>This file lists not only the explicitly installed dependencies, but
+the whole dependency tree.</p>
+<p>When we added the <code>Test</code> package, we did not specify a
+version. If we had done that, this would be recorded in
+<code>Manifest.toml</code>.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -598,7 +658,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/instructor/06-packages.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/06-packages.html",
-  "dateCreated": "2022-10-11",
+  "dateCreated": "2022-11-08",
   "dateModified": "2022-06-01",
   "datePublished": "2022-11-08"
 }

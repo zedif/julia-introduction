@@ -280,9 +280,14 @@
 
         
 
-<p>Julia organizes code into modules and packages. A package is the distribution unit. Libraries and applications are usually distributed as packages. Modules are for organizing code within a package.</p>
-<p>In this episode we will learn about modules. Modules are used for namespace management.</p>
-<p>A module starts with the keyword <code>module</code>, a name end ends with <code>end</code>. Let us open a file called <code>main.jl</code> in an empty directory and add the following code:</p>
+<p>Julia organizes code into modules and packages. A package is the
+distribution unit. Libraries and applications are usually distributed as
+packages. Modules are for organizing code within a package.</p>
+<p>In this episode we will learn about modules. Modules are used for
+namespace management.</p>
+<p>A module starts with the keyword <code>module</code>, a name end ends
+with <code>end</code>. Let us open a file called <code>main.jl</code> in
+an empty directory and add the following code:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -290,30 +295,39 @@
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre>
 </div>
-<p>Unlike in Python, a file can contain multiple modules, so module name and file name do not have to fit in any way to one another.</p>
-<p>But, for examples sake, we will put the actual contents of our module in another file. We create an empty file <code>vectors.jl</code> in the same folder and include it using the <code>include</code> function in our module, so that <code>main.jl</code> will look as follows:</p>
+<p>Unlike in Python, a file can contain multiple modules, so module name
+and file name do not have to fit in any way to one another.</p>
+<p>But, for examples sake, we will put the actual contents of our module
+in another file. We create an empty file <code>vectors.jl</code> in the
+same folder and include it using the <code>include</code> function in
+our module, so that <code>main.jl</code> will look as follows:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>include(<span class="st">"vectors.jl"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"vectors.jl"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre>
 </div>
-<p>When <code>main.jl</code> is loaded in any way all the code in <code>vectors.jl</code> will be evaluated in the scope of the <code>OurVectors</code> module. On could potentially split the code of a module into several files this way.</p>
-<p>Also note, that it is idiomatic to not indent the code in a module relative to the <code>module</code> statement. Module names are usually set in upper camel-case.</p>
+<p>When <code>main.jl</code> is loaded in any way all the code in
+<code>vectors.jl</code> will be evaluated in the scope of the
+<code>OurVectors</code> module. On could potentially split the code of a
+module into several files this way.</p>
+<p>Also note, that it is idiomatic to not indent the code in a module
+relative to the <code>module</code> statement. Module names are usually
+set in upper camel-case.</p>
 <p>We will now add a function to <code>vectors.jl</code>:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>length(v) <span class="op">=</span> sqrt(sum(v<span class="op">.^</span><span class="fl">2</span>))</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v) <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(v<span class="op">.^</span><span class="fl">2</span>))</span></code></pre>
 </div>
 <p>Next, we try to use it in <code>main.jl</code> by appending</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
 <p>and running the file with</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -322,7 +336,10 @@
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> julia main.jl</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span></span></code></pre>
 </div>
-<p>We expected <code>3</code> but got <code>1</code>. Julia calls the standard library function <code>length</code> instead of our module’s function. To use our function outside the module, we need to first export it from the module and then use it outside the module:</p>
+<p>We expected <code>3</code> but got <code>1</code>. Julia calls the
+standard library function <code>length</code> instead of our module’s
+function. To use our function outside the module, we need to first
+export it from the module and then use it outside the module:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -330,16 +347,20 @@
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">export</span> length</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>include(<span class="st">"vectors.jl"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"vectors.jl"</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> .OurVectors</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">.OurVectors</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
-<p>We need to add the <code>.</code> in front of the module name, because otherwise Julia would look for a package named <code>OurVectors</code> which it would not find. The <code>.</code> tells it to look for a module relative to the current one.</p>
-<p>We put the <code>export</code> keyword at the top of the module, so that is the first information an user of the module sees.</p>
+<p>We need to add the <code>.</code> in front of the module name,
+because otherwise Julia would look for a package named
+<code>OurVectors</code> which it would not find. The <code>.</code>
+tells it to look for a module relative to the current one.</p>
+<p>We put the <code>export</code> keyword at the top of the module, so
+that is the first information an user of the module sees.</p>
 <p>Running the example, we get</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -352,11 +373,14 @@
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="ex">@</span> ~/temp/main.jl:11</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="er">in</span> <span class="ex">expression</span> starting at /home/user/project/main.jl:11</span></code></pre>
 </div>
-<p><code>Base</code> is a module provided by Julia and <code>Base.length</code> is the function that returns the element count of various container or iterator types. This conflicts with us using the exported <code>length</code> of our module. Instead we have to write</p>
+<p><code>Base</code> is a module provided by Julia and
+<code>Base.length</code> is the function that returns the element count
+of various container or iterator types. This conflicts with us using the
+exported <code>length</code> of our module. Instead we have to write</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>println(OurVectors.length([<span class="fl">3</span>]))</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(OurVectors.<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
 <p>which gets us</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -365,33 +389,55 @@
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">$</span> julia main.jl</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
-<p>Alternatively, we can import the function into the current module’s namespace:</p>
+<p>Alternatively, we can import the function into the current module’s
+namespace:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>…</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">…</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> .OurVectors<span class="op">:</span> length</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">.OurVectors</span>: length</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
-<p>This, of course, is very unsafe, since it overrides a standard library function. Instead we could give it a new name in the current module:</p>
+<p>This, of course, is very unsafe, since it overrides a standard
+library function. Instead we could give it a new name in the current
+module:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>…</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">…</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> .OurVectors<span class="op">:</span> length as vlength</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">.OurVectors</span>: length as vlength</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>println(vlength([<span class="fl">3</span>]))</span></code></pre>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">vlength</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
-<p>All this shows that each module has its own namespace, but we can import names directly or with a new name from module one into another.</p>
-<p>We can force users to always use our <code>length</code> prefixed by the module name <code>OurVectors</code> by not exporting it. It is still accessible, but it can no longer be imported by name or brought into another namespace via <code>using</code>.</p>
-<p>The difference between <code>using</code> and <code>import</code> is that, by default, <code>using</code> makes the module itself and all exported names available in the using module namespace, wheres <code>import</code> only makes the module available. Then <code>using</code> can be modified to only import specific names (including the module itself) and <code>import</code> can be modified to import additional names. In both cases the imported entities can be renamed using the keyword <code>as</code>.</p>
+<p>All this shows that each module has its own namespace, but we can
+import names directly or with a new name from module one into
+another.</p>
+<p>We can force users to always use our <code>length</code> prefixed by
+the module name <code>OurVectors</code> by not exporting it. It is still
+accessible, but it can no longer be imported by name or brought into
+another namespace via <code>using</code>.</p>
+<p>The difference between <code>using</code> and <code>import</code> is
+that, by default, <code>using</code> makes the module itself and all
+exported names available in the using module namespace, wheres
+<code>import</code> only makes the module available. Then
+<code>using</code> can be modified to only import specific names
+(including the module itself) and <code>import</code> can be modified to
+import additional names. In both cases the imported entities can be
+renamed using the keyword <code>as</code>.</p>
 <section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules<a class="anchor" aria-label="anchor" href="#bare-modules-and-standard-modules"></a>
 </h2>
-<hr class="half-width"><p>Whenever we create a module, the modules <code>Core</code> and <code>Base</code> are automatically contained as if imported with <code>using</code>. If a module is declared with the <code>baremodule</code> keyword instead, they are not contained.</p>
-<p>In addition to <code>Core</code> and <code>Base</code> a Julia distribution comes with further standard modules that do not have to be installed explicitly; among them <code>Test</code>. In addition, <code>Base</code> has several submodules, e.g. <code>Base.Threads</code>.</p>
+<hr class="half-width"><p>Whenever we create a module, the modules <code>Core</code> and
+<code>Base</code> are automatically contained as if imported with
+<code>using</code>. If a module is declared with the
+<code>baremodule</code> keyword instead, they are not contained.</p>
+<p>In addition to <code>Core</code> and <code>Base</code> a Julia
+distribution comes with further standard modules that do not have to be
+installed explicitly; among them <code>Test</code>. In addition,
+<code>Base</code> has several submodules,
+e.g. <code>Base.Threads</code>.</p>
 <p><code>Main</code> is the top level module of the REPL.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -450,7 +496,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/instructor/05-modules.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/05-modules.html",
-  "dateCreated": "2022-10-11",
+  "dateCreated": "2022-11-08",
   "dateModified": "2022-06-01",
   "datePublished": "2022-11-08"
 }

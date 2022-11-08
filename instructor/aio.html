@@ -345,11 +345,26 @@
 </div>
 </div>
 </div>
-<p>This lesson is and introduction to the Julia programming language for persons who already have experience in programming other programming languages.</p>
-<p>We start by placing Julia within the world of all programming languages by looking at properties usually used to classify them.</p>
-<p>Then we go through the language types and other important constructs. We will learn about it’s syntax along the way and, with few exceptions, mostly implicitly. This part will be rather fast paced, with the assumptions that you learners will have gone through the same learning process for other languages before and draw analogies. Because of time constraint we will also only touch the surface of many topics. There is, however, <a href="https://docs.julialang.org/" class="external-link">extensive documentation</a>.</p>
-<p>Finally, we will have a look at how to idiomatically setup a Julia project, either as a library or an application.</p>
-<p>We will teach and learn through participatory live coding, that means the instructors will write code in a Julia REPL so that you can see it. They will write slowly and will explain everything that they type, so that everytone can code along while understanding what they are doing.</p>
+<p>This lesson is and introduction to the Julia programming language for
+persons who already have experience in programming other programming
+languages.</p>
+<p>We start by placing Julia within the world of all programming
+languages by looking at properties usually used to classify them.</p>
+<p>Then we go through the language types and other important constructs.
+We will learn about it’s syntax along the way and, with few exceptions,
+mostly implicitly. This part will be rather fast paced, with the
+assumptions that you learners will have gone through the same learning
+process for other languages before and draw analogies. Because of time
+constraint we will also only touch the surface of many topics. There is,
+however, <a href="https://docs.julialang.org/" class="external-link">extensive
+documentation</a>.</p>
+<p>Finally, we will have a look at how to idiomatically setup a Julia
+project, either as a library or an application.</p>
+<p>We will teach and learn through participatory live coding, that means
+the instructors will write code in a Julia REPL so that you can see it.
+They will write slowly and will explain everything that they type, so
+that everytone can code along while understanding what they are
+doing.</p>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -358,8 +373,12 @@
 <h3 class="callout-title">REPL<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>REPL is an acronym for Read-Eval-Print-Loop. A REPL reads a string from the user, evaluates it in some form, prints the result of the evaluation and loops back to the start.</p>
-<p>We we start, for example, Python in a console without arguments, we start a REPL; the prompt, <code>&gt;&gt;&gt;</code>, waiting to read our commands in the form of strings we type.</p>
+<p>REPL is an acronym for Read-Eval-Print-Loop. A REPL reads a string
+from the user, evaluates it in some form, prints the result of the
+evaluation and loops back to the start.</p>
+<p>We we start, for example, Python in a console without arguments, we
+start a REPL; the prompt, <code>&gt;&gt;&gt;</code>, waiting to read our
+commands in the form of strings we type.</p>
 </div>
 </div>
 </div></section><section id="aio-02-classification"><p>Content from <a href="02-classification.html">Programming Language Classification</a></p>
@@ -396,42 +415,53 @@
 </div>
 </div>
 </div>
-<p>In this episode we will place Julia within the world of programming languages.</p>
+<p>In this episode we will place Julia within the world of programming
+languages.</p>
 <section id="high-level"><h2 class="section-heading">High-Level<a class="anchor" aria-label="anchor" href="#high-level"></a>
 </h2>
 <hr class="half-width">
-<p>Julia is a high-level language, that is, it abstract away the details of the hardware that runs software written in the language. Other high-level languages are, for example, Java and Python.</p>
+<p>Julia is a high-level language, that is, it abstract away the details
+of the hardware that runs software written in the language. Other
+high-level languages are, for example, Java and Python.</p>
 </section><section id="dynamic"><h2 class="section-heading">Dynamic<a class="anchor" aria-label="anchor" href="#dynamic"></a>
 </h2>
 <hr class="half-width">
-<p>Julia is dynamically typed by default. This puts it in the company of Python and distinguishes it from Java and C++.</p>
-<p>Even though it is dynamically typed by default, it does allow programmers to specify the type of a value, for example for method parameters or method return types. This is mainly necessary to make use of method dispatch based on argument types, a topic we will get to in a later episode. It also helps to ensure that no unintended uses of functions work. And, in some cases, it can <a href="https://docs.julialang.org/en/v1/manual/types/#Type-Declarations" class="external-link">improve performance</a>.</p>
-<p>We will give it a try and define two methods, one with and one without specifying the parameter type:</p>
+<p>Julia is dynamically typed by default. This puts it in the company of
+Python and distinguishes it from Java and C++.</p>
+<p>Even though it is dynamically typed by default, it does allow
+programmers to specify the type of a value, for example for method
+parameters or method return types. This is mainly necessary to make use
+of method dispatch based on argument types, a topic we will get to in a
+later episode. It also helps to ensure that no unintended uses of
+functions work. And, in some cases, it can <a href="https://docs.julialang.org/en/v1/manual/types/#Type-Declarations" class="external-link">improve
+performance</a>.</p>
+<p>We will give it a try and define two methods, one with and one
+without specifying the parameter type:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> identity(x) <span class="op">=</span> x</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">identity</span>(x) <span class="op">=</span> x</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>identity (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> identity(<span class="fl">2.0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">identity</span>(<span class="fl">2.0</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> identity(<span class="fl">2</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">identity</span>(<span class="fl">2</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> float_identity(x<span class="op">::</span><span class="dt">Float64</span>) <span class="op">=</span> x</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">float_identity</span>(x<span class="op">::</span><span class="dt">Float64</span>) <span class="op">=</span> x</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>float_identity (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> float_identity(<span class="fl">2.0</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">float_identity</span>(<span class="fl">2.0</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> float_identity(<span class="fl">2</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">MethodError</span><span class="op">:</span> no method matching float_identity(<span class="op">::</span><span class="dt">Int64</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">float_identity</span>(<span class="fl">2</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">MethodError</span><span class="op">:</span> no method matching <span class="fu">float_identity</span>(<span class="op">::</span><span class="dt">Int64</span>)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Closest candidates are<span class="op">:</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  float_identity(<span class="op">::</span><span class="dt">Float64</span>) at REPL[<span class="fl">4</span>]<span class="op">:</span><span class="fl">1</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">float_identity</span>(<span class="op">::</span><span class="dt">Float64</span>) at <span class="bu">REPL</span>[<span class="fl">4</span>]<span class="op">:</span><span class="fl">1</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] top<span class="op">-</span>level scope</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">6</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">6</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
 </section><section id="garbage-collected"><h2 class="section-heading">Garbage Collected<a class="anchor" aria-label="anchor" href="#garbage-collected"></a>
 </h2>
@@ -440,50 +470,65 @@
 </section><section id="compiled"><h2 class="section-heading">Compiled<a class="anchor" aria-label="anchor" href="#compiled"></a>
 </h2>
 <hr class="half-width">
-<p>Julia is a compiled programming language. However, functions are compiled just-in-time for any given list argument types. For example, when we define a method, it does not get compiled.</p>
+<p>Julia is a compiled programming language. However, functions are
+compiled just-in-time for any given list argument types. For example,
+when we define a method, it does not get compiled.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> foo(x) <span class="op">=</span> x</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">foo</span>(x) <span class="op">=</span> x</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>foo (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span></code></pre>
 </div>
 <p>Only when we call it for the first time, this happens.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> foo(<span class="fl">3</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">foo</span>(<span class="fl">3</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
-<p>And it only compiles the function for arguments of type <code>Int64</code>. We can look at the compilation results for different argument types using the function <code>code_native</code>:</p>
+<p>And it only compiles the function for arguments of type
+<code>Int64</code>. We can look at the compilation results for different
+argument types using the function <code>code_native</code>:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> code_native(foo<span class="op">,</span> (<span class="dt">Int64</span><span class="op">,</span>))</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">code_native</span>(foo, (<span class="dt">Int64</span>,))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        .text</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> ┌ <span class="op">@</span> REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>; ┌ @ <span class="bu">REPL</span>[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        endbr64</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        movq    %rdi<span class="op">,</span> %rax</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        movq    <span class="op">%</span>rdi, <span class="op">%</span>rax</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        retq</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        nopl    (%rax<span class="op">,</span>%rax)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> └</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        nopl    (<span class="op">%</span>rax,<span class="op">%</span>rax)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>; └</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> code_native(foo<span class="op">,</span> (<span class="dt">Float64</span><span class="op">,</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">code_native</span>(foo, (<span class="dt">Float64</span>,))</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        .text</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> ┌ <span class="op">@</span> REPL[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>; ┌ @ <span class="bu">REPL</span>[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span> within <span class="ss">`foo`</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        endbr64</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        movabsq <span class="op">$</span>.rodata.cst8<span class="op">,</span> %rax</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        vmovsd  (%rax)<span class="op">,</span> %xmm0                   <span class="co"># xmm0 = mem[0],zero</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        movabsq <span class="op">$</span>.rodata.cst8, <span class="op">%</span>rax</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        vmovsd  (<span class="op">%</span>rax), <span class="op">%</span>xmm0                   <span class="co"># xmm0 = mem[0],zero</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        retq</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        nopw    %cs<span class="op">:</span>(%rax<span class="op">,</span>%rax)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="op">;</span> └</span></code></pre>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        nopw    <span class="op">%</span>cs<span class="op">:</span>(<span class="op">%</span>rax,<span class="op">%</span>rax)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>; └</span></code></pre>
 </div>
-<p>Since Julia always complies and never evaluates, the compiler is sometimes called a just-ahead-of-time compiler.</p>
+<p>Since Julia always complies and never evaluates, the compiler is
+sometimes called a just-ahead-of-time compiler.</p>
 </section><section id="high-performance"><h2 class="section-heading">High-performance<a class="anchor" aria-label="anchor" href="#high-performance"></a>
 </h2>
 <hr class="half-width">
-<p>The <a href="https://julialang.org/blog/2012/02/why-we-created-julia/" class="external-link">intention behind developing Julia</a> was to create a fast dynamic language. And so it comes as no surprise that high-performance software can be written in Julia. The language is, by design, particularly well suited for dealing with (large) arrays of numbers. This makes it a good language for writing code for numerical analysis, optimization, and many forms of machine learning.</p>
-<p><a href="https://julialang.org/benchmarks/" class="external-link">Benchmarks on the language’s website</a> place its performance close to that of languages like C or Rust.</p>
-<p>With <a href="https://juliagpu.org/cuda/" class="external-link">CUDA.jl</a> there is an officially supported library that allows to write code for Nvidia GPUs directly in Julia.</p>
+<p>The <a href="https://julialang.org/blog/2012/02/why-we-created-julia/" class="external-link">intention
+behind developing Julia</a> was to create a fast dynamic language. And
+so it comes as no surprise that high-performance software can be written
+in Julia. The language is, by design, particularly well suited for
+dealing with (large) arrays of numbers. This makes it a good language
+for writing code for numerical analysis, optimization, and many forms of
+machine learning.</p>
+<p><a href="https://julialang.org/benchmarks/" class="external-link">Benchmarks on the
+language’s website</a> place its performance close to that of languages
+like C or Rust.</p>
+<p>With <a href="https://juliagpu.org/cuda/" class="external-link">CUDA.jl</a> there is an
+officially supported library that allows to write code for Nvidia GPUs
+directly in Julia.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -523,7 +568,10 @@ any links that you are not going to use.
 </div>
 </div>
 </div>
-<p>Even though Julia is by default dynamic, types play an important role. We need to specify them to make use of the method dispatch feature, where one of Julia’s distinguishing features is that it offers multiple dispatch. We also need it to write high performance code.</p>
+<p>Even though Julia is by default dynamic, types play an important
+role. We need to specify them to make use of the method dispatch
+feature, where one of Julia’s distinguishing features is that it offers
+multiple dispatch. We also need it to write high performance code.</p>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -532,37 +580,50 @@ any links that you are not going to use.
 <h3 class="callout-title">Method Dispatch Primer<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>Method dispatch is the process of choosing which method of a function (more on that in a later episode) to execute based on the argument count and argument types.</p>
-<p>For example, adding two integers requires different code than adding to floating point numbers, and again different code than adding an integer to a floating point number.</p>
+<p>Method dispatch is the process of choosing which method of a function
+(more on that in a later episode) to execute based on the argument count
+and argument types.</p>
+<p>For example, adding two integers requires different code than adding
+to floating point numbers, and again different code than adding an
+integer to a floating point number.</p>
 </div>
 </div>
 </div>
 <section id="types-and-type-hierarchy"><h2 class="section-heading">Types and Type Hierarchy<a class="anchor" aria-label="anchor" href="#types-and-type-hierarchy"></a>
 </h2>
 <hr class="half-width">
-<p>Every value in Julia has a type. We can determine the type of a value using the function <code>typeof</code>.</p>
+<p>Every value in Julia has a type. We can determine the type of a value
+using the function <code>typeof</code>.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">1</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">2.0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">2.0</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Float64</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(typeof)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>typeof(typeof) (singleton <span class="kw">type</span> of <span class="kw">function</span> typeof<span class="op">,</span> subtype of <span class="dt">Function</span>)</span></code></pre>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(typeof)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(typeof) (singleton <span class="kw">type</span> of <span class="kw">function</span> typeof, subtype of <span class="dt">Function</span>)</span></code></pre>
 </div>
-<p>We can see that the default type for integers as well as floats is the respective 64-bit version. We can also see that functions are types just like any other. This allows to write functional code, which is part of idiomatic Julia.</p>
-<p>All types in Julia form a hierarchy with <code>Any</code> at the top. We can explore that hierarchy using the functions <code>supertype</code> and <code>supertypes</code>.</p>
-<p>We determine the type of the value represented by the number literal <code>1</code>.</p>
+<p>We can see that the default type for integers as well as floats is
+the respective 64-bit version. We can also see that functions are types
+just like any other. This allows to write functional code, which is part
+of idiomatic Julia.</p>
+<p>All types in Julia form a hierarchy with <code>Any</code> at the top.
+We can explore that hierarchy using the functions <code>supertype</code>
+and <code>supertypes</code>.</p>
+<p>We determine the type of the value represented by the number literal
+<code>1</code>.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">1</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span></code></pre>
 </div>
-<p>The Julia REPL offers a special variable, <code>ans</code>, that always holds the result of the previous evaluation. We use it with <code>supertype</code> to climb up the type hierarchy:</p>
+<p>The Julia REPL offers a special variable, <code>ans</code>, that
+always holds the result of the previous evaluation. We use it with
+<code>supertype</code> to climb up the type hierarchy:</p>
 <pre><code>&gt; supertype(ans)
 Signed
 
@@ -580,8 +641,12 @@ Any
 
 &gt; supertype(ans)
 Any</code></pre>
-<p><code>supertype</code> returns <code>Any</code> for input <code>Any</code> which happens to be at the top of the type hierarchy. It is an ancestor of every data type and so every value is of type <code>Any</code>.</p>
-<p>We can use <code>supertypes</code> to get the full inheritance chain of a type as a tuple of types.</p>
+<p><code>supertype</code> returns <code>Any</code> for input
+<code>Any</code> which happens to be at the top of the type hierarchy.
+It is an ancestor of every data type and so every value is of type
+<code>Any</code>.</p>
+<p>We can use <code>supertypes</code> to get the full inheritance chain
+of a type as a tuple of types.</p>
 <pre><code>&gt; supertypes(Int64
 (Int64, Signed, Integer, Real, Number, Any)</code></pre>
 </section><section id="number-types"><h2 class="section-heading">Number Types<a class="anchor" aria-label="anchor" href="#number-types"></a>
@@ -592,74 +657,80 @@ Any</code></pre>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Float16</span>(<span class="fl">1.0</span>) <span class="co"># This might be broken</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Float16</span>(<span class="fl">0.0</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float16</span>(<span class="fl">1.0</span>) <span class="co"># This might be broken</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Float16</span>(<span class="fl">0.0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Float32</span>(<span class="fl">1.0</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float32</span>(<span class="fl">1.0</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0f0</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Float64</span>(<span class="fl">1.0</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float64</span>(<span class="fl">1.0</span>)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">BigFloat</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigFloat</span><span class="op">,</span> <span class="dt">AbstractFloat</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">BigFloat</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigFloat</span>, <span class="dt">AbstractFloat</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span></code></pre>
 </div>
-<p><code>BigFloat</code> is an arbitrary precision floating point number type.</p>
-<p>And signed and unsigned integer types for 8, 16, 32, 64, and 128 bits, for example:</p>
+<p><code>BigFloat</code> is an arbitrary precision floating point number
+type.</p>
+<p>And signed and unsigned integer types for 8, 16, 32, 64, and 128
+bits, for example:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Int8</span>(<span class="fl">32</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Int8</span>(<span class="fl">32</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fl">32</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">UInt32</span>(<span class="fl">42</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">UInt32</span>(<span class="fl">42</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bn">0x0000002a</span></span></code></pre>
 </div>
-<p>As for floating point numbers, there is an arbitrary precision integer type:</p>
+<p>As for floating point numbers, there is an arbitrary precision
+integer type:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">BigInt</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigInt</span><span class="op">,</span> <span class="dt">Signed</span><span class="op">,</span> <span class="dt">Integer</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">BigInt</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigInt</span>, <span class="dt">Signed</span>, <span class="dt">Integer</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span></code></pre>
 </div>
 <p>Bool is a number type in Julia:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> supertypes(<span class="dt">Bool</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Bool</span><span class="op">,</span> <span class="dt">Integer</span><span class="op">,</span> <span class="dt">Real</span><span class="op">,</span> <span class="dt">Number</span><span class="op">,</span> <span class="dt">Any</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">Bool</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Bool</span>, <span class="dt">Integer</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="ex">false</span> <span class="op">==</span> <span class="fl">0</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">true</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="cn">false</span> <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cn">true</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">0</span> <span class="op">+</span> <span class="ex">true</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">0</span> <span class="op">+</span> <span class="cn">true</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
-<p>There are types for complex and rational numbers that are parameterized on subtypes of <code>Real</code> and <code>Integer</code> respectively:</p>
+<p>There are types for complex and rational numbers that are
+parameterized on subtypes of <code>Real</code> and <code>Integer</code>
+respectively:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Rational</span>{<span class="dt">Int64</span>}</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Complex</span>{<span class="dt">Bool</span>}(<span class="fl">1</span><span class="op">,</span> <span class="fl">0</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Complex</span>(<span class="ex">true</span><span class="op">,</span> <span class="ex">false</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Complex</span><span class="dt">{Bool}</span>(<span class="fl">1</span>, <span class="fl">0</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Complex</span>(<span class="cn">true</span>, <span class="cn">false</span>)</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="dt">Complex</span>(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span><span class="op">,</span> <span class="op">-</span><span class="fl">1</span><span class="op">//</span><span class="fl">5</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Complex</span>(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span>, <span class="op">-</span><span class="fl">1</span><span class="op">//</span><span class="fl">5</span>)</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">//</span><span class="fl">7</span> <span class="op">-</span> <span class="fl">1</span><span class="op">//</span><span class="fl">5</span><span class="op">*</span><span class="cn">im</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="cn">im</span><span class="op">*</span><span class="cn">im</span></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span> <span class="op">*</span> <span class="fl">0im</span></span></code></pre>
 </div>
-<p>Finally, Julia has a type for represent the exact values of irrational constants:</p>
+<p>Finally, Julia has a type for represent the exact values of
+irrational constants:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(π)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span>π}</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="cn">π</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span><span class="cn">π</span>}</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="cn">pi</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span>π}</span></code></pre>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="cn">pi</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span><span class="cn">π</span>}</span></code></pre>
 </div>
 </section><section id="strings"><h2 class="section-heading">Strings<a class="anchor" aria-label="anchor" href="#strings"></a>
 </h2>
@@ -668,7 +739,7 @@ Any</code></pre>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="st">"Hello"</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="st">"Hello"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span></span></code></pre>
 </div>
 <pre><code>&gt; typeof("Hello"[3])
@@ -693,13 +764,15 @@ Char</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>In Julia indexing starts with 1 instead of the more common 0. So, for example, to get the second element of an array, one would use the index <code>2</code>:</p>
+<p>In Julia indexing starts with 1 instead of the more common 0. So, for
+example, to get the second element of an array, one would use the index
+<code>2</code>:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span><span class="op">,</span> <span class="fl">3</span><span class="op">,</span> <span class="fl">5</span>][<span class="fl">2</span>]</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>][<span class="fl">2</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
 </div>
@@ -709,48 +782,53 @@ Char</code></pre>
 </section><section id="named-tuples"><h2 class="section-heading">(Named) Tuples<a class="anchor" aria-label="anchor" href="#named-tuples"></a>
 </h2>
 <hr class="half-width">
-<p>Julia features a type for tuples, similar to tuples in C++ and Python or lists in many Lisp dialects. Tuples is a fixed length ordered container whose elements may have any type. The syntax is the same as in Python:</p>
+<p>Julia features a type for tuples, similar to tuples in C++ and Python
+or lists in many Lisp dialects. Tuples is a fixed length ordered
+container whose elements may have any type. The syntax is the same as in
+Python:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof((<span class="fl">1</span><span class="op">,</span> <span class="st">"a"</span>))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span><span class="op">,</span> <span class="dt">String</span>}</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>, <span class="st">"a"</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span>, <span class="dt">String</span>}</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof((<span class="fl">1</span>))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>))</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof((<span class="fl">1</span><span class="op">,</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>,))</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span>}</span></code></pre>
 </div>
 <p>We can use tuples to return multiple values from a function:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1() <span class="op">=</span> (<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>() <span class="op">=</span> (<span class="fl">1</span>, <span class="fl">2</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>t1 (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1()</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span></code></pre>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span>, <span class="fl">2</span>)</span></code></pre>
 </div>
-<p>The elements of tuples can be accessed through decomposition and indexing:</p>
+<p>The elements of tuples can be accessed through decomposition and
+indexing:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a<span class="op">,</span> b <span class="op">=</span> t1()</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a, b <span class="op">=</span> <span class="fu">t1</span>()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t1()[<span class="fl">1</span>]</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>()[<span class="fl">1</span>]</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
-<p>In addition to plain tuples, there are named tuples, where every element has its own name:</p>
+<p>In addition to plain tuples, there are named tuples, where every
+element has its own name:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v <span class="op">=</span> (x <span class="op">=</span> <span class="fl">1</span><span class="op">,</span> y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>(x <span class="op">=</span> <span class="fl">1</span><span class="op">,</span> y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v <span class="op">=</span> (x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>(x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v[<span class="fl">2</span>]</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span>
@@ -761,21 +839,22 @@ Char</code></pre>
 </section><section id="arrays"><h2 class="section-heading">Arrays<a class="anchor" aria-label="anchor" href="#arrays"></a>
 </h2>
 <hr class="half-width">
-<p>Arrays and associated features are arguably one of the most important defining traits of the Julia programming language.</p>
+<p>Arrays and associated features are arguably one of the most important
+defining traits of the Julia programming language.</p>
 <p>Julia supports arrays of arbitrary dimensions.</p>
 <p>We have 0-dimensional arrays (scalars):</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> zeros(<span class="dt">Int8</span><span class="op">,</span> ()))</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0</span><span class="op">-</span>dimensional <span class="dt">Array</span>{<span class="dt">Int8</span><span class="op">,</span> <span class="fl">0</span>}<span class="op">:</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">zeros</span>(<span class="dt">Int8</span>, ()))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0</span><span class="op">-</span>dimensional <span class="dt">Array</span>{<span class="dt">Int8</span>, <span class="fl">0</span>}<span class="op">:</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span></span></code></pre>
 </div>
 <p>1-dimensional arrays are called vectors:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> ones(<span class="dt">Int8</span><span class="op">,</span> (<span class="fl">2</span>))</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ones</span>(<span class="dt">Int8</span>, (<span class="fl">2</span>))</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int8</span>}<span class="op">:</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span></code></pre>
@@ -784,8 +863,8 @@ Char</code></pre>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> zeros(<span class="dt">Int8</span><span class="op">,</span> (<span class="fl">2</span><span class="op">,</span> <span class="fl">2</span>))</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span>×<span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int8</span>}<span class="op">:</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">zeros</span>(<span class="dt">Int8</span>, (<span class="fl">2</span>, <span class="fl">2</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int8</span>}<span class="op">:</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">0</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">0</span></span></code></pre>
 </div>
@@ -806,12 +885,12 @@ Char</code></pre>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> A <span class="op">=</span> [[<span class="fl">0</span><span class="op">,</span> <span class="fl">1</span>] [<span class="fl">1</span><span class="op">,</span> <span class="fl">0</span>]]</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span>×<span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> A <span class="op">=</span> [[<span class="fl">0</span>, <span class="fl">1</span>] [<span class="fl">1</span>, <span class="fl">0</span>]]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">1</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span>  <span class="fl">0</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> b <span class="op">=</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> b <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>]</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span></span>
@@ -821,11 +900,12 @@ Char</code></pre>
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span></span>
 <span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span></code></pre>
 </div>
-<p>Julia also supports a special syntax, the dot-operator, to element-wise apply functions to arrays:</p>
+<p>Julia also supports a special syntax, the dot-operator, to
+element-wise apply functions to arrays:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">4</span><span class="op">,</span> <span class="fl">9</span><span class="op">,</span> <span class="fl">16</span><span class="op">,</span> <span class="fl">25</span>] .<span class="op">&gt;</span> <span class="fl">7</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">25</span>] <span class="op">.&gt;</span> <span class="fl">7</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fl">5</span><span class="op">-</span>element <span class="dt">BitVector</span><span class="op">:</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span></span>
@@ -833,7 +913,7 @@ Char</code></pre>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> sqrt.([<span class="fl">1</span><span class="op">,</span> <span class="fl">4</span><span class="op">,</span> <span class="fl">9</span><span class="op">,</span> <span class="fl">16</span><span class="op">,</span> <span class="fl">25</span>])</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">sqrt</span>.([<span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">25</span>])</span>
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fl">5</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a> <span class="fl">1.0</span></span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a> <span class="fl">2.0</span></span>
@@ -841,62 +921,65 @@ Char</code></pre>
 <span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a> <span class="fl">4.0</span></span>
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a> <span class="fl">5.0</span></span></code></pre>
 </div>
-<p>With the <code>@.</code> we can make every function call in an expression be applied element-wise:</p>
+<p>With the <code>@.</code> we can make every function call in an
+expression be applied element-wise:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="op">@</span>. [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">+</span> [<span class="fl">1</span> <span class="fl">1</span>]</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span>×<span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> @. [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">+</span> [<span class="fl">1</span> <span class="fl">1</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span>  <span class="fl">2</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">+</span> [<span class="fl">1</span> <span class="fl">1</span>]</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">DimensionMismatch</span>(<span class="st">"matrix A has dimensions (1,2), matrix B has dimensions (1,2)"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="fu">DimensionMismatch</span>(<span class="st">"matrix A has dimensions (1,2), matrix B has dimensions (1,2)"</span>)</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] _generic_matmatmul<span class="op">!</span>(C<span class="op">::</span><span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">,</span> tA<span class="op">::</span><span class="dt">Char</span><span class="op">,</span> tB<span class="op">::</span><span class="dt">Char</span><span class="op">,</span> A<span class="op">::</span><span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">,</span> B<span class="op">::</span><span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">,</span> _add<span class="op">::</span>LinearAlgebra.MulAddMul{<span class="ex">true</span><span class="op">,</span> <span class="ex">true</span><span class="op">,</span> <span class="dt">Bool</span><span class="op">,</span> <span class="dt">Bool</span>})</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> LinearAlgebra <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span>LinearAlgebra<span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">810</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] generic_matmatmul<span class="op">!</span>(C<span class="op">::</span><span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">,</span> tA<span class="op">::</span><span class="dt">Char</span><span class="op">,</span> tB<span class="op">::</span><span class="dt">Char</span><span class="op">,</span> A<span class="op">::</span><span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">,</span> B<span class="op">::</span><span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">,</span> _add<span class="op">::</span>LinearAlgebra.MulAddMul{<span class="ex">true</span><span class="op">,</span> <span class="ex">true</span><span class="op">,</span> <span class="dt">Bool</span><span class="op">,</span> <span class="dt">Bool</span>})</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> LinearAlgebra <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span>LinearAlgebra<span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">798</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a> [<span class="fl">3</span>] mul<span class="op">!</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span>LinearAlgebra<span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">302</span> [inlined]</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a> [<span class="fl">4</span>] mul<span class="op">!</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span>LinearAlgebra<span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">275</span> [inlined]</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a> [<span class="fl">5</span>] <span class="op">*</span>(A<span class="op">::</span><span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">,</span> B<span class="op">::</span><span class="dt">Matrix</span>{<span class="dt">Int64</span>})</span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> LinearAlgebra <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span>LinearAlgebra<span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">153</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">_generic_matmatmul!</span>(C<span class="op">::</span><span class="dt">Matrix{Int64}</span>, tA<span class="op">::</span><span class="dt">Char</span>, tB<span class="op">::</span><span class="dt">Char</span>, A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>, _add<span class="op">::</span><span class="dt">LinearAlgebra.MulAddMul{true, true, Bool, Bool}</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">810</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] <span class="fu">generic_matmatmul!</span>(C<span class="op">::</span><span class="dt">Matrix{Int64}</span>, tA<span class="op">::</span><span class="dt">Char</span>, tB<span class="op">::</span><span class="dt">Char</span>, A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>, _add<span class="op">::</span><span class="dt">LinearAlgebra.MulAddMul{true, true, Bool, Bool}</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">798</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a> [<span class="fl">3</span>] mul!</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>   @ <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">302</span> [inlined]</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a> [<span class="fl">4</span>] mul!</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>   @ <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">275</span> [inlined]</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a> [<span class="fl">5</span>] <span class="fu">*</span>(A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>)</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">153</span></span>
 <span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a> [<span class="fl">6</span>] top<span class="op">-</span>level scope</span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="element-types">Element Types<a class="anchor" aria-label="anchor" href="#element-types"></a>
 </h3>
-<p>We can determine the element types of an array type (and some other container types) using the function <code>eltype</code>:</p>
+<p>We can determine the element types of an array type (and some other
+container types) using the function <code>eltype</code>:</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> eltype([<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>])</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">eltype</span>([<span class="fl">1</span>, <span class="fl">2</span>])</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="generic-array-types">Generic Array types<a class="anchor" aria-label="anchor" href="#generic-array-types"></a>
 </h3>
-<p>There are more types that behave similar to arrays. With strings we already saw one of them. Another are ranges:</p>
+<p>There are more types that behave similar to arrays. With strings we
+already saw one of them. Another are ranges:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="kw">ans</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="kw">ans</span>)</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="dt">UnitRange</span>{<span class="dt">Int64</span>}</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> eltype(<span class="kw">ans</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">eltype</span>(<span class="kw">ans</span>)</span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> (<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)[<span class="fl">9</span>]</span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="fl">9</span></span>
 <span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> collect(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)</span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="fl">10</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1</span></span>
 <span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2</span></span>
@@ -909,24 +992,24 @@ Char</code></pre>
 <span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="fl">9</span></span>
 <span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a> <span class="fl">10</span></span>
 <span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> collect(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">:</span><span class="fl">10</span>)</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">:</span><span class="fl">10</span>)</span>
 <span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="fl">4</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
 <span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1</span></span>
 <span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4</span></span>
 <span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>  <span class="fl">7</span></span>
 <span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a> <span class="fl">10</span></span>
 <span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">:</span><span class="fl">10</span>)</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">:</span><span class="fl">10</span>)</span>
 <span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="dt">StepRange</span>{<span class="dt">Int64</span>}</span>
 <span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> range(<span class="op">-</span><span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.1</span><span class="op">,</span> length<span class="op">=</span><span class="fl">3</span>)</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>)</span>
 <span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">0.1</span></span>
 <span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> typeof(range(<span class="op">-</span><span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.1</span><span class="op">,</span> length<span class="op">=</span><span class="fl">3</span>))</span>
-<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="dt">StepRangeLen</span>{<span class="dt">Float64</span><span class="op">,</span> <span class="bu">Base</span>.TwicePrecision{<span class="dt">Float64</span>}<span class="op">,</span></span>
-<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.TwicePrecision{<span class="dt">Float64</span>}<span class="op">,</span> <span class="dt">Int64</span>}</span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>))</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="dt">StepRangeLen</span>{<span class="dt">Float64</span>, <span class="bu">Base</span>.TwicePrecision{<span class="dt">Float64</span>},</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.TwicePrecision{<span class="dt">Float64</span>}, <span class="dt">Int64</span>}</span>
 <span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> collect(range(<span class="op">-</span><span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.1</span><span class="op">,</span> length<span class="op">=</span><span class="fl">3</span>))</span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>))</span>
 <span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
 <span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span><span class="fl">0.1</span></span>
 <span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.0</span></span>
@@ -936,13 +1019,15 @@ Char</code></pre>
 </section><section id="structs"><h2 class="section-heading">Structs<a class="anchor" aria-label="anchor" href="#structs"></a>
 </h2>
 <hr class="half-width">
-<p>Structs are what allows us to define our own types in Julia. In our first example we will created a parameterized type for 2-dimensional points:</p>
+<p>Structs are what allows us to define our own types in Julia. In our
+first example we will created a parameterized type for 2-dimensional
+points:</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">struct</span> Point{X}</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>         x<span class="op">::</span>X</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         y<span class="op">::</span>X</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>         x<span class="op">::</span><span class="dt">X</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         y<span class="op">::</span><span class="dt">X</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span></code></pre>
 </div>
 <div class="section level3">
@@ -952,18 +1037,19 @@ Char</code></pre>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> p <span class="op">=</span> Point(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>Point{<span class="dt">Int64</span>}(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> p <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span><span class="dt">{Int64}</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> p.x <span class="op">=</span> <span class="fl">3</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> setfield<span class="op">!:</span> immutable <span class="kw">struct</span> of <span class="kw">type</span> Point cannot be changed</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> setfield!<span class="op">:</span> immutable <span class="kw">struct</span> of <span class="kw">type</span> Point cannot be changed</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] setproperty<span class="op">!</span>(x<span class="op">::</span>Point{<span class="dt">Int64</span>}<span class="op">,</span> f<span class="op">::</span><span class="dt">Symbol</span><span class="op">,</span> v<span class="op">::</span><span class="dt">Int64</span>)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> <span class="bu">Base</span> <span class="op">./</span><span class="bu">Base</span>.jl<span class="op">:</span><span class="fl">43</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">setproperty!</span>(x<span class="op">::</span><span class="dt">Point{Int64}</span>, f<span class="op">::</span><span class="dt">Symbol</span>, v<span class="op">::</span><span class="dt">Int64</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">Base</span> <span class="op">./</span><span class="bu">Base</span>.jl<span class="op">:</span><span class="fl">43</span></span>
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] top<span class="op">-</span>level scope</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">3</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">3</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
-<p>Putting the keyword <code>mutable</code> in front of the definition changes that:</p>
+<p>Putting the keyword <code>mutable</code> in front of the definition
+changes that:</p>
 <pre><code>&gt; mutable struct MPoint{X}
           x::X
           y::Y
@@ -978,45 +1064,56 @@ MPoint{Int64}(1, 2)
 <div class="section level3">
 <h3 id="constructors">Constructors<a class="anchor" aria-label="anchor" href="#constructors"></a>
 </h3>
-<p>We already used the default constructor of a struct. It takes as many arguments as the struct has fields and assigns them to the fields in the order they are specified.</p>
-<p>We can also define further or alternate constructors; either as part of the struct definition, inner constructor, or separately, outer constructor.</p>
-<p>We will start with a separate, parameterless constructor for our <code>Point</code> struct:</p>
+<p>We already used the default constructor of a struct. It takes as many
+arguments as the struct has fields and assigns them to the fields in the
+order they are specified.</p>
+<p>We can also define further or alternate constructors; either as part
+of the struct definition, inner constructor, or separately, outer
+constructor.</p>
+<p>We will start with a separate, parameterless constructor for our
+<code>Point</code> struct:</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> Point() <span class="op">=</span> Point(<span class="fl">0</span><span class="op">,</span> <span class="fl">0</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Point</span>() <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">0</span>, <span class="fl">0</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>Point</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> Point()</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>Point{<span class="dt">Int64</span>}(<span class="fl">0</span><span class="op">,</span> <span class="fl">0</span>)</span></code></pre>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Point</span>()</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span><span class="dt">{Int64}</span>(<span class="fl">0</span>, <span class="fl">0</span>)</span></code></pre>
 </div>
 <p>In this case we get an additional constructor.</p>
-<p>When we define constructors as part of the struct definition, the default constructor does not exist.</p>
+<p>When we define constructors as part of the struct definition, the
+default constructor does not exist.</p>
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">struct</span> Foo</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>      x</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>      Foo() <span class="op">=</span> <span class="kw">new</span>(<span class="fl">0</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">Foo</span>() <span class="op">=</span> <span class="fu">new</span>(<span class="fl">0</span>)</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> Foo()</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>Foo(<span class="fl">0</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Foo</span>()</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Foo</span>(<span class="fl">0</span>)</span>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> Foo(<span class="fl">1</span>)</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">MethodError</span><span class="op">:</span> no method matching Foo(<span class="op">::</span><span class="dt">Int64</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Foo</span>(<span class="fl">1</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">MethodError</span><span class="op">:</span> no method matching <span class="fu">Foo</span>(<span class="op">::</span><span class="dt">Int64</span>)</span>
 <span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>Closest candidates are<span class="op">:</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  Foo() at REPL[<span class="fl">11</span>]<span class="op">:</span><span class="fl">3</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Foo</span>() at <span class="bu">REPL</span>[<span class="fl">11</span>]<span class="op">:</span><span class="fl">3</span></span>
 <span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
 <span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] top<span class="op">-</span>level scope</span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">3</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">3</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
-<p>Note, that we need to use a preexisting constructor to define an outer constructor, while we use the keyword <code>new</code> as if we were calling the default constructor when defining inner constructors.</p>
+<p>Note, that we need to use a preexisting constructor to define an
+outer constructor, while we use the keyword <code>new</code> as if we
+were calling the default constructor when defining inner
+constructors.</p>
 </div>
 </section><section id="more-types"><h2 class="section-heading">More Types<a class="anchor" aria-label="anchor" href="#more-types"></a>
 </h2>
 <hr class="half-width">
-<p>The Julia language provides a lot more types; for example <code>CartesianIndex</code>, <code>IOStream</code>, or <code>Atomic{T}</code>. We again refer to the documentation.</p>
+<p>The Julia language provides a lot more types; for example
+<code>CartesianIndex</code>, <code>IOStream</code>, or
+<code>Atomic{T}</code>. We again refer to the documentation.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -1048,7 +1145,8 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Julia uses generic functions and their methods to implement functions.</li>
+<li>Julia uses generic functions and their methods to implement
+functions.</li>
 <li>Julia implements multiple dispatch.</li>
 </ul>
 </div>
@@ -1056,20 +1154,27 @@ any links that you are not going to use.
 </div>
 </div>
 </div>
-<p>Julia’s functions deserve their own episodes. Julia implements generic functions. A generic function is implemented by zero or more methods. When a (generic) function is called, a method that best fits to the provided arguments is selected and executed.</p>
+<p>Julia’s functions deserve their own episodes. Julia implements
+generic functions. A generic function is implemented by zero or more
+methods. When a (generic) function is called, a method that best fits to
+the provided arguments is selected and executed.</p>
 <section id="methods"><h2 class="section-heading">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
 </h2>
 <hr class="half-width">
-<p>In the case of Julia the method is chosen based on the number of arguments and their types.</p>
-<p>This is used to provide implementations for specific argument types without having to litter the code with conditionals based on value types. An impressive example for the number of methods is the generic function <code>+</code>:</p>
+<p>In the case of Julia the method is chosen based on the number of
+arguments and their types.</p>
+<p>This is used to provide implementations for specific argument types
+without having to litter the code with conditionals based on value
+types. An impressive example for the number of methods is the generic
+function <code>+</code>:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> methods(<span class="op">+</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1</span>] <span class="op">+</span>(x<span class="op">::</span>T<span class="op">,</span> y<span class="op">::</span>T) <span class="kw">where</span> T<span class="op">&lt;:</span><span class="dt">Union</span>{<span class="dt">Int128</span><span class="op">,</span> <span class="dt">Int16</span><span class="op">,</span> <span class="dt">Int32</span><span class="op">,</span> <span class="dt">Int64</span><span class="op">,</span> <span class="dt">Int8</span><span class="op">,</span> <span class="dt">UInt128</span><span class="op">,</span> <span class="dt">UInt16</span><span class="op">,</span> <span class="dt">UInt32</span><span class="op">,</span> <span class="dt">UInt64</span><span class="op">,</span> <span class="dt">UInt8</span>} <span class="kw">in</span> <span class="bu">Base</span> at int.jl<span class="op">:</span><span class="fl">87</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">2</span>] <span class="op">+</span>(c<span class="op">::</span><span class="dt">Union</span>{<span class="dt">UInt16</span><span class="op">,</span> <span class="dt">UInt32</span><span class="op">,</span> <span class="dt">UInt64</span><span class="op">,</span> <span class="dt">UInt8</span>}<span class="op">,</span> x<span class="op">::</span><span class="dt">BigInt</span>) <span class="kw">in</span> <span class="bu">Base</span>.GMP at gmp.jl<span class="op">:</span><span class="fl">529</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>[<span class="fl">3</span>] <span class="op">+</span>(c<span class="op">::</span><span class="dt">Union</span>{<span class="dt">Int16</span><span class="op">,</span> <span class="dt">Int32</span><span class="op">,</span> <span class="dt">Int64</span><span class="op">,</span> <span class="dt">Int8</span>}<span class="op">,</span> x<span class="op">::</span><span class="dt">BigInt</span>) <span class="kw">in</span> <span class="bu">Base</span>.GMP at gmp.jl<span class="op">:</span><span class="fl">535</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>…</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">methods</span>(<span class="op">+</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1</span>] <span class="fu">+</span>(x<span class="op">::</span><span class="dt">T</span>, y<span class="op">::</span><span class="dt">T</span>) <span class="kw">where</span> T<span class="op">&lt;:</span><span class="dt">Union{Int128, Int16, Int32, Int64, Int8, UInt128, UInt16, UInt32, UInt64, UInt8} </span><span class="kw">in</span> <span class="bu">Base</span> at int.jl<span class="op">:</span><span class="fl">87</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">2</span>] <span class="fu">+</span>(c<span class="op">::</span><span class="dt">Union{UInt16, UInt32, UInt64, UInt8}</span>, x<span class="op">::</span><span class="dt">BigInt</span>) <span class="kw">in</span> <span class="bu">Base</span>.GMP at gmp.jl<span class="op">:</span><span class="fl">529</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>[<span class="fl">3</span>] <span class="fu">+</span>(c<span class="op">::</span><span class="dt">Union{Int16, Int32, Int64, Int8}</span>, x<span class="op">::</span><span class="dt">BigInt</span>) <span class="kw">in</span> <span class="bu">Base</span>.GMP at gmp.jl<span class="op">:</span><span class="fl">535</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">…</span></span></code></pre>
 </div>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
@@ -1079,7 +1184,12 @@ any links that you are not going to use.
 <h3 class="callout-title">Generic Methods on Steroids<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>For an example of a very complex generic function system you can have look at the <a href="https://en.wikipedia.org/wiki/Common_Lisp_Object_System" class="external-link">Common Lisp Object System</a> (CLOS). There methods can call less specific methods, there are so called before, after, and around methods, and all applicable methods can be combined in several ways (for example, summing the result of all applicable methods).</p>
+<p>For an example of a very complex generic function system you can have
+look at the <a href="https://en.wikipedia.org/wiki/Common_Lisp_Object_System" class="external-link">Common
+Lisp Object System</a> (CLOS). There methods can call less specific
+methods, there are so called before, after, and around methods, and all
+applicable methods can be combined in several ways (for example, summing
+the result of all applicable methods).</p>
 </div>
 </div>
 </div>
@@ -1090,134 +1200,160 @@ any links that you are not going to use.
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">function</span> dist <span class="kw">end</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dist (generic <span class="kw">function</span> with <span class="fl">0</span> methods)</span></code></pre>
 </div>
-<p>This is not necessary. If we provide an argument list and implementation in such a definition and the generic function did not exist before, it will exist after including the first method that will have been defined.</p>
+<p>This is not necessary. If we provide an argument list and
+implementation in such a definition and the generic function did not
+exist before, it will exist after including the first method that will
+have been defined.</p>
 <div class="section level3">
 <h3 id="multiple-dispatch">Multiple Dispatch<a class="anchor" aria-label="anchor" href="#multiple-dispatch"></a>
 </h3>
-<p>Julia uses all argument types—and not just the first—to determine, which method is most applicable. This is called multiple dispatch; in contrast to single dispatch, as Java and C++ implement it, where the called method is (during runtime) solely determined by the type of the object who’s method is called. The object is, in the form of <code>this</code>, effectively the first argument to the method.</p>
+<p>Julia uses all argument types—and not just the first—to determine,
+which method is most applicable. This is called multiple dispatch; in
+contrast to single dispatch, as Java and C++ implement it, where the
+called method is (during runtime) solely determined by the type of the
+object who’s method is called. The object is, in the form of
+<code>this</code>, effectively the first argument to the method.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">function</span> length(x<span class="op">,</span> y)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>      sqrt(x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">function</span> <span class="fu">length</span>(x, y)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sqrt</span>(x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>length (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">function</span> length(x<span class="op">,</span> y<span class="op">::</span><span class="dt">Int64</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      println(<span class="st">"Not implemented yet"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">function</span> <span class="fu">length</span>(x, y<span class="op">::</span><span class="dt">Int64</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">println</span>(<span class="st">"Not implemented yet"</span>)</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>length (generic <span class="kw">function</span> with <span class="fl">2</span> methods)</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> length(<span class="fl">1.0</span><span class="op">,</span> <span class="fl">2.0</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">length</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>)</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fl">2.23606797749979</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> length(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">length</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>Not implemented yet</span></code></pre>
 </div>
 <p>More important is the number of arguments:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> length(x) <span class="op">=</span> x</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">length</span>(x) <span class="op">=</span> x</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>length (generic <span class="kw">function</span> with <span class="fl">3</span> methods)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> length(<span class="fl">1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">length</span>(<span class="fl">1</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
-<p>Multiple dispatch is similar to function overloading in languages like Java and C++. There the appropriate method (except for dispatch on the first argument) is determined at compile time based on the parameter types. In the case of Julia this happens at runtime and thus allows to add further methods to a generic functions in a running image of a Julia process.</p>
+<p>Multiple dispatch is similar to function overloading in languages
+like Java and C++. There the appropriate method (except for dispatch on
+the first argument) is determined at compile time based on the parameter
+types. In the case of Julia this happens at runtime and thus allows to
+add further methods to a generic functions in a running image of a Julia
+process.</p>
 </div>
 </section><section id="arguments"><h2 class="section-heading">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a>
 </h2>
 <hr class="half-width">
-<p>In Julia arguments are pass-by-sharing, also known as -by-pointer or -by-reference. For values of immutable types this may be optimized to pass-by-value if the values fit into a single register. But because of the immutability this is indistinguishable.</p>
+<p>In Julia arguments are pass-by-sharing, also known as -by-pointer or
+-by-reference. For values of immutable types this may be optimized to
+pass-by-value if the values fit into a single register. But because of
+the immutability this is indistinguishable.</p>
 <p>We already saw that we can add type annotations to parameters:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> annotated(x<span class="op">::</span><span class="dt">Int8</span>) <span class="op">=</span> x</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">annotated</span>(x<span class="op">::</span><span class="dt">Int8</span>) <span class="op">=</span> x</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>annotated (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span></code></pre>
 </div>
 <p>Julia also supports optional arguments:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional(x <span class="op">=</span> <span class="fl">1</span>) <span class="op">=</span> <span class="fl">1</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">with_optional</span>(x <span class="op">=</span> <span class="fl">1</span>) <span class="op">=</span> <span class="fl">1</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>with_optional (generic <span class="kw">function</span> with <span class="fl">2</span> methods)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional(<span class="fl">3</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">with_optional</span>(<span class="fl">3</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional(<span class="fl">1</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">with_optional</span>(<span class="fl">1</span>)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
 <p>Note that <code>with_optional</code> immediately has two methods:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> methods(with_optional)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">methods</span>(with_optional)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 methods for generic function "with_optional":</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1</span>] with_optional() <span class="kw">in</span> <span class="bu">Main</span> at REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>[<span class="fl">2</span>] with_optional(x) <span class="kw">in</span> <span class="bu">Main</span> at REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1</span>] <span class="fu">with_optional</span>() <span class="kw">in</span> <span class="bu">Main</span> at <span class="bu">REPL</span>[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>[<span class="fl">2</span>] <span class="fu">with_optional</span>(x) <span class="kw">in</span> <span class="bu">Main</span> at <span class="bu">REPL</span>[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
-<p>This shows that optional arguments are implemented through multiple methods of a generic function with different parameter lists. In fact, <code>with_optional()</code> is defined as <code>= with_optional(1)</code>. Thus, changing the definition of <code>with_optional(x)</code> will change the behavior of <code>with_optional()</code>:</p>
+<p>This shows that optional arguments are implemented through multiple
+methods of a generic function with different parameter lists. In fact,
+<code>with_optional()</code> is defined as
+<code>= with_optional(1)</code>. Thus, changing the definition of
+<code>with_optional(x)</code> will change the behavior of
+<code>with_optional()</code>:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional(x) <span class="op">=</span> x <span class="op">+</span> x</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">with_optional</span>(x) <span class="op">=</span> x <span class="op">+</span> x</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>with_optional (generic <span class="kw">function</span> with <span class="fl">2</span> methods)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_optional()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">with_optional</span>()</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span></span></code></pre>
 </div>
 <p>Julia also supports keyword arguments:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_keyword(<span class="op">;</span>x) <span class="op">=</span> x</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">with_keyword</span>(;x) <span class="op">=</span> x</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>with_keyword (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> with_keyword(x <span class="op">=</span> <span class="fl">1</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">with_keyword</span>(x <span class="op">=</span> <span class="fl">1</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
-<p>Keyword parameters are defined after the other parameters separated by <code>;</code>. They can have default values as well. Keyword parameters are not involved in method dispatch.</p>
-<p>Another, less common feature, is restructuring for tuple parameters:</p>
+<p>Keyword parameters are defined after the other parameters separated
+by <code>;</code>. They can have default values as well. Keyword
+parameters are not involved in method dispatch.</p>
+<p>Another, less common feature, is restructuring for tuple
+parameters:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> destructured((a<span class="op">,</span> b)) <span class="op">=</span> a <span class="op">+</span> b</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">destructured</span>((a, b)) <span class="op">=</span> a <span class="op">+</span> b</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>destructured (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t <span class="op">=</span> (<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> t <span class="op">=</span> (<span class="fl">1</span>, <span class="fl">2</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> destructured(t)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">destructured</span>(t)</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
-<p>Note that any additional elements of a tuple with be silently ignored, but we get an error, when the tuple is to short:</p>
+<p>Note that any additional elements of a tuple with be silently
+ignored, but we get an error, when the tuple is to short:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> destructured((<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span><span class="op">,</span> <span class="fl">3</span>))</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">destructured</span>((<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> destructured((<span class="fl">1</span><span class="op">,</span>))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">destructured</span>((<span class="fl">1</span>,))</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">BoundsError</span><span class="op">:</span> attempt to access <span class="dt">Tuple</span>{<span class="dt">Int64</span>} at index [<span class="fl">2</span>]</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] indexed_iterate</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> <span class="op">./</span>tuple.jl<span class="op">:</span><span class="fl">89</span> [inlined]</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] destructured(<span class="op">::</span><span class="dt">Tuple</span>{<span class="dt">Int64</span>})</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> <span class="bu">Main</span> <span class="op">./</span>REPL[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>   @ <span class="op">./</span>tuple.jl<span class="op">:</span><span class="fl">89</span> [inlined]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] <span class="fu">destructured</span>(<span class="op">::</span><span class="dt">Tuple{Int64}</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">Main</span> <span class="op">./</span><span class="bu">REPL</span>[<span class="fl">1</span>]<span class="op">:</span><span class="fl">1</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a> [<span class="fl">3</span>] top<span class="op">-</span>level scope</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>   <span class="op">@</span> REPL[<span class="fl">5</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">5</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
 </section><section id="anonymous-functions"><h2 class="section-heading">Anonymous Functions<a class="anchor" aria-label="anchor" href="#anonymous-functions"></a>
 </h2>
 <hr class="half-width">
-<p>For short, one-off functions Julia implements anonymous functions:</p>
+<p>For short, one-off functions Julia implements anonymous
+functions:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> map(x <span class="op">-&gt;</span> x <span class="op">+</span> <span class="fl">1</span><span class="op">,</span> [<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span><span class="op">,</span> ])</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">map</span>(x <span class="op">-&gt;</span> x <span class="op">+</span> <span class="fl">1</span>, [<span class="fl">1</span>, <span class="fl">2</span>, ])</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">3</span></span>
@@ -1232,17 +1368,19 @@ any links that you are not going to use.
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">end</span>)(<span class="fl">3</span>)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
-<p>For functions passed as a first argument to another function, there is special syntax that makes providing multiple line functions look clean:</p>
+<p>For functions passed as a first argument to another function, there
+is special syntax that makes providing multiple line functions look
+clean:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> map([<span class="fl">1</span><span class="op">,</span> <span class="fl">2</span><span class="op">,</span> <span class="fl">3</span>]) <span class="kw">do</span> x</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> x <span class="op">==</span> <span class="fl">1</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         println(<span class="st">"one"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">else</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         println(<span class="st">"not one"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">end</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">map</span>([<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>]) <span class="cf">do</span> x</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> x <span class="op">==</span> <span class="fl">1</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">println</span>(<span class="st">"one"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">println</span>(<span class="st">"not one"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>one</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>not one</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>not one</span>
@@ -1254,20 +1392,24 @@ any links that you are not going to use.
 </section><section id="function-composition"><h2 class="section-heading">Function Composition<a class="anchor" aria-label="anchor" href="#function-composition"></a>
 </h2>
 <hr class="half-width">
-<p>Julia has an operator, <code>∘</code>, for function composition. You can write it in the Julia-REPL typing <code>\circ&lt;tab&gt;</code>. It is useful to create function arguments that are just compositions of other functions:</p>
+<p>Julia has an operator, <code>∘</code>, for function composition. You
+can write it in the Julia-REPL typing <code>\circ&lt;tab&gt;</code>. It
+is useful to create function arguments that are just compositions of
+other functions:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> map(sqrt ∘ sum<span class="op">,</span> [[<span class="fl">1</span><span class="op">,</span> <span class="fl">1</span>]<span class="op">,</span> [<span class="fl">2</span><span class="op">,</span> <span class="fl">2</span>]])</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">map</span>(sqrt <span class="op">∘</span> sum, [[<span class="fl">1</span>, <span class="fl">1</span>], [<span class="fl">2</span>, <span class="fl">2</span>]])</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1.4142135623730951</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">2.0</span></span></code></pre>
 </div>
-<p>An alternate method to <code>f(g(x))</code> for composition with a concrete value is the operator <code>|&gt;</code>:</p>
+<p>An alternate method to <code>f(g(x))</code> for composition with a
+concrete value is the operator <code>|&gt;</code>:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span><span class="op">,</span> <span class="fl">2</span>] <span class="op">|&gt;</span> sum <span class="op">|&gt;</span> sqrt</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span>, <span class="fl">2</span>] <span class="op">|&gt;</span> sum <span class="op">|&gt;</span> sqrt</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span></code></pre>
 </div>
 <!-- 
@@ -1283,9 +1425,14 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>Julia organizes code into modules and packages. A package is the distribution unit. Libraries and applications are usually distributed as packages. Modules are for organizing code within a package.</p>
-<p>In this episode we will learn about modules. Modules are used for namespace management.</p>
-<p>A module starts with the keyword <code>module</code>, a name end ends with <code>end</code>. Let us open a file called <code>main.jl</code> in an empty directory and add the following code:</p>
+<p>Julia organizes code into modules and packages. A package is the
+distribution unit. Libraries and applications are usually distributed as
+packages. Modules are for organizing code within a package.</p>
+<p>In this episode we will learn about modules. Modules are used for
+namespace management.</p>
+<p>A module starts with the keyword <code>module</code>, a name end ends
+with <code>end</code>. Let us open a file called <code>main.jl</code> in
+an empty directory and add the following code:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1293,30 +1440,39 @@ any links that you are not going to use.
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre>
 </div>
-<p>Unlike in Python, a file can contain multiple modules, so module name and file name do not have to fit in any way to one another.</p>
-<p>But, for examples sake, we will put the actual contents of our module in another file. We create an empty file <code>vectors.jl</code> in the same folder and include it using the <code>include</code> function in our module, so that <code>main.jl</code> will look as follows:</p>
+<p>Unlike in Python, a file can contain multiple modules, so module name
+and file name do not have to fit in any way to one another.</p>
+<p>But, for examples sake, we will put the actual contents of our module
+in another file. We create an empty file <code>vectors.jl</code> in the
+same folder and include it using the <code>include</code> function in
+our module, so that <code>main.jl</code> will look as follows:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>include(<span class="st">"vectors.jl"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"vectors.jl"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre>
 </div>
-<p>When <code>main.jl</code> is loaded in any way all the code in <code>vectors.jl</code> will be evaluated in the scope of the <code>OurVectors</code> module. On could potentially split the code of a module into several files this way.</p>
-<p>Also note, that it is idiomatic to not indent the code in a module relative to the <code>module</code> statement. Module names are usually set in upper camel-case.</p>
+<p>When <code>main.jl</code> is loaded in any way all the code in
+<code>vectors.jl</code> will be evaluated in the scope of the
+<code>OurVectors</code> module. On could potentially split the code of a
+module into several files this way.</p>
+<p>Also note, that it is idiomatic to not indent the code in a module
+relative to the <code>module</code> statement. Module names are usually
+set in upper camel-case.</p>
 <p>We will now add a function to <code>vectors.jl</code>:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>length(v) <span class="op">=</span> sqrt(sum(v<span class="op">.^</span><span class="fl">2</span>))</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v) <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(v<span class="op">.^</span><span class="fl">2</span>))</span></code></pre>
 </div>
 <p>Next, we try to use it in <code>main.jl</code> by appending</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
 <p>and running the file with</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -1325,7 +1481,10 @@ any links that you are not going to use.
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> julia main.jl</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span></span></code></pre>
 </div>
-<p>We expected <code>3</code> but got <code>1</code>. Julia calls the standard library function <code>length</code> instead of our module’s function. To use our function outside the module, we need to first export it from the module and then use it outside the module:</p>
+<p>We expected <code>3</code> but got <code>1</code>. Julia calls the
+standard library function <code>length</code> instead of our module’s
+function. To use our function outside the module, we need to first
+export it from the module and then use it outside the module:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1333,16 +1492,20 @@ any links that you are not going to use.
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">export</span> length</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>include(<span class="st">"vectors.jl"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"vectors.jl"</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> .OurVectors</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">.OurVectors</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
-<p>We need to add the <code>.</code> in front of the module name, because otherwise Julia would look for a package named <code>OurVectors</code> which it would not find. The <code>.</code> tells it to look for a module relative to the current one.</p>
-<p>We put the <code>export</code> keyword at the top of the module, so that is the first information an user of the module sees.</p>
+<p>We need to add the <code>.</code> in front of the module name,
+because otherwise Julia would look for a package named
+<code>OurVectors</code> which it would not find. The <code>.</code>
+tells it to look for a module relative to the current one.</p>
+<p>We put the <code>export</code> keyword at the top of the module, so
+that is the first information an user of the module sees.</p>
 <p>Running the example, we get</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1355,11 +1518,14 @@ any links that you are not going to use.
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="ex">@</span> ~/temp/main.jl:11</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="er">in</span> <span class="ex">expression</span> starting at /home/user/project/main.jl:11</span></code></pre>
 </div>
-<p><code>Base</code> is a module provided by Julia and <code>Base.length</code> is the function that returns the element count of various container or iterator types. This conflicts with us using the exported <code>length</code> of our module. Instead we have to write</p>
+<p><code>Base</code> is a module provided by Julia and
+<code>Base.length</code> is the function that returns the element count
+of various container or iterator types. This conflicts with us using the
+exported <code>length</code> of our module. Instead we have to write</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>println(OurVectors.length([<span class="fl">3</span>]))</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(OurVectors.<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
 <p>which gets us</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -1368,34 +1534,56 @@ any links that you are not going to use.
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">$</span> julia main.jl</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
-<p>Alternatively, we can import the function into the current module’s namespace:</p>
+<p>Alternatively, we can import the function into the current module’s
+namespace:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>…</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">…</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> .OurVectors<span class="op">:</span> length</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">.OurVectors</span>: length</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>println(length([<span class="fl">3</span>]))</span></code></pre>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
-<p>This, of course, is very unsafe, since it overrides a standard library function. Instead we could give it a new name in the current module:</p>
+<p>This, of course, is very unsafe, since it overrides a standard
+library function. Instead we could give it a new name in the current
+module:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>…</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">…</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> .OurVectors<span class="op">:</span> length as vlength</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">.OurVectors</span>: length as vlength</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>println(vlength([<span class="fl">3</span>]))</span></code></pre>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">vlength</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
-<p>All this shows that each module has its own namespace, but we can import names directly or with a new name from module one into another.</p>
-<p>We can force users to always use our <code>length</code> prefixed by the module name <code>OurVectors</code> by not exporting it. It is still accessible, but it can no longer be imported by name or brought into another namespace via <code>using</code>.</p>
-<p>The difference between <code>using</code> and <code>import</code> is that, by default, <code>using</code> makes the module itself and all exported names available in the using module namespace, wheres <code>import</code> only makes the module available. Then <code>using</code> can be modified to only import specific names (including the module itself) and <code>import</code> can be modified to import additional names. In both cases the imported entities can be renamed using the keyword <code>as</code>.</p>
+<p>All this shows that each module has its own namespace, but we can
+import names directly or with a new name from module one into
+another.</p>
+<p>We can force users to always use our <code>length</code> prefixed by
+the module name <code>OurVectors</code> by not exporting it. It is still
+accessible, but it can no longer be imported by name or brought into
+another namespace via <code>using</code>.</p>
+<p>The difference between <code>using</code> and <code>import</code> is
+that, by default, <code>using</code> makes the module itself and all
+exported names available in the using module namespace, wheres
+<code>import</code> only makes the module available. Then
+<code>using</code> can be modified to only import specific names
+(including the module itself) and <code>import</code> can be modified to
+import additional names. In both cases the imported entities can be
+renamed using the keyword <code>as</code>.</p>
 <section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules<a class="anchor" aria-label="anchor" href="#bare-modules-and-standard-modules"></a>
 </h2>
 <hr class="half-width">
-<p>Whenever we create a module, the modules <code>Core</code> and <code>Base</code> are automatically contained as if imported with <code>using</code>. If a module is declared with the <code>baremodule</code> keyword instead, they are not contained.</p>
-<p>In addition to <code>Core</code> and <code>Base</code> a Julia distribution comes with further standard modules that do not have to be installed explicitly; among them <code>Test</code>. In addition, <code>Base</code> has several submodules, e.g. <code>Base.Threads</code>.</p>
+<p>Whenever we create a module, the modules <code>Core</code> and
+<code>Base</code> are automatically contained as if imported with
+<code>using</code>. If a module is declared with the
+<code>baremodule</code> keyword instead, they are not contained.</p>
+<p>In addition to <code>Core</code> and <code>Base</code> a Julia
+distribution comes with further standard modules that do not have to be
+installed explicitly; among them <code>Test</code>. In addition,
+<code>Base</code> has several submodules,
+e.g. <code>Base.Threads</code>.</p>
 <p><code>Main</code> is the top level module of the REPL.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -1410,11 +1598,15 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>While the module is an organizational unit within a project, packages are the distribution units of packages.</p>
+<p>While the module is an organizational unit within a project, packages
+are the distribution units of packages.</p>
 <section id="dependency-management"><h2 class="section-heading">Dependency Management<a class="anchor" aria-label="anchor" href="#dependency-management"></a>
 </h2>
 <hr class="half-width">
-<p>To install a package, we type <code>]</code> in the Julia REPL to switch to package mode. The prompt changes from <code>julia&gt;</code> to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing <code>C-c</code>.</p>
+<p>To install a package, we type <code>]</code> in the Julia REPL to
+switch to package mode. The prompt changes from <code>julia&gt;</code>
+to <code>(@v1.7) pkg&gt;</code>. We can exit package mode by pressing
+<code>C-c</code>.</p>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1423,15 +1615,23 @@ any links that you are not going to use.
 <h3 class="callout-title">Pkg.jl<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a> online.</p>
+<p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a>
+online.</p>
 </div>
 </div>
 </div>
-<p>The prompt in the package mode tells us which environment is currently active (<code>@v1.7</code>). The default environment is named after the running Julia version. We can install packages into this environment for general experimentation. Our projects have their own environments, as we will see in a bit.</p>
-<p>First, let us have a look at the status of the current environment:</p>
+<p>The prompt in the package mode tells us which environment is
+currently active (<code>@v1.7</code>). The default environment is named
+after the running Julia version. We can install packages into this
+environment for general experimentation. Our projects have their own
+environments, as we will see in a bit.</p>
+<p>First, let us have a look at the status of the current
+environment:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; status
       Status `~/.julia/environments/v1.7/Project.toml`</code></pre>
-<p>This shows us the location of the Project.toml that describes the environment. It also lists explicitly installed packages, in our case currently none.</p>
+<p>This shows us the location of the Project.toml that describes the
+environment. It also lists explicitly installed packages, in our case
+currently none.</p>
 <p>To install a package we run the command <code>add</code>:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; add Memoize
    Resolving package versions...
@@ -1443,7 +1643,12 @@ any links that you are not going to use.
 (@v1.7) pkg&gt; status
       Status `~/.julia/environments/v1.7/Project.toml`
     [c03570c3] Memoize v0.4.4</code></pre>
-<p>The command updates two files, <code>Project.toml</code> and <code>Manifest.toml</code>, and seems to install two packages, <code>Memoize</code> and <code>MacroTools</code>, the latter probably a dependency of the former. Now <code>status</code> shows us that we have installed <code>Memoize</code> (but tells us nothing about <code>MacroTools</code>.</p>
+<p>The command updates two files, <code>Project.toml</code> and
+<code>Manifest.toml</code>, and seems to install two packages,
+<code>Memoize</code> and <code>MacroTools</code>, the latter probably a
+dependency of the former. Now <code>status</code> shows us that we have
+installed <code>Memoize</code> (but tells us nothing about
+<code>MacroTools</code>.</p>
 <p>We can update a package using the <code>update</code> command:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; update Memoize
     Updating registry at `~/.julia/registries/General.toml`
@@ -1456,8 +1661,12 @@ any links that you are not going to use.
     Updating `~/.julia/environments/v1.7/Manifest.toml`
   [1914dd2f] - MacroTools v0.5.9
   [c03570c3] - Memoize v0.4.4</code></pre>
-<p>To import a package, we need to know what packages there are. There is a <a href="https://github.com/JuliaRegistries/General" class="external-link">general package registry</a> which can be searched through multiple front-ends, for example <a href="https://juliahub.com/ui/Packages" class="external-link uri">https://juliahub.com/ui/Packages</a> .</p>
-<p>If we want to install a package that is not in the general (or any other) registry, we can point to a git source instead:</p>
+<p>To import a package, we need to know what packages there are. There
+is a <a href="https://github.com/JuliaRegistries/General" class="external-link">general
+package registry</a> which can be searched through multiple front-ends,
+for example <a href="https://juliahub.com/ui/Packages" class="external-link uri">https://juliahub.com/ui/Packages</a> .</p>
+<p>If we want to install a package that is not in the general (or any
+other) registry, we can point to a git source instead:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; add https://github.com/JuliaLang/Example.jl#master
      Cloning git-repo `https://github.com/JuliaLang/Example.jl`
     Updating git-repo `https://github.com/JuliaLang/Example.jl`
@@ -1468,7 +1677,10 @@ any links that you are not going to use.
   [7876af07] + Example v0.5.4 `https://github.com/JuliaLang/Example.jl#master`
 Precompiling project...
    1 dependency successfully precompiled in 0 seconds (20 already precompiled)</code></pre>
-<p>All commands discussed here have a lot more options. Particularly important might be the ability to install specific versions or branches of packages. The shell provides documentation for every command when running <code>help &lt;command&gt;</code>, for example:</p>
+<p>All commands discussed here have a lot more options. Particularly
+important might be the ability to install specific versions or branches
+of packages. The shell provides documentation for every command when
+running <code>help &lt;command&gt;</code>, for example:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; help update
   [up|update] [-p|--project]  [opts] pkg[=uuid] [@version] ...
   [up|update] [-m|--manifest] [opts] pkg[=uuid] [@version] ...
@@ -1484,32 +1696,41 @@ Precompiling project...
 </section><section id="creating-packages"><h2 class="section-heading">Creating Packages<a class="anchor" aria-label="anchor" href="#creating-packages"></a>
 </h2>
 <hr class="half-width">
-<p>After seeing how to use a package, we will have a look into creating one.</p>
-<p>Using the shell in the Julia REPL, activated by pressing <code>;</code>, we navigate to the folder in which, we want to create our project. For example</p>
+<p>After seeing how to use a package, we will have a look into creating
+one.</p>
+<p>Using the shell in the Julia REPL, activated by pressing
+<code>;</code>, we navigate to the folder in which, we want to create
+our project. For example</p>
 <pre class="shell"><code>shell&gt; cd ~/temp/
 /home/user/temp</code></pre>
-<p>We leave the shell again by pressing <code>C-c</code> and check that we are in the correct directory, by running <code>pwd()</code>:</p>
+<p>We leave the shell again by pressing <code>C-c</code> and check that
+we are in the correct directory, by running <code>pwd()</code>:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp"</span></span></code></pre>
 </div>
-<p>Now, we go into package mode (press <code>]</code>) and generate a Julia package skeleton:</p>
+<p>Now, we go into package mode (press <code>]</code>) and generate a
+Julia package skeleton:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; generate OurVectors
   Generating  project OurVectors:
     OurVectors/Project.toml
     OurVectors/src/OurVectors.jl</code></pre>
-<p>The output tells us that two files were generated in a new directory with the project name that we provided. We leave the package mode again, to navigate Julia into the directory that was just created by pressing <code>C-c</code>:</p>
+<p>The output tells us that two files were generated in a new directory
+with the project name that we provided. We leave the package mode again,
+to navigate Julia into the directory that was just created by pressing
+<code>C-c</code>:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> cd(<span class="st">"OurVectors"</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">cd</span>(<span class="st">"OurVectors"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
 </div>
-<p>We will have a look at what was created in the shell (press <code>;</code>):</p>
+<p>We will have a look at what was created in the shell (press
+<code>;</code>):</p>
 <pre class="shell"><code>shell&gt; tree
 .
 ├── Project.toml
@@ -1517,15 +1738,23 @@ Precompiling project...
     └── OurVectors.jl
 
 1 directory, 2 files</code></pre>
-<p>Julia generated two files for us. <code>Project.toml</code> is the project configuration file in TOML Format, while <code>OurVectors.jl</code> in the subdirectory <code>src</code> is an initial source file.</p>
+<p>Julia generated two files for us. <code>Project.toml</code> is the
+project configuration file in TOML Format, while
+<code>OurVectors.jl</code> in the subdirectory <code>src</code> is an
+initial source file.</p>
 <p>Let us first look at the configuration file:</p>
 <pre class="shell"><code>shell&gt; cat Project.toml
 name = "OurVectors"
 uuid = "53fd6d90-f326-4ab3-8600-de8f4fd33617"
 authors = ["Some One &lt;some.one@example.com&gt;"]
 version = "0.1.0"</code></pre>
-<p>It first states the name of the project (or package). A UUID randomly generated for the project follows. The authors field is based on your git configuration, falling back to a <a href="https://github.com/JuliaLang/Pkg.jl/blob/f5213cf0019e80004f40e721c16d8a900badb8e4/src/generate.jl#L25" class="external-link">series of environment variables</a>. Finally the initial version is given as <code>0.1.0</code>.</p>
-<p>The generated source file contains a module with an “Hello World” implementation:</p>
+<p>It first states the name of the project (or package). A UUID randomly
+generated for the project follows. The authors field is based on your
+git configuration, falling back to a <a href="https://github.com/JuliaLang/Pkg.jl/blob/f5213cf0019e80004f40e721c16d8a900badb8e4/src/generate.jl#L25" class="external-link">series
+of environment variables</a>. Finally the initial version is given as
+<code>0.1.0</code>.</p>
+<p>The generated source file contains a module with an “Hello World”
+implementation:</p>
 <pre class="shell"><code>shell&gt; cat src/OurVectors.jl
 module OurVectors
 
@@ -1535,36 +1764,44 @@ end # module</code></pre>
 </section><section id="tests"><h2 class="section-heading">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
 </h2>
 <hr class="half-width">
-<p>We edit the source file to contain our <code>length</code> function:</p>
+<p>We edit the source file to contain our <code>length</code>
+function:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>length(v) <span class="op">=</span> sqrt(sum(v<span class="op">.^</span><span class="fl">2</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v) <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(v<span class="op">.^</span><span class="fl">2</span>))</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="co"># module</span></span></code></pre>
 </div>
-<p>Now, we want to write tests for our function. Idiomatically, tests are run by evaluating the file <code>test/runtests.jl</code> of a Julia project. We create such a file and make use of the <code>Test</code> package that comes bundled with Julia:</p>
+<p>Now, we want to write tests for our function. Idiomatically, tests
+are run by evaluating the file <code>test/runtests.jl</code> of a Julia
+project. We create such a file and make use of the <code>Test</code>
+package that comes bundled with Julia:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> Test</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> OurVectors</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Test</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">OurVectors</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.length([<span class="fl">1</span>]) <span class="op">==</span> <span class="fl">1.0</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.length([<span class="fl">3</span><span class="op">,</span> <span class="fl">4</span>]) <span class="op">==</span> <span class="fl">5.0</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="pp">@test_throws</span> <span class="dt">MethodError</span> OurVectors.length([])</span></code></pre>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.<span class="fu">length</span>([<span class="fl">1</span>]) <span class="op">==</span> <span class="fl">1.0</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.<span class="fu">length</span>([<span class="fl">3</span>, <span class="fl">4</span>]) <span class="op">==</span> <span class="fl">5.0</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="pp">@test_throws</span> <span class="dt">MethodError</span> OurVectors.<span class="fu">length</span>([])</span></code></pre>
 </div>
-<p>To run the script we can use the package mode again. But before switching to it (by pressing <code>]</code>), we make sure that the working directory of our REPL is the project directory:</p>
+<p>To run the script we can use the package mode again. But before
+switching to it (by pressing <code>]</code>), we make sure that the
+working directory of our REPL is the project directory:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> pwd()</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
 </div>
-<p>This looks good. If we were in the wrong directory, we would use the function <code>cd</code> to change that.</p>
-<p>In package mode, we first have to make our project the current environment. To do that, we run</p>
+<p>This looks good. If we were in the wrong directory, we would use the
+function <code>cd</code> to change that.</p>
+<p>In package mode, we first have to make our project the current
+environment. To do that, we run</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; activate .
   Activating project at `~/temp/OurVectors`
 
@@ -1588,7 +1825,9 @@ Stacktrace:
    @ none:6
 in expression starting at /home/user/temp/OurVectors/test/runtests.jl:1
 ERROR: Package OurVectors errored during testing</code></pre>
-<p>This throws an error. Even though <code>Test</code> comes with the Julia installation, we still need to install it into our environment:</p>
+<p>This throws an error. Even though <code>Test</code> comes with the
+Julia installation, we still need to install it into our
+environment:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; add Test
    Resolving package versions...
     Updating `~/temp/OurVectors/Project.toml`
@@ -1602,7 +1841,10 @@ ERROR: Package OurVectors errored during testing</code></pre>
   [ea8e919c] + SHA
   [9e88b42a] + Serialization
   [8dfed614] + Test</code></pre>
-<p>This installs <code>Test</code> and its dependencies. It also seems to make changes to <code>Project.toml</code> and a yet unknown file called <code>Manifest.toml</code>. We will have a look at them in a minute. But first, we try to again run the tests:</p>
+<p>This installs <code>Test</code> and its dependencies. It also seems
+to make changes to <code>Project.toml</code> and a yet unknown file
+called <code>Manifest.toml</code>. We will have a look at them in a
+minute. But first, we try to again run the tests:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; test
      Testing OurVectors
       Status `/tmp/jl_3CRrFm/Project.toml`
@@ -1624,7 +1866,8 @@ ERROR: Package OurVectors errored during testing</code></pre>
 </section><section id="tracking-dependencies"><h2 class="section-heading">Tracking Dependencies<a class="anchor" aria-label="anchor" href="#tracking-dependencies"></a>
 </h2>
 <hr class="half-width">
-<p>Getting back to the file that changed, when we add <code>Test</code> to the project, we first have look at <code>Project.toml</code>:</p>
+<p>Getting back to the file that changed, when we add <code>Test</code>
+to the project, we first have look at <code>Project.toml</code>:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1632,7 +1875,9 @@ ERROR: Package OurVectors errored during testing</code></pre>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">deps</span><span class="kw">]</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Test</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
 </div>
-<p>The file got a new section, <code>[deps]</code>, listing dependencies. We added <code>Test</code>, so it shows up in the list with its UUID.</p>
+<p>The file got a new section, <code>[deps]</code>, listing
+dependencies. We added <code>Test</code>, so it shows up in the list
+with its UUID.</p>
 <p>Now for the content of the new file, <code>Manifest.toml</code>:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1670,8 +1915,11 @@ ERROR: Package OurVectors errored during testing</code></pre>
 <span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"InteractiveUtils"</span><span class="op">,</span> <span class="st">"Logging"</span><span class="op">,</span> <span class="st">"Random"</span><span class="op">,</span> <span class="st">"Serialization"</span><span class="op">]</span></span>
 <span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
 </div>
-<p>This file lists not only the explicitly installed dependencies, but the whole dependency tree.</p>
-<p>When we added the <code>Test</code> package, we did not specify a version. If we had done that, this would be recorded in <code>Manifest.toml</code>.</p>
+<p>This file lists not only the explicitly installed dependencies, but
+the whole dependency tree.</p>
+<p>When we added the <code>Test</code> package, we did not specify a
+version. If we had done that, this would be recorded in
+<code>Manifest.toml</code>.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -1685,54 +1933,67 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>Julia has built-in functions and data types to interface with C and Fortran code. There are also libraries to interface with Python and R. We will have a look at the interfaces for C and Python.</p>
-<p>Before we continue, we return to the default environment in our Julia REPL:</p>
+<p>Julia has built-in functions and data types to interface with C and
+Fortran code. There are also libraries to interface with Python and R.
+We will have a look at the interfaces for C and Python.</p>
+<p>Before we continue, we return to the default environment in our Julia
+REPL:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; activate
   Activating project at `~/.julia/environments/v1.7`</code></pre>
 <section id="c-interface"><h2 class="section-heading">C Interface<a class="anchor" aria-label="anchor" href="#c-interface"></a>
 </h2>
 <hr class="half-width">
-<p>To call a C function we can either use the function <code>ccall</code> or the macro <code>@ccall</code>. For example:</p>
+<p>To call a C function we can either use the function
+<code>ccall</code> or the macro <code>@ccall</code>. For example:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">ccall</span>(<span class="op">:</span>getenv<span class="op">,</span> <span class="dt">Cstring</span><span class="op">,</span> (<span class="dt">Cstring</span><span class="op">,</span>)<span class="op">,</span> <span class="st">"LANG"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cstring</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ccall</span>(<span class="op">:</span>getenv, <span class="dt">Cstring</span>, (<span class="dt">Cstring</span>,), <span class="st">"LANG"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> unsafe_string(<span class="kw">ans</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">unsafe_string</span>(<span class="kw">ans</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">"en_US.UTF-8"</span></span></code></pre>
 </div>
-<p><code>ccall</code> takes the function name, followed by the return type, a tuple of argument types, and finally the arguments themselves. We can see, that there are special types defined to interface with <code>C</code>, e.g. <code>Cstring</code>.</p>
+<p><code>ccall</code> takes the function name, followed by the return
+type, a tuple of argument types, and finally the arguments themselves.
+We can see, that there are special types defined to interface with
+<code>C</code>, e.g. <code>Cstring</code>.</p>
 <p>The macro <code>@ccall</code> offers an alternate syntax:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> getenv(<span class="st">"LANG"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>CString(<span class="bn">0x00007ffe2e3eddd9</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="fu">getenv</span>(<span class="st">"LANG"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CString</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span></code></pre>
 </div>
-<p>The type annotations are found at the arguments and after the argument list for the return type, maybe making the intent a little clearer.</p>
-<p>Other than C standard library functions, we can also call any function found on the path:</p>
+<p>The type annotations are found at the arguments and after the
+argument list for the return type, maybe making the intent a little
+clearer.</p>
+<p>Other than C standard library functions, we can also call any
+function found on the path:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">ccall</span>((<span class="op">:</span>g_basename<span class="op">,</span> <span class="st">"libglib-2.0"</span>)<span class="op">,</span> <span class="dt">Cstring</span><span class="op">,</span> (<span class="dt">Cstring</span><span class="op">,</span>)<span class="op">,</span> <span class="st">"/usr/bin/bash"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cstring</span>(<span class="bn">0x00007f7173d0a681</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ccall</span>((<span class="op">:</span>g_basename, <span class="st">"libglib-2.0"</span>), <span class="dt">Cstring</span>, (<span class="dt">Cstring</span>,), <span class="st">"/usr/bin/bash"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f7173d0a681</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> unsafe_string(<span class="kw">ans</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">unsafe_string</span>(<span class="kw">ans</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">"bash"</span></span></code></pre>
 </div>
-<p>Julia will automatically try to load <code>libglib-2.0</code> in this case.</p>
-<p>With the macro <code>@ccall</code>, the same call would look as follows</p>
+<p>Julia will automatically try to load <code>libglib-2.0</code> in this
+case.</p>
+<p>With the macro <code>@ccall</code>, the same call would look as
+follows</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.g_basename(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.<span class="fu">g_basename</span>(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
 </div>
 </section><section id="pycall"><h2 class="section-heading">PyCall<a class="anchor" aria-label="anchor" href="#pycall"></a>
 </h2>
 <hr class="half-width">
-<p>To interface with python we can use the <code>PyCall</code> package. First, we need to install it to the current repository:</p>
+<p>To interface with python we can use the <code>PyCall</code> package.
+First, we need to install it to the current repository:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; add Pycall
     Updating registry at `~/.julia/registries/General.toml`
    Resolving package versions...
@@ -1745,9 +2006,9 @@ any links that you are not going to use.
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">using</span> PyCall</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="im">using</span> <span class="bu">PyCall</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime <span class="op">=</span> pyimport(<span class="st">"datetime"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime <span class="op">=</span> <span class="fu">pyimport</span>(<span class="st">"datetime"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>PyObject <span class="op">&lt;</span><span class="kw">module</span> <span class="ch">'datetime'</span> from <span class="ch">'/usr/lib/python3.10/datetime.py'</span><span class="op">&gt;</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime.MAXYEAR</span>
@@ -1761,8 +2022,12 @@ any links that you are not going to use.
 <h3 class="callout-title">Python Environments<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>We can control the version of Python that is used by Julia with the environment variable <code>PYTHON</code> in the Julia process.</p>
-<p>We could, for example, start the Julia process from a shell in which we activated a particular environment of the <code>venv</code> Python package. This would give the Julia process access to that environments Python version and installed packages.</p>
+<p>We can control the version of Python that is used by Julia with the
+environment variable <code>PYTHON</code> in the Julia process.</p>
+<p>We could, for example, start the Julia process from a shell in which
+we activated a particular environment of the <code>venv</code> Python
+package. This would give the Julia process access to that environments
+Python version and installed packages.</p>
 </div>
 </div>
 </div>
@@ -1785,7 +2050,9 @@ any links that you are not going to use.
 </section><section id="rcall"><h2 class="section-heading">RCall<a class="anchor" aria-label="anchor" href="#rcall"></a>
 </h2>
 <hr class="half-width">
-<p>A similar package exists for R with <code>RCall</code>. It even gives access to an R-REPL from within the Julia REPL, similar to package and shell mode.</p>
+<p>A similar package exists for R with <code>RCall</code>. It even gives
+access to an R-REPL from within the Julia REPL, similar to package and
+shell mode.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -1839,7 +2106,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/aio.html",
-  "dateCreated": "2022-10-11",
+  "dateCreated": "2022-11-08",
   "dateModified": "2022-11-08",
   "datePublished": "2022-11-08"
 }

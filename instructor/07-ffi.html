@@ -282,52 +282,65 @@
 
         
 
-<p>Julia has built-in functions and data types to interface with C and Fortran code. There are also libraries to interface with Python and R. We will have a look at the interfaces for C and Python.</p>
-<p>Before we continue, we return to the default environment in our Julia REPL:</p>
+<p>Julia has built-in functions and data types to interface with C and
+Fortran code. There are also libraries to interface with Python and R.
+We will have a look at the interfaces for C and Python.</p>
+<p>Before we continue, we return to the default environment in our Julia
+REPL:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; activate
   Activating project at `~/.julia/environments/v1.7`</code></pre>
 <section id="c-interface"><h2 class="section-heading">C Interface<a class="anchor" aria-label="anchor" href="#c-interface"></a>
 </h2>
-<hr class="half-width"><p>To call a C function we can either use the function <code>ccall</code> or the macro <code>@ccall</code>. For example:</p>
+<hr class="half-width"><p>To call a C function we can either use the function
+<code>ccall</code> or the macro <code>@ccall</code>. For example:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">ccall</span>(<span class="op">:</span>getenv<span class="op">,</span> <span class="dt">Cstring</span><span class="op">,</span> (<span class="dt">Cstring</span><span class="op">,</span>)<span class="op">,</span> <span class="st">"LANG"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cstring</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ccall</span>(<span class="op">:</span>getenv, <span class="dt">Cstring</span>, (<span class="dt">Cstring</span>,), <span class="st">"LANG"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> unsafe_string(<span class="kw">ans</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">unsafe_string</span>(<span class="kw">ans</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">"en_US.UTF-8"</span></span></code></pre>
 </div>
-<p><code>ccall</code> takes the function name, followed by the return type, a tuple of argument types, and finally the arguments themselves. We can see, that there are special types defined to interface with <code>C</code>, e.g. <code>Cstring</code>.</p>
+<p><code>ccall</code> takes the function name, followed by the return
+type, a tuple of argument types, and finally the arguments themselves.
+We can see, that there are special types defined to interface with
+<code>C</code>, e.g. <code>Cstring</code>.</p>
 <p>The macro <code>@ccall</code> offers an alternate syntax:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> getenv(<span class="st">"LANG"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>CString(<span class="bn">0x00007ffe2e3eddd9</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="fu">getenv</span>(<span class="st">"LANG"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CString</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span></code></pre>
 </div>
-<p>The type annotations are found at the arguments and after the argument list for the return type, maybe making the intent a little clearer.</p>
-<p>Other than C standard library functions, we can also call any function found on the path:</p>
+<p>The type annotations are found at the arguments and after the
+argument list for the return type, maybe making the intent a little
+clearer.</p>
+<p>Other than C standard library functions, we can also call any
+function found on the path:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">ccall</span>((<span class="op">:</span>g_basename<span class="op">,</span> <span class="st">"libglib-2.0"</span>)<span class="op">,</span> <span class="dt">Cstring</span><span class="op">,</span> (<span class="dt">Cstring</span><span class="op">,</span>)<span class="op">,</span> <span class="st">"/usr/bin/bash"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cstring</span>(<span class="bn">0x00007f7173d0a681</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ccall</span>((<span class="op">:</span>g_basename, <span class="st">"libglib-2.0"</span>), <span class="dt">Cstring</span>, (<span class="dt">Cstring</span>,), <span class="st">"/usr/bin/bash"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f7173d0a681</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> unsafe_string(<span class="kw">ans</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">unsafe_string</span>(<span class="kw">ans</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">"bash"</span></span></code></pre>
 </div>
-<p>Julia will automatically try to load <code>libglib-2.0</code> in this case.</p>
-<p>With the macro <code>@ccall</code>, the same call would look as follows</p>
+<p>Julia will automatically try to load <code>libglib-2.0</code> in this
+case.</p>
+<p>With the macro <code>@ccall</code>, the same call would look as
+follows</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.g_basename(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.<span class="fu">g_basename</span>(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
 </div>
 </section><section id="pycall"><h2 class="section-heading">PyCall<a class="anchor" aria-label="anchor" href="#pycall"></a>
 </h2>
-<hr class="half-width"><p>To interface with python we can use the <code>PyCall</code> package. First, we need to install it to the current repository:</p>
+<hr class="half-width"><p>To interface with python we can use the <code>PyCall</code> package.
+First, we need to install it to the current repository:</p>
 <pre class="shell"><code>(@v1.7) pkg&gt; add Pycall
     Updating registry at `~/.julia/registries/General.toml`
    Resolving package versions...
@@ -340,9 +353,9 @@
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">using</span> PyCall</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="im">using</span> <span class="bu">PyCall</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime <span class="op">=</span> pyimport(<span class="st">"datetime"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime <span class="op">=</span> <span class="fu">pyimport</span>(<span class="st">"datetime"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>PyObject <span class="op">&lt;</span><span class="kw">module</span> <span class="ch">'datetime'</span> from <span class="ch">'/usr/lib/python3.10/datetime.py'</span><span class="op">&gt;</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime.MAXYEAR</span>
@@ -356,8 +369,12 @@
 <h3 class="callout-title">Python Environments<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>We can control the version of Python that is used by Julia with the environment variable <code>PYTHON</code> in the Julia process.</p>
-<p>We could, for example, start the Julia process from a shell in which we activated a particular environment of the <code>venv</code> Python package. This would give the Julia process access to that environments Python version and installed packages.</p>
+<p>We can control the version of Python that is used by Julia with the
+environment variable <code>PYTHON</code> in the Julia process.</p>
+<p>We could, for example, start the Julia process from a shell in which
+we activated a particular environment of the <code>venv</code> Python
+package. This would give the Julia process access to that environments
+Python version and installed packages.</p>
 </div>
 </div>
 </div>
@@ -379,7 +396,9 @@
 </div>
 </section><section id="rcall"><h2 class="section-heading">RCall<a class="anchor" aria-label="anchor" href="#rcall"></a>
 </h2>
-<hr class="half-width"><p>A similar package exists for R with <code>RCall</code>. It even gives access to an R-REPL from within the Julia REPL, similar to package and shell mode.</p>
+<hr class="half-width"><p>A similar package exists for R with <code>RCall</code>. It even gives
+access to an R-REPL from within the Julia REPL, similar to package and
+shell mode.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -437,7 +456,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/instructor/07-ffi.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/07-ffi.html",
-  "dateCreated": "2022-10-11",
+  "dateCreated": "2022-11-08",
   "dateModified": "2022-06-03",
   "datePublished": "2022-11-08"
 }
