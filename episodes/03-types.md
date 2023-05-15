@@ -99,7 +99,7 @@ We can use `supertypes` to get the full inheritance chain of a type as a tuple
 of types.
 
 ```
-> supertypes(Int64
+> supertypes(Int64)
 (Int64, Signed, Integer, Real, Number, Any)
 ```
 
@@ -125,8 +125,8 @@ Float16(0.0)
 
 `BigFloat` is an arbitrary precision floating point number type.
 
-And signed and unsigned integer types for 8, 16, 32, 64, and 128 bits, for
-example:
+And there are signed and unsigned integer types for 8, 16, 32, 64, and 128 bits,
+for example:
 
 ```julia
 > Int8(32)
@@ -136,7 +136,7 @@ example:
 0x0000002a
 ```
 
-As for floating point numbers, there is an arbitrary precision integer type:
+As with floating point numbers, there is an arbitrary precision integer type:
 
 ```julia
 > supertypes(BigInt)
@@ -173,7 +173,7 @@ Complex(true, false)
 -1 * 0im
 ```
 
-Finally, Julia has a type for represent the exact values of irrational
+Finally, Julia has a type for representing the exact values of irrational
 constants:
 
 ```julia
@@ -344,8 +344,8 @@ Julia supports matrix operations with the usual operators:
  1
 ```
 
-Julia also supports a special syntax, the dot-operator, to element-wise apply
-functions to arrays:
+Julia also supports a special syntax, the dot-operator, to apply functions in an
+element-wise fasion to arrays:
 
 ```julia
 > [1, 4, 9, 16, 25] .> 7
@@ -457,8 +457,8 @@ Base.TwicePrecision{Float64}, Int64}
 
 ## Structs
 
-Structs are what allows us to define our own types in Julia. In our first
-example we will created a parameterized type for 2-dimensional points:
+Structs are what allow us to define our own types in Julia. In our first
+example, we will create a parameterized type for 2-dimensional points:
 
 ```julia
 > struct Point{X}

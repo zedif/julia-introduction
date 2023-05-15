@@ -24,7 +24,7 @@ is selected and executed.
 
 ## Methods
 
-In the case of Julia the method is chosen based on the number of arguments and
+In the case of Julia, the method is chosen based on the number of arguments and
 their types.
 
 This is used to provide implementations for specific argument types without
@@ -102,7 +102,7 @@ length (generic function with 3 methods)
 
 Multiple dispatch is similar to function overloading in languages like Java and
 C++. There the appropriate method (except for dispatch on the first argument) is
-determined at compile time based on the parameter types. In the case of Julia
+determined at compile time based on the parameter types. In the case of Julia,
 this happens at runtime and thus allows to add further methods to a generic
 functions in a running image of a Julia process.
 
@@ -129,7 +129,7 @@ with_optional (generic function with 2 methods)
 > with_optional(3)
 3
 
-> with_optional(1)
+> with_optional()
 1
 ```
 
@@ -205,7 +205,7 @@ Stacktrace:
 For short, one-off functions Julia implements anonymous functions:
 
 ```julia
-> map(x -> x + 1, [1, 2, ])
+> map(x -> x + 1, [1, 2, 3])
 3-element Vector{Int64}:
  2
  3
