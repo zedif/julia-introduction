@@ -156,12 +156,20 @@ true
 1
 ```
 
-There are types for complex and rational numbers that are parameterized on
-subtypes of `Real` and `Integer` respectively:
+There are types for rational and complex numbers. Rational numbers are
+parameterized on subtypes of `Integer` numbers and preserve their rational
+representation when doing arithmetic:
 
 ```julia
 > typeof(3//7)
 Rational{Int64}
+
+> 3//7 * 2//15
+2//35
+```
+
+Complex numbers a parameterized on subtypes of `Real` numbers, `im`
+representing the imaginary unit:
 
 > Complex{Bool}(1, 0)
 Complex(true, false)
