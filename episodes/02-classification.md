@@ -74,21 +74,60 @@ Julia is a compiled programming language. However, functions are compiled
 just-in-time for any given list argument types. For example, when we define a
 method, it does not get compiled.
 
+To illustrate this, let us look at the compiled functions using the Julia
+package `MethodAnalysis`.
+
+```julia
+julia> using MethodAnalysis
+ │ Package MethodAnalysis not found, but a package named MethodAnalysis is available from a registry. 
+ │ Install package?
+ │   (@v1.9) pkg> add MethodAnalysis 
+ └ (y/n/o) [y]: y
+   Resolving package versions...
+    Updating `~/.julia/environments/v1.9/Project.toml`
+  [85b6ec6f] + MethodAnalysis v0.4.13
+    Updating `~/.julia/environments/v1.9/Manifest.toml`
+  [1520ce14] + AbstractTrees v0.4.4
+  [85b6ec6f] + MethodAnalysis v0.4.13
+```
+
+Now let us define a function and call it with different paramater types and
+observe:
+
 ```julia
 > foo(x) = x
 foo (generic function with 1 method)
+> methodinstances(foo)
+Core.MethodInstance[]
 ```
 
-Only when we call it for the first time, this happens.
+Only when we call it for the first time, the fuction gets compiled, but only
+for this argument type:
 
 ```julia
 > foo(3)
 3
+
+> methodinstances(bar)
+1-element Vector{Core.MethodInstance}:
+ MethodInstance for bar(::Int64)
 ```
 
-And it only compiles the function for arguments of type `Int64`. We can look at
-the compilation results for different argument types using the function
-`code_native`:
+If we call it with an argument of a different type, the next instance will get
+compiled:
+
+```julia
+> bar(1.0)
+1.0
+
+> methodinstances(bar)
+2-element Vector{Core.MethodInstance}:
+ MethodInstance for bar(::Int64)
+ MethodInstance for bar(::Float64)
+```
+
+We can look at the compilation results for different argument types using the
+function `code_native`:
 
 ```julia
 julia> code_native(foo, (Int64,))
