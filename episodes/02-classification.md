@@ -20,9 +20,9 @@ In this episode we will place Julia within the world of programming languages.
 
 ## High-Level
 
-Julia is a high-level language, that is, it abstract away the details of the
-hardware that runs software written in the language. Other high-level languages
-are, for example, Java and Python.
+Julia is a high-level language, that is, the language abstracts away the details
+of the hardware that it runs on. Its abstaction level is comparable to languages
+like Java and Python.
 
 ## Dynamic
 
@@ -33,8 +33,8 @@ Even though it is dynamically typed by default, it does allow programmers to
 specify the type of a value, for example for method parameters or method return
 values. This is mainly necessary to make use of method dispatch based on argument
 types, a topic we will get to in a later episode. It also helps to ensure that
-no unintended uses of functions work. And, in some cases, it can [improve
-performance](https://docs.julialang.org/en/v1/manual/types/#Type-Declarations).
+functions only work for intended parameter types. In some cases, it can even
+[improve performance](https://docs.julialang.org/en/v1/manual/types/#Type-Declarations).
 
 We will give it a try and define two methods, one with and one without
 specifying the parameter type:

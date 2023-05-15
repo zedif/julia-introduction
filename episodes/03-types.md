@@ -54,8 +54,8 @@ typeof(typeof) (singleton type of function typeof, subtype of Function)
 
 We can see that the default type for integers as well as floats is the
 respective 64-bit version. We can also see that functions are types just like
-any other. This allows to write functional code, which is part of idiomatic
-Julia.
+any other. This allows to write functional code — that is to pass functions as
+arguments to other functions — which is part of idiomatic Julia.
 
 All types in Julia form a hierarchy with `Any` at the top. We can explore that
 hierarchy using the functions `supertype` and `supertypes`.
@@ -508,7 +508,9 @@ specified.
 We can also define further or alternate constructors; either as part of the
 struct definition, inner constructor, or separately, outer constructor.
 
-We will start with a separate, parameterless constructor for our `Point` struct:
+In the context of the `Point` struct, I makes sense to have separate constructor
+without parameters that creates a point at the origin. We can add this
+constructor like so:
 
 ```julia
 > Point() = Point(0, 0)

@@ -17,10 +17,11 @@ exercises: 0
 
 :::
 
-Julia’s functions deserve their own episodes. Julia implements generic
-functions. A generic function is implemented by zero or more methods. When a
-(generic) function is called, a method that best fits to the provided arguments
-is selected and executed.
+Julia implements generic functions. That is, functions in Julia are an entry
+point for zero, one, or mutliple implementations for different parameter
+types or type combinations. These implementations are called *methods*.
+When a (generic) function is called, the method that
+best fits to the provided arguments is selected and executed.
 
 ## Methods
 
