@@ -245,7 +245,19 @@ not one
 ## Function Composition
 
 Julia has an operator, `∘`, for function composition. You can write it in the
-Julia-REPL typing `\circ<tab>`. It is useful to create function arguments that
+Julia-REPL typing `\circ<tab>`. For instance, intead of using
+
+```julia
+sqrt(sum([1,2,3])
+```
+
+you can write
+
+```julia
+(sqrt ∘ sum)([1,2,3])
+```
+
+This is useful to create function arguments that
 are just compositions of other functions:
 
 ```julia
@@ -255,8 +267,7 @@ are just compositions of other functions:
  2.0
 ```
 
-An alternate method to `f(g(x))` for composition with a concrete value is the
-operator `|>`:
+An alternate method to evaluate function chains is the operator `|>`:
 
 ```julia
 > [2, 2] |> sum |> sqrt
