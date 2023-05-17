@@ -54,8 +54,8 @@ typeof(typeof) (singleton type of function typeof, subtype of Function)
 
 We can see that the default type for integers as well as floats is the
 respective 64-bit version. We can also see that functions are types just like
-any other. This allows to write functional code, which is part of idiomatic
-Julia.
+any other. This allows to write functional code—that is to pass functions as
+arguments to other functions—which is part of idiomatic Julia.
 
 All types in Julia form a hierarchy with `Any` at the top. We can explore that
 hierarchy using the functions `supertype` and `supertypes`.
@@ -99,7 +99,7 @@ We can use `supertypes` to get the full inheritance chain of a type as a tuple
 of types.
 
 ```
-> supertypes(Int64
+> supertypes(Int64)
 (Int64, Signed, Integer, Real, Number, Any)
 ```
 
@@ -125,8 +125,8 @@ Float16(0.0)
 
 `BigFloat` is an arbitrary precision floating point number type.
 
-And signed and unsigned integer types for 8, 16, 32, 64, and 128 bits, for
-example:
+And there are signed and unsigned integer types for 8, 16, 32, 64, and 128 bits,
+for example:
 
 ```julia
 > Int8(32)
@@ -136,7 +136,7 @@ example:
 0x0000002a
 ```
 
-As for floating point numbers, there is an arbitrary precision integer type:
+As with floating point numbers, there is an arbitrary precision integer type:
 
 ```julia
 > supertypes(BigInt)
@@ -156,12 +156,20 @@ true
 1
 ```
 
-There are types for complex and rational numbers that are parameterized on
-subtypes of `Real` and `Integer` respectively:
+There are types for rational and complex numbers. Rational numbers are
+parameterized on subtypes of `Integer` numbers and preserve their rational
+representation when doing arithmetic:
 
 ```julia
 > typeof(3//7)
 Rational{Int64}
+
+> 3//7 * 2//15
+2//35
+```
+
+Complex numbers a parameterized on subtypes of `Real` numbers, `im`
+representing the imaginary unit:
 
 > Complex{Bool}(1, 0)
 Complex(true, false)
@@ -173,7 +181,7 @@ Complex(true, false)
 -1 * 0im
 ```
 
-Finally, Julia has a type for represent the exact values of irrational
+Finally, Julia has a type for representing the exact values of irrational
 constants:
 
 ```julia
@@ -344,8 +352,8 @@ Julia supports matrix operations with the usual operators:
  1
 ```
 
-Julia also supports a special syntax, the dot-operator, to element-wise apply
-functions to arrays:
+Julia also supports a special syntax, the dot-operator, to apply functions in an
+element-wise fasion to arrays:
 
 ```julia
 > [1, 4, 9, 16, 25] .> 7
@@ -457,8 +465,8 @@ Base.TwicePrecision{Float64}, Int64}
 
 ## Structs
 
-Structs are what allows us to define our own types in Julia. In our first
-example we will created a parameterized type for 2-dimensional points:
+Structs allow us to define our own types in Julia. In our first
+example, we will create a parameterized type for -dimensional points:
 
 ```julia
 > struct Point{X}
@@ -508,7 +516,9 @@ specified.
 We can also define further or alternate constructors; either as part of the
 struct definition, inner constructor, or separately, outer constructor.
 
-We will start with a separate, parameterless constructor for our `Point` struct:
+In the context of the `Point` struct, it makes sense to have a separate constructor
+without parameters that creates a point at the origin. We can add this
+constructor like so:
 
 ```julia
 > Point() = Point(0, 0)

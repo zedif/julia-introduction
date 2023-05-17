@@ -17,14 +17,13 @@ exercises: 0
 
 :::
 
-Julia’s functions deserve their own episodes. Julia implements generic
-functions. A generic function is implemented by zero or more methods. When a
-(generic) function is called, a method that best fits to the provided arguments
-is selected and executed.
+Julia implements generic functions.
+Generic functions are collections of zero or more implementations of that function, called *methods*, that differ in parameter count and/or parameter type declarations.
+When a (generic) function is called, the method that best fits to the provided arguments is selected and executed.
 
 ## Methods
 
-In the case of Julia the method is chosen based on the number of arguments and
+In the case of Julia, the method is chosen based on the number of arguments and
 their types.
 
 This is used to provide implementations for specific argument types without
@@ -102,7 +101,7 @@ length (generic function with 3 methods)
 
 Multiple dispatch is similar to function overloading in languages like Java and
 C++. There the appropriate method (except for dispatch on the first argument) is
-determined at compile time based on the parameter types. In the case of Julia
+determined at compile time based on the parameter types. In the case of Julia,
 this happens at runtime and thus allows to add further methods to a generic
 functions in a running image of a Julia process.
 
@@ -123,13 +122,13 @@ annotated (generic function with 1 method)
 Julia also supports optional arguments:
 
 ```julia
-> with_optional(x = 1) = 1
+> with_optional(x = 1) = x
 with_optional (generic function with 2 methods)
 
 > with_optional(3)
 3
 
-> with_optional(1)
+> with_optional()
 1
 ```
 
@@ -205,7 +204,7 @@ Stacktrace:
 For short, one-off functions Julia implements anonymous functions:
 
 ```julia
-> map(x -> x + 1, [1, 2, ])
+> map(x -> x + 1, [1, 2, 3])
 3-element Vector{Int64}:
  2
  3
@@ -244,7 +243,19 @@ not one
 ## Function Composition
 
 Julia has an operator, `∘`, for function composition. You can write it in the
-Julia-REPL typing `\circ<tab>`. It is useful to create function arguments that
+Julia-REPL typing `\circ<tab>`. For instance, intead of using
+
+```julia
+sqrt(sum([1,2,3])
+```
+
+you can write
+
+```julia
+(sqrt ∘ sum)([1,2,3])
+```
+
+This is useful to create function arguments that
 are just compositions of other functions:
 
 ```julia
@@ -254,8 +265,7 @@ are just compositions of other functions:
  2.0
 ```
 
-An alternate method to `f(g(x))` for composition with a concrete value is the
-operator `|>`:
+An alternate syntax for function composition when working with a concrete value is the operator `|>`:
 
 ```julia
 > [2, 2] |> sum |> sqrt
