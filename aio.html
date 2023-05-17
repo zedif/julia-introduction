@@ -1933,7 +1933,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-07-ffi"><p>Content from <a href="07-ffi.html">Foreign Function Interface</a></p>
 <hr>
-<p> Last updated on 2022-06-03 | 
+<p> Last updated on 2023-05-17 | 
         
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/07-ffi.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1945,7 +1945,7 @@ We will have a look at the interfaces for C and Python.</p>
 <p>Before we continue, we return to the default environment in our Julia
 REPL:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; activate
-  Activating project at `~/.julia/environments/v1.7`</code></pre>
+  Activating project at `~/.julia/environments/v1.9`</code></pre>
 <section id="c-interface"><h2 class="section-heading">C Interface<a class="anchor" aria-label="anchor" href="#c-interface"></a>
 </h2>
 <hr class="half-width">
@@ -2000,15 +2000,14 @@ follows</p>
 <hr class="half-width">
 <p>To interface with python we can use the <code>PyCall</code> package.
 First, we need to install it to the current repository:</p>
-<pre class="shell"><code>(@v1.7) pkg&gt; add Pycall
-    Updating registry at `~/.julia/registries/General.toml`
-   Resolving package versions...
-    Updating `~/.julia/environments/v1.7/Project.toml`
+<pre class="shell"><code>(@v1.9) pkg&gt; add PyCall
+    Installed Preferences ----- v1.4.0
+     Updating `~/.julia/environments/v1.9/Project.toml`
   [438e738f] + PyCall v1.93.1
-    Updating `~/.julia/environments/v1.7/Manifest.toml`
-  [1914dd2f] + MacroTools v0.5.9
-  [438e738f] + PyCall v1.93.1</code></pre>
-<p>Then we can import any installed python library:</p>
+    Updating `~/.julia/environments/v1.9/Manifest.toml`
+  [8f4d0f93] + Conda v1.8.0
+  …</code></pre>
+<p>pThen we can import any installed python library:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
