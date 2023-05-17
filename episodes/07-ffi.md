@@ -12,7 +12,7 @@ Before we continue, we return to the default environment in our Julia REPL:
 
 ```shell
 (OurVectors) pkg> activate
-  Activating project at `~/.julia/environments/v1.7`
+  Activating project at `~/.julia/environments/v1.9`
 ```
 
 ## C Interface
@@ -68,17 +68,16 @@ To interface with python we can use the `PyCall` package. First, we need to
 install it to the current repository:
 
 ```shell
-(@v1.7) pkg> add Pycall
-    Updating registry at `~/.julia/registries/General.toml`
-   Resolving package versions...
-    Updating `~/.julia/environments/v1.7/Project.toml`
+(@v1.9) pkg> add PyCall
+    Installed Preferences ----- v1.4.0
+     Updating `~/.julia/environments/v1.9/Project.toml`
   [438e738f] + PyCall v1.93.1
-    Updating `~/.julia/environments/v1.7/Manifest.toml`
-  [1914dd2f] + MacroTools v0.5.9
-  [438e738f] + PyCall v1.93.1
+    Updating `~/.julia/environments/v1.9/Manifest.toml`
+  [8f4d0f93] + Conda v1.8.0
+  …
 ```
 
-Then we can import any installed python library:
+pThen we can import any installed python library:
 
 ```julia
 > using PyCall
