@@ -20,9 +20,9 @@ In this episode we will place Julia within the world of programming languages.
 
 ## High-Level
 
-Julia is a high-level language, that is, it abstract away the details of the
-hardware that runs software written in the language. Other high-level languages
-are, for example, Java and Python.
+Julia is a high-level language, that is, the language abstracts away the details
+of the hardware that it runs on. Its abstaction level is comparable to languages
+like Java and Python.
 
 ## Dynamic
 
@@ -31,10 +31,10 @@ distinguishes it from Java and C++.
 
 Even though it is dynamically typed by default, it does allow programmers to
 specify the type of a value, for example for method parameters or method return
-types. This is mainly necessary to make use of method dispatch based on argument
+values. This is mainly necessary to make use of method dispatch based on argument
 types, a topic we will get to in a later episode. It also helps to ensure that
-no unintended uses of functions work. And, in some cases, it can [improve
-performance](https://docs.julialang.org/en/v1/manual/types/#Type-Declarations).
+functions only work for intended parameter types. In some cases, it can even
+[improve performance](https://docs.julialang.org/en/v1/manual/types/#Type-Declarations).
 
 We will give it a try and define two methods, one with and one without
 specifying the parameter type:
@@ -74,21 +74,60 @@ Julia is a compiled programming language. However, functions are compiled
 just-in-time for any given list argument types. For example, when we define a
 method, it does not get compiled.
 
+To illustrate this, let us look at the compiled functions using the Julia
+package `MethodAnalysis`.
+
+```julia
+julia> using MethodAnalysis
+ │ Package MethodAnalysis not found, but a package named MethodAnalysis is available from a registry. 
+ │ Install package?
+ │   (@v1.9) pkg> add MethodAnalysis 
+ └ (y/n/o) [y]: y
+   Resolving package versions...
+    Updating `~/.julia/environments/v1.9/Project.toml`
+  [85b6ec6f] + MethodAnalysis v0.4.13
+    Updating `~/.julia/environments/v1.9/Manifest.toml`
+  [1520ce14] + AbstractTrees v0.4.4
+  [85b6ec6f] + MethodAnalysis v0.4.13
+```
+
+Now let us define a function and call it with different paramater types and
+observe:
+
 ```julia
 > foo(x) = x
 foo (generic function with 1 method)
+> methodinstances(foo)
+Core.MethodInstance[]
 ```
 
-Only when we call it for the first time, this happens.
+Only when we call it for the first time, the fuction gets compiled, but only
+for this argument type:
 
 ```julia
 > foo(3)
 3
+
+> methodinstances(foo)
+1-element Vector{Core.MethodInstance}:
+ MethodInstance for foo(::Int64)
 ```
 
-And it only compiles the function for arguments of type `Int64`. We can look at
-the compilation results for different argument types using the function
-`code_native`:
+If we call it with an argument of a different type, the next instance will get
+compiled:
+
+```julia
+> foo(1.0)
+1.0
+
+> methodinstances(foo)
+2-element Vector{Core.MethodInstance}:
+ MethodInstance for foo(::Int64)
+ MethodInstance for foo(::Float64)
+```
+
+We can look at the compilation results for different argument types using the
+function `code_native`:
 
 ```julia
 julia> code_native(foo, (Int64,))
