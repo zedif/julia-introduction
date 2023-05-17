@@ -1414,7 +1414,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-05-modules"><p>Content from <a href="05-modules.html">Modules</a></p>
 <hr>
-<p> Last updated on 2022-06-01 | 
+<p> Last updated on 2023-05-17 | 
         
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/05-modules.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1436,8 +1436,8 @@ an empty directory and add the following code:</p>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre>
 </div>
 <p>Unlike in Python, a file can contain multiple modules, so module name
-and file name do not have to fit in any way to one another.</p>
-<p>But, for examples sake, we will put the actual contents of our module
+and file name do not have to match.</p>
+<p>But, for this example, we will put the actual contents of our module
 in another file. We create an empty file <code>vectors.jl</code> in the
 same folder and include it using the <code>include</code> function in
 our module, so that <code>main.jl</code> will look as follows:</p>
@@ -1452,8 +1452,8 @@ our module, so that <code>main.jl</code> will look as follows:</p>
 </div>
 <p>When <code>main.jl</code> is loaded in any way all the code in
 <code>vectors.jl</code> will be evaluated in the scope of the
-<code>OurVectors</code> module. On could potentially split the code of a
-module into several files this way.</p>
+<code>OurVectors</code> module. Code of a module can be split into
+several files this way.</p>
 <p>Also note, that it is idiomatic to not indent the code in a module
 relative to the <code>module</code> statement. Module names are usually
 set in upper camel-case.</p>
@@ -1500,7 +1500,7 @@ because otherwise Julia would look for a package named
 <code>OurVectors</code> which it would not find. The <code>.</code>
 tells it to look for a module relative to the current one.</p>
 <p>We put the <code>export</code> keyword at the top of the module, so
-that is the first information an user of the module sees.</p>
+that it is the first information a user of the module sees.</p>
 <p>Running the example, we get</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1515,19 +1515,19 @@ that is the first information an user of the module sees.</p>
 </div>
 <p><code>Base</code> is a module provided by Julia and
 <code>Base.length</code> is the function that returns the element count
-of various container or iterator types. This conflicts with us using the
-exported <code>length</code> of our module. Instead we have to write</p>
+of various container and iterator types. This conflicts with us using
+the exported <code>length</code> of our module. We have to write</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(OurVectors.<span class="fu">length</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
-<p>which gets us</p>
+<p>to get</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">$</span> julia main.jl</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3.0</span></span></code></pre>
 </div>
 <p>Alternatively, we can import the function into the current module’s
 namespace:</p>
@@ -1553,33 +1553,31 @@ module:</p>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">vlength</span>([<span class="fl">3</span>]))</span></code></pre>
 </div>
 <p>All this shows that each module has its own namespace, but we can
-import names directly or with a new name from module one into
-another.</p>
+import names directly or with a new name from other modules.</p>
 <p>We can force users to always use our <code>length</code> prefixed by
 the module name <code>OurVectors</code> by not exporting it. It is still
 accessible, but it can no longer be imported by name or brought into
 another namespace via <code>using</code>.</p>
 <p>The difference between <code>using</code> and <code>import</code> is
-that, by default, <code>using</code> makes the module itself and all
-exported names available in the using module namespace, wheres
-<code>import</code> only makes the module available. Then
-<code>using</code> can be modified to only import specific names
-(including the module itself) and <code>import</code> can be modified to
-import additional names. In both cases the imported entities can be
-renamed using the keyword <code>as</code>.</p>
+that, by default, <code>using</code> make the module itself and all
+exported names available in the importing namespace, whereas
+<code>import</code> only makes the module available. From these
+defaults, <code>using</code> can be modified to only import specific
+names (including the module itself) and <code>import</code> can be
+modified to import additional names. In both cases the imported entities
+can be renamed using the keyword <code>as</code>.</p>
 <section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules<a class="anchor" aria-label="anchor" href="#bare-modules-and-standard-modules"></a>
 </h2>
 <hr class="half-width">
 <p>Whenever we create a module, the modules <code>Core</code> and
-<code>Base</code> are automatically contained as if imported with
-<code>using</code>. If a module is declared with the
+<code>Base</code> are automatically contained as if imported with the
+<code>using</code> keyword. If a module is declared with the
 <code>baremodule</code> keyword instead, they are not contained.</p>
 <p>In addition to <code>Core</code> and <code>Base</code> a Julia
-distribution comes with further standard modules that do not have to be
-installed explicitly; among them <code>Test</code>. In addition,
-<code>Base</code> has several submodules,
-e.g. <code>Base.Threads</code>.</p>
-<p><code>Main</code> is the top level module of the REPL.</p>
+distribution comes with further standard modules; among them
+<code>Test</code>. In addition, <code>Base</code> has several
+submodules, e.g. <code>Base.Threads</code>.</p>
+<p><code>Main</code> is the top level module of a Julia process.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -2075,7 +2073,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -2098,9 +2096,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/aio.html",
-  "dateCreated": "2022-11-08",
-  "dateModified": "2023-05-16",
-  "datePublished": "2023-05-16"
+  "dateCreated": "2023-05-17",
+  "dateModified": "2023-05-17",
+  "datePublished": "2023-05-17"
 }
 
   </script><script>
