@@ -54,8 +54,8 @@ typeof(typeof) (singleton type of function typeof, subtype of Function)
 
 We can see that the default type for integers as well as floats is the
 respective 64-bit version. We can also see that functions are types just like
-any other. This allows to write functional code — that is to pass functions as
-arguments to other functions — which is part of idiomatic Julia.
+any other. This allows to write functional code—that is to pass functions as
+arguments to other functions—which is part of idiomatic Julia.
 
 All types in Julia form a hierarchy with `Any` at the top. We can explore that
 hierarchy using the functions `supertype` and `supertypes`.
@@ -465,8 +465,8 @@ Base.TwicePrecision{Float64}, Int64}
 
 ## Structs
 
-Structs are what allow us to define our own types in Julia. In our first
-example, we will create a parameterized type for 2-dimensional points:
+Structs allow us to define our own types in Julia. In our first
+example, we will create a parameterized type for -dimensional points:
 
 ```julia
 > struct Point{X}
@@ -516,7 +516,7 @@ specified.
 We can also define further or alternate constructors; either as part of the
 struct definition, inner constructor, or separately, outer constructor.
 
-In the context of the `Point` struct, I makes sense to have separate constructor
+In the context of the `Point` struct, it makes sense to have a separate constructor
 without parameters that creates a point at the origin. We can add this
 constructor like so:
 

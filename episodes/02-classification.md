@@ -108,22 +108,22 @@ for this argument type:
 > foo(3)
 3
 
-> methodinstances(bar)
+> methodinstances(foo)
 1-element Vector{Core.MethodInstance}:
- MethodInstance for bar(::Int64)
+ MethodInstance for foo(::Int64)
 ```
 
 If we call it with an argument of a different type, the next instance will get
 compiled:
 
 ```julia
-> bar(1.0)
+> foo(1.0)
 1.0
 
-> methodinstances(bar)
+> methodinstances(foo)
 2-element Vector{Core.MethodInstance}:
- MethodInstance for bar(::Int64)
- MethodInstance for bar(::Float64)
+ MethodInstance for foo(::Int64)
+ MethodInstance for foo(::Float64)
 ```
 
 We can look at the compilation results for different argument types using the

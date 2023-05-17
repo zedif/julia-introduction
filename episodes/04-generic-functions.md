@@ -17,11 +17,9 @@ exercises: 0
 
 :::
 
-Julia implements generic functions. That is, functions in Julia are an entry
-point for zero, one, or mutliple implementations for different parameter
-types or type combinations. These implementations are called *methods*.
-When a (generic) function is called, the method that
-best fits to the provided arguments is selected and executed.
+Julia implements generic functions.
+Generic functions are collections of zero or more implementations of that function, called *methods*, that differ in parameter count and/or parameter type declarations.
+When a (generic) function is called, the method that best fits to the provided arguments is selected and executed.
 
 ## Methods
 
@@ -124,7 +122,7 @@ annotated (generic function with 1 method)
 Julia also supports optional arguments:
 
 ```julia
-> with_optional(x = 1) = 1
+> with_optional(x = 1) = x
 with_optional (generic function with 2 methods)
 
 > with_optional(3)
@@ -267,7 +265,7 @@ are just compositions of other functions:
  2.0
 ```
 
-An alternate method to evaluate function chains is the operator `|>`:
+An alternate syntax for function composition when working with a concrete value is the operator `|>`:
 
 ```julia
 > [2, 2] |> sum |> sqrt
