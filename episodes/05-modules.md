@@ -20,13 +20,10 @@ module OurVectors
 end
 ```
 
-Unlike in Python, a file can contain multiple modules, so module name and file
-name do not have to fit in any way to one another.
+Unlike in Python, a file can contain multiple modules, so module name and file name do not have to match.
 
-But, for examples sake, we will put the actual contents of our module in another
-file. We create an empty file `vectors.jl` in the same folder and include it
-using the `include` function in our module, so that `main.jl` will look as
-follows:
+But, for this example, we will put the actual contents of our module in another file.
+We create an empty file `vectors.jl` in the same folder and include it using the `include` function in our module, so that `main.jl` will look as follows:
 
 ```julia
 module OurVectors
@@ -36,9 +33,8 @@ include("vectors.jl")
 end
 ```
 
-When `main.jl` is loaded in any way all the code in `vectors.jl` will be
-evaluated in the scope of the `OurVectors` module. On could potentially split
-the code of a module into several files this way.
+When `main.jl` is loaded in any way all the code in `vectors.jl` will be evaluated in the scope of the `OurVectors` module.
+Code of a module can be split into several files this way.
 
 Also note, that it is idiomatic to not indent the code in a module relative to
 the `module` statement. Module names are usually set in upper camel-case.
@@ -84,8 +80,7 @@ We need to add the `.` in front of the module name, because otherwise Julia
 would look for a package named `OurVectors` which it would not find. The `.`
 tells it to look for a module relative to the current one.
 
-We put the `export` keyword at the top of the module, so that is the first
-information an user of the module sees.
+We put the `export` keyword at the top of the module, so that it is the first information a user of the module sees.
 
 Running the example, we get
 
@@ -99,19 +94,19 @@ Stacktrace:
 in expression starting at /home/user/project/main.jl:11
 ```
 
-`Base` is a module provided by Julia and `Base.length` is the function that
-returns the element count of various container or iterator types. This conflicts
-with us using the exported `length` of our module. Instead we have to write
+`Base` is a module provided by Julia and `Base.length` is the function that returns the element count of various container and iterator types.
+This conflicts with us using the exported `length` of our module.
+We have to write
 
 ```julia
 println(OurVectors.length([3]))
 ```
 
-which gets us
+to get
 
 ```julia
 $ julia main.jl
-3
+3.0
 ```
 
 Alternatively, we can import the function into the current module’s namespace:
@@ -135,28 +130,22 @@ import .OurVectors: length as vlength
 println(vlength([3]))
 ```
 
-All this shows that each module has its own namespace, but we can import names
-directly or with a new name from module one into another.
+All this shows that each module has its own namespace, but we can import names directly or with a new name from other modules.
 
 We can force users to always use our `length` prefixed by the module name
 `OurVectors` by not exporting it. It is still accessible, but it can no longer
 be imported by name or brought into another namespace via `using`.
 
-The difference between `using` and `import` is that, by default, `using` makes
-the module itself and all exported names available in the using module
-namespace, wheres `import` only makes the module available. Then `using` can be
-modified to only import specific names (including the module itself) and
-`import` can be modified to import additional names. In both cases the imported
-entities can be renamed using the keyword `as`.
+The difference between `using` and `import` is that, by default, `using` make the module itself and all exported names available in the importing namespace, whereas `import` only makes the module available.
+From these defaults, `using` can be modified to only import specific names (including the module itself) and `import` can be modified to import additional names.
+In both cases the imported entities can be renamed using the keyword `as`.
 
 ## Bare modules and standard modules
 
-Whenever we create a module, the modules `Core` and `Base` are automatically
-contained as if imported with `using`. If a module is declared with the
-`baremodule` keyword instead, they are not contained.
+Whenever we create a module, the modules `Core` and `Base` are automatically contained as if imported with the `using` keyword.
+If a module is declared with the `baremodule` keyword instead, they are not contained.
 
-In addition to `Core` and `Base` a Julia distribution comes with further
-standard modules that do not have to be installed explicitly; among them `Test`.
+In addition to `Core` and `Base` a Julia distribution comes with further standard modules; among them `Test`.
 In addition, `Base` has several submodules, e.g. `Base.Threads`.
 
-`Main` is the top level module of the REPL.
+`Main` is the top level module of a Julia process.
