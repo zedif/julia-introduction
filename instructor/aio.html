@@ -365,12 +365,12 @@ the instructors will write code in a Julia REPL so that you can see it.
 They will write slowly and will explain everything that they type, so
 that everytone can code along while understanding what they are
 doing.</p>
-<div id="callout1" class="callout callout">
+<div id="repl" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="repl" class="callout-inner">
-<h3 class="callout-title">REPL<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">REPL<a class="anchor" aria-label="anchor" href="#repl"></a>
 </h3>
 <div class="callout-content">
 <p>REPL is an acronym for Read-Eval-Print-Loop. A REPL reads a string
@@ -572,12 +572,12 @@ any links that you are not going to use.
 role. We need to specify them to make use of the method dispatch
 feature, where one of Julia’s distinguishing features is that it offers
 multiple dispatch. We also need it to write high performance code.</p>
-<div id="callout1" class="callout callout">
+<div id="method-dispatch-primer" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="method-dispatch-primer" class="callout-inner">
-<h3 class="callout-title">Method Dispatch Primer<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Method Dispatch Primer<a class="anchor" aria-label="anchor" href="#method-dispatch-primer"></a>
 </h3>
 <div class="callout-content">
 <p>Method dispatch is the process of choosing which method of a function
@@ -744,12 +744,12 @@ irrational constants:</p>
 </div>
 <pre><code>&gt; typeof("Hello"[3])
 Char</code></pre>
-<div id="challenge1" class="callout challenge">
+<div id="indexing-in-julia" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="indexing-in-julia" class="callout-inner">
-<h3 class="callout-title">Indexing in Julia<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Indexing in Julia<a class="anchor" aria-label="anchor" href="#indexing-in-julia"></a>
 </h3>
 <div class="callout-content">
 <p>What does the following expression evaluate to:</p>
@@ -764,7 +764,7 @@ Char</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In Julia indexing starts with 1 instead of the more common 0. So, for
 example, to get the second element of an array, one would use the index
@@ -1176,12 +1176,12 @@ function <code>+</code>:</p>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>[<span class="fl">3</span>] <span class="fu">+</span>(c<span class="op">::</span><span class="dt">Union{Int16, Int32, Int64, Int8}</span>, x<span class="op">::</span><span class="dt">BigInt</span>) <span class="kw">in</span> <span class="bu">Base</span>.GMP at gmp.jl<span class="op">:</span><span class="fl">535</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">…</span></span></code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="generic-methods-on-steroids" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="generic-methods-on-steroids" class="callout-inner">
-<h3 class="callout-title">Generic Methods on Steroids<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Generic Methods on Steroids<a class="anchor" aria-label="anchor" href="#generic-methods-on-steroids"></a>
 </h3>
 <div class="callout-content">
 <p>For an example of a very complex generic function system you can have
@@ -1605,12 +1605,12 @@ are the distribution units of packages.</p>
 switch to package mode. The prompt changes from <code>julia&gt;</code>
 to <code>(@v1.9) pkg&gt;</code>. We can exit package mode by pressing
 <code>C-c</code>.</p>
-<div id="callout1" class="callout callout">
+<div id="pkg.jl" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="pkg.jl" class="callout-inner">
-<h3 class="callout-title">Pkg.jl<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Pkg.jl<a class="anchor" aria-label="anchor" href="#pkg.jl"></a>
 </h3>
 <div class="callout-content">
 <p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a>
@@ -2026,12 +2026,12 @@ First, we need to install it to the current repository:</p>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime.MAXYEAR</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fl">9999</span></span></code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="python-environments" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="python-environments" class="callout-inner">
-<h3 class="callout-title">Python Environments<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Python Environments<a class="anchor" aria-label="anchor" href="#python-environments"></a>
 </h3>
 <div class="callout-content">
 <p>We can control the version of Python that is used by Julia with the
@@ -2094,7 +2094,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -2118,8 +2118,8 @@ any links that you are not going to use.
   "url": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "dateCreated": "2023-05-17",
-  "dateModified": "2023-05-17",
-  "datePublished": "2023-05-17"
+  "dateModified": "2023-05-23",
+  "datePublished": "2023-05-23"
 }
 
   </script><script>
