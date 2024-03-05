@@ -304,11 +304,11 @@ REPL:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ccall</span>(<span class="op">:</span>getenv, <span class="dt">Cstring</span>, (<span class="dt">Cstring</span>,), <span class="st">"LANG"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">unsafe_string</span>(<span class="kw">ans</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">"en_US.UTF-8"</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ccall</span>(<span class="op">:</span>getenv, <span class="dt">Cstring</span>, (<span class="dt">Cstring</span>,), <span class="st">"LANG"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">unsafe_string</span>(<span class="kw">ans</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="st">"en_US.UTF-8"</span></span></code></pre>
 </div>
 <p><code>ccall</code> takes the function name, followed by the return
 type, a tuple of argument types, and finally the arguments themselves.
@@ -318,8 +318,8 @@ We can see, that there are special types defined to interface with
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="fu">getenv</span>(<span class="st">"LANG"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CString</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="fu">getenv</span>(<span class="st">"LANG"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">CString</span>(<span class="bn">0x00007ffe2e3eddd9</span>)</span></code></pre>
 </div>
 <p>The type annotations are found at the arguments and after the
 argument list for the return type, maybe making the intent a little
@@ -329,11 +329,11 @@ function found on the path:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ccall</span>((<span class="op">:</span>g_basename, <span class="st">"libglib-2.0"</span>), <span class="dt">Cstring</span>, (<span class="dt">Cstring</span>,), <span class="st">"/usr/bin/bash"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f7173d0a681</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">unsafe_string</span>(<span class="kw">ans</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">"bash"</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ccall</span>((<span class="op">:</span>g_basename, <span class="st">"libglib-2.0"</span>), <span class="dt">Cstring</span>, (<span class="dt">Cstring</span>,), <span class="st">"/usr/bin/bash"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f7173d0a681</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">unsafe_string</span>(<span class="kw">ans</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="st">"bash"</span></span></code></pre>
 </div>
 <p>Julia will automatically try to load <code>libglib-2.0</code> in this
 case.</p>
@@ -342,8 +342,8 @@ follows</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.<span class="fu">g_basename</span>(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.<span class="fu">g_basename</span>(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
 </div>
 </section><section id="pycall"><h2 class="section-heading">PyCall<a class="anchor" aria-label="anchor" href="#pycall"></a>
 </h2>
@@ -360,21 +360,20 @@ First, we need to install it to the current repository:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="im">using</span> <span class="bu">PyCall</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime <span class="op">=</span> <span class="fu">pyimport</span>(<span class="st">"datetime"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>PyObject <span class="op">&lt;</span><span class="kw">module</span> <span class="ch">'datetime'</span> from <span class="ch">'/usr/lib/python3.10/datetime.py'</span><span class="op">&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> datetime.MAXYEAR</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fl">9999</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="im">using</span> <span class="bu">PyCall</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="op">&gt;</span> datetime <span class="op">=</span> <span class="fu">pyimport</span>(<span class="st">"datetime"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>PyObject <span class="op">&lt;</span><span class="kw">module</span> <span class="ch">'datetime'</span> from <span class="ch">'/usr/lib/python3.10/datetime.py'</span><span class="op">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="op">&gt;</span> datetime.MAXYEAR</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fl">9999</span></span></code></pre>
 </div>
-<div id="python-environments" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="python-environments" class="callout-inner">
-<h3 class="callout-title">Python Environments<a class="anchor" aria-label="anchor" href="#python-environments"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="python-environments">Python Environments<a class="anchor" aria-label="anchor" href="#python-environments"></a></h3>
 <div class="callout-content">
 <p>We can control the version of Python that is used by Julia with the
 environment variable <code>PYTHON</code> in the Julia process.</p>
@@ -389,17 +388,17 @@ Python version and installed packages.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> py<span class="st">"[x for x in [1, 2, 3] if x % 2 == 1]"</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">3</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> py<span class="st">"""</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">import datetime</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">print(datetime.datetime.now())</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fl">2022</span><span class="op">-</span><span class="fl">06</span><span class="op">-</span><span class="fl">03</span> <span class="fl">14</span><span class="op">:</span><span class="fl">38</span><span class="op">:</span><span class="fl">05.903444</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="op">&gt;</span> py<span class="st">"[x for x in [1, 2, 3] if x % 2 == 1]"</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a> <span class="fl">1</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a> <span class="fl">3</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="op">&gt;</span> py<span class="st">"""</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="st">import datetime</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="st">print(datetime.datetime.now())</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="fl">2022</span><span class="op">-</span><span class="fl">06</span><span class="op">-</span><span class="fl">03</span> <span class="fl">14</span><span class="op">:</span><span class="fl">38</span><span class="op">:</span><span class="fl">05.903444</span></span></code></pre>
 </div>
 </section><section id="rcall"><h2 class="section-heading">RCall<a class="anchor" aria-label="anchor" href="#rcall"></a>
 </h2>
@@ -469,7 +468,7 @@ any links that you are not going to use.
   "identifier": "https://zedif.github.io/julia-introduction/instructor/07-ffi.html",
   "dateCreated": "2023-05-17",
   "dateModified": "2023-05-17",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

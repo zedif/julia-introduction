@@ -320,13 +320,12 @@
 role. We need to specify them to make use of the method dispatch
 feature, where one of Julia’s distinguishing features is that it offers
 multiple dispatch. We also need it to write high performance code.</p>
-<div id="method-dispatch-primer" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="method-dispatch-primer" class="callout-inner">
-<h3 class="callout-title">Method Dispatch Primer<a class="anchor" aria-label="anchor" href="#method-dispatch-primer"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="method-dispatch-primer">Method Dispatch Primer<a class="anchor" aria-label="anchor" href="#method-dispatch-primer"></a></h3>
 <div class="callout-content">
 <p>Method dispatch is the process of choosing which method of a function
 (more on that in a later episode) to execute based on the argument count
@@ -344,14 +343,14 @@ using the function <code>typeof</code>.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">2.0</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Float64</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(typeof)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(typeof) (singleton <span class="kw">type</span> of <span class="kw">function</span> typeof, subtype of <span class="dt">Function</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="dt">Int64</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">2.0</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="dt">Float64</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(typeof)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">typeof</span>(typeof) (singleton <span class="kw">type</span> of <span class="kw">function</span> typeof, subtype of <span class="dt">Function</span>)</span></code></pre>
 </div>
 <p>We can see that the default type for integers as well as floats is
 the respective 64-bit version. We can also see that functions are types
@@ -365,8 +364,8 @@ and <code>supertypes</code>.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="dt">Int64</span></span></code></pre>
 </div>
 <p>The Julia REPL offers a special variable, <code>ans</code>, that
 always holds the result of the previous evaluation. We use it with
@@ -403,17 +402,17 @@ of a type as a tuple of types.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float16</span>(<span class="fl">1.0</span>) <span class="co"># This might be broken</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Float16</span>(<span class="fl">0.0</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float32</span>(<span class="fl">1.0</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0f0</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float64</span>(<span class="fl">1.0</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">BigFloat</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigFloat</span>, <span class="dt">AbstractFloat</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float16</span>(<span class="fl">1.0</span>) <span class="co"># This might be broken</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">Float16</span>(<span class="fl">0.0</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float32</span>(<span class="fl">1.0</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fl">1.0f0</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Float64</span>(<span class="fl">1.0</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="fl">1.0</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">BigFloat</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>(<span class="dt">BigFloat</span>, <span class="dt">AbstractFloat</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span></code></pre>
 </div>
 <p><code>BigFloat</code> is an arbitrary precision floating point number
 type.</p>
@@ -422,32 +421,32 @@ bits, for example:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Int8</span>(<span class="fl">32</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fl">32</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">UInt32</span>(<span class="fl">42</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bn">0x0000002a</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Int8</span>(<span class="fl">32</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fl">32</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">UInt32</span>(<span class="fl">42</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="bn">0x0000002a</span></span></code></pre>
 </div>
 <p>As for floating point numbers, there is an arbitrary precision
 integer type:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">BigInt</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">BigInt</span>, <span class="dt">Signed</span>, <span class="dt">Integer</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">BigInt</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>(<span class="dt">BigInt</span>, <span class="dt">Signed</span>, <span class="dt">Integer</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span></code></pre>
 </div>
 <p>Bool is a number type in Julia:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">Bool</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Bool</span>, <span class="dt">Integer</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="cn">false</span> <span class="op">==</span> <span class="fl">0</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cn">true</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">0</span> <span class="op">+</span> <span class="cn">true</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">supertypes</span>(<span class="dt">Bool</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>(<span class="dt">Bool</span>, <span class="dt">Integer</span>, <span class="dt">Real</span>, <span class="dt">Number</span>, <span class="dt">Any</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="cn">false</span> <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="cn">true</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">0</span> <span class="op">+</span> <span class="cn">true</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
 <p>There are types for complex and rational numbers that are
 parameterized on subtypes of <code>Real</code> and <code>Integer</code>
@@ -455,28 +454,28 @@ respectively:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Rational</span>{<span class="dt">Int64</span>}</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Complex</span><span class="dt">{Bool}</span>(<span class="fl">1</span>, <span class="fl">0</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Complex</span>(<span class="cn">true</span>, <span class="cn">false</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Complex</span>(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span>, <span class="op">-</span><span class="fl">1</span><span class="op">//</span><span class="fl">5</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">//</span><span class="fl">7</span> <span class="op">-</span> <span class="fl">1</span><span class="op">//</span><span class="fl">5</span><span class="op">*</span><span class="cn">im</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="cn">im</span><span class="op">*</span><span class="cn">im</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span> <span class="op">*</span> <span class="fl">0im</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="dt">Rational</span>{<span class="dt">Int64</span>}</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Complex</span><span class="dt">{Bool}</span>(<span class="fl">1</span>, <span class="fl">0</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="fu">Complex</span>(<span class="cn">true</span>, <span class="cn">false</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Complex</span>(<span class="fl">3</span><span class="op">//</span><span class="fl">7</span>, <span class="op">-</span><span class="fl">1</span><span class="op">//</span><span class="fl">5</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="fl">3</span><span class="op">//</span><span class="fl">7</span> <span class="op">-</span> <span class="fl">1</span><span class="op">//</span><span class="fl">5</span><span class="op">*</span><span class="cn">im</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="op">&gt;</span> <span class="cn">im</span><span class="op">*</span><span class="cn">im</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span> <span class="op">*</span> <span class="fl">0im</span></span></code></pre>
 </div>
 <p>Finally, Julia has a type for represent the exact values of
 irrational constants:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="cn">π</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span><span class="cn">π</span>}</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="cn">pi</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span><span class="cn">π</span>}</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="cn">π</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span><span class="cn">π</span>}</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="cn">pi</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span><span class="cn">π</span>}</span></code></pre>
 </div>
 </section><section id="strings"><h2 class="section-heading">Strings<a class="anchor" aria-label="anchor" href="#strings"></a>
 </h2>
@@ -484,8 +483,8 @@ irrational constants:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="st">"Hello"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="st">"Hello"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="dt">String</span></span></code></pre>
 </div>
 <pre><code>&gt; typeof("Hello"[3])
 Char</code></pre>
@@ -515,8 +514,8 @@ example, to get the second element of an array, one would use the index
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>][<span class="fl">2</span>]</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>][<span class="fl">2</span>]</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fl">3</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -531,52 +530,52 @@ Python:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>, <span class="st">"a"</span>))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span>, <span class="dt">String</span>}</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>,))</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span>}</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>, <span class="st">"a"</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span>, <span class="dt">String</span>}</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>))</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="dt">Int64</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>((<span class="fl">1</span>,))</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="dt">Tuple</span>{<span class="dt">Int64</span>}</span></code></pre>
 </div>
 <p>We can use tuples to return multiple values from a function:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>() <span class="op">=</span> (<span class="fl">1</span>, <span class="fl">2</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>t1 (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>()</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span>, <span class="fl">2</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>() <span class="op">=</span> (<span class="fl">1</span>, <span class="fl">2</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>t1 (generic <span class="kw">function</span> with <span class="fl">1</span> method)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>()</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>(<span class="fl">1</span>, <span class="fl">2</span>)</span></code></pre>
 </div>
 <p>The elements of tuples can be accessed through decomposition and
 indexing:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a, b <span class="op">=</span> <span class="fu">t1</span>()</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>()[<span class="fl">1</span>]</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="op">&gt;</span> a, b <span class="op">=</span> <span class="fu">t1</span>()</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="op">&gt;</span> a</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="fl">1</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">t1</span>()[<span class="fl">1</span>]</span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
 <p>In addition to plain tuples, there are named tuples, where every
 element has its own name:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v <span class="op">=</span> (x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>(x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v[<span class="fl">2</span>]</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> v.y</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="op">&gt;</span> v <span class="op">=</span> (x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>(x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="op">&gt;</span> v[<span class="fl">2</span>]</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="op">&gt;</span> v.y</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span></code></pre>
 </div>
 </section><section id="arrays"><h2 class="section-heading">Arrays<a class="anchor" aria-label="anchor" href="#arrays"></a>
 </h2>
@@ -587,27 +586,27 @@ defining traits of the Julia programming language.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">zeros</span>(<span class="dt">Int8</span>, ()))</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0</span><span class="op">-</span>dimensional <span class="dt">Array</span>{<span class="dt">Int8</span>, <span class="fl">0</span>}<span class="op">:</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">zeros</span>(<span class="dt">Int8</span>, ()))</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fl">0</span><span class="op">-</span>dimensional <span class="dt">Array</span>{<span class="dt">Int8</span>, <span class="fl">0</span>}<span class="op">:</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a> <span class="fl">0</span></span></code></pre>
 </div>
 <p>1-dimensional arrays are called vectors:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ones</span>(<span class="dt">Int8</span>, (<span class="fl">2</span>))</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int8</span>}<span class="op">:</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">ones</span>(<span class="dt">Int8</span>, (<span class="fl">2</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int8</span>}<span class="op">:</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a> <span class="fl">1</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a> <span class="fl">1</span></span></code></pre>
 </div>
 <p>2-dimensional arrays are called matrices:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">zeros</span>(<span class="dt">Int8</span>, (<span class="fl">2</span>, <span class="fl">2</span>))</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int8</span>}<span class="op">:</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">0</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">0</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">zeros</span>(<span class="dt">Int8</span>, (<span class="fl">2</span>, <span class="fl">2</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fl">2</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int8</span>}<span class="op">:</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">0</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">0</span></span></code></pre>
 </div>
 <p>And any higher dimensional arrays are just called arrays:</p>
 <pre><code>&gt; zeros(Int8, (2, 2, 2))
@@ -625,66 +624,66 @@ defining traits of the Julia programming language.</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> A <span class="op">=</span> [[<span class="fl">0</span>, <span class="fl">1</span>] [<span class="fl">1</span>, <span class="fl">0</span>]]</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">1</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span>  <span class="fl">0</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> b <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>]</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> A <span class="op">*</span> b</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="op">&gt;</span> A <span class="op">=</span> [[<span class="fl">0</span>, <span class="fl">1</span>] [<span class="fl">1</span>, <span class="fl">0</span>]]</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fl">2</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">1</span></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a> <span class="fl">1</span>  <span class="fl">0</span></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a><span class="op">&gt;</span> b <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>]</span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a> <span class="fl">1</span></span>
+<span id="cb23-9"><a href="#cb23-9" tabindex="-1"></a> <span class="fl">2</span></span>
+<span id="cb23-10"><a href="#cb23-10" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" tabindex="-1"></a><span class="op">&gt;</span> A <span class="op">*</span> b</span>
+<span id="cb23-12"><a href="#cb23-12" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb23-13"><a href="#cb23-13" tabindex="-1"></a> <span class="fl">2</span></span>
+<span id="cb23-14"><a href="#cb23-14" tabindex="-1"></a> <span class="fl">1</span></span></code></pre>
 </div>
 <p>Julia also supports a special syntax, the dot-operator, to
 element-wise apply functions to arrays:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">25</span>] <span class="op">.&gt;</span> <span class="fl">7</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fl">5</span><span class="op">-</span>element <span class="dt">BitVector</span><span class="op">:</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a> <span class="fl">0</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">sqrt</span>.([<span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">25</span>])</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fl">5</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a> <span class="fl">1.0</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a> <span class="fl">2.0</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a> <span class="fl">3.0</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a> <span class="fl">4.0</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a> <span class="fl">5.0</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">25</span>] <span class="op">.&gt;</span> <span class="fl">7</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fl">5</span><span class="op">-</span>element <span class="dt">BitVector</span><span class="op">:</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a> <span class="fl">0</span></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a> <span class="fl">0</span></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a> <span class="fl">1</span></span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a> <span class="fl">1</span></span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a> <span class="fl">1</span></span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">sqrt</span>.([<span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">25</span>])</span>
+<span id="cb24-10"><a href="#cb24-10" tabindex="-1"></a><span class="fl">5</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
+<span id="cb24-11"><a href="#cb24-11" tabindex="-1"></a> <span class="fl">1.0</span></span>
+<span id="cb24-12"><a href="#cb24-12" tabindex="-1"></a> <span class="fl">2.0</span></span>
+<span id="cb24-13"><a href="#cb24-13" tabindex="-1"></a> <span class="fl">3.0</span></span>
+<span id="cb24-14"><a href="#cb24-14" tabindex="-1"></a> <span class="fl">4.0</span></span>
+<span id="cb24-15"><a href="#cb24-15" tabindex="-1"></a> <span class="fl">5.0</span></span></code></pre>
 </div>
 <p>With the <code>@.</code> we can make every function call in an
 expression be applied element-wise:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> @. [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">+</span> [<span class="fl">1</span> <span class="fl">1</span>]</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span>  <span class="fl">2</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">+</span> [<span class="fl">1</span> <span class="fl">1</span>]</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="fu">DimensionMismatch</span>(<span class="st">"matrix A has dimensions (1,2), matrix B has dimensions (1,2)"</span>)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">_generic_matmatmul!</span>(C<span class="op">::</span><span class="dt">Matrix{Int64}</span>, tA<span class="op">::</span><span class="dt">Char</span>, tB<span class="op">::</span><span class="dt">Char</span>, A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>, _add<span class="op">::</span><span class="dt">LinearAlgebra.MulAddMul{true, true, Bool, Bool}</span>)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">810</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] <span class="fu">generic_matmatmul!</span>(C<span class="op">::</span><span class="dt">Matrix{Int64}</span>, tA<span class="op">::</span><span class="dt">Char</span>, tB<span class="op">::</span><span class="dt">Char</span>, A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>, _add<span class="op">::</span><span class="dt">LinearAlgebra.MulAddMul{true, true, Bool, Bool}</span>)</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">798</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a> [<span class="fl">3</span>] mul!</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>   @ <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">302</span> [inlined]</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a> [<span class="fl">4</span>] mul!</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>   @ <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">275</span> [inlined]</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a> [<span class="fl">5</span>] <span class="fu">*</span>(A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>)</span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">153</span></span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a> [<span class="fl">6</span>] top<span class="op">-</span>level scope</span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="op">&gt;</span> @. [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">+</span> [<span class="fl">1</span> <span class="fl">1</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="fl">1</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a> <span class="fl">2</span>  <span class="fl">2</span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">*</span> [<span class="fl">1</span> <span class="fl">1</span>] <span class="op">+</span> [<span class="fl">1</span> <span class="fl">1</span>]</span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="fu">DimensionMismatch</span>(<span class="st">"matrix A has dimensions (1,2), matrix B has dimensions (1,2)"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">_generic_matmatmul!</span>(C<span class="op">::</span><span class="dt">Matrix{Int64}</span>, tA<span class="op">::</span><span class="dt">Char</span>, tB<span class="op">::</span><span class="dt">Char</span>, A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>, _add<span class="op">::</span><span class="dt">LinearAlgebra.MulAddMul{true, true, Bool, Bool}</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">810</span></span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a> [<span class="fl">2</span>] <span class="fu">generic_matmatmul!</span>(C<span class="op">::</span><span class="dt">Matrix{Int64}</span>, tA<span class="op">::</span><span class="dt">Char</span>, tB<span class="op">::</span><span class="dt">Char</span>, A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>, _add<span class="op">::</span><span class="dt">LinearAlgebra.MulAddMul{true, true, Bool, Bool}</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">798</span></span>
+<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a> [<span class="fl">3</span>] mul!</span>
+<span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a>   @ <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">302</span> [inlined]</span>
+<span id="cb25-14"><a href="#cb25-14" tabindex="-1"></a> [<span class="fl">4</span>] mul!</span>
+<span id="cb25-15"><a href="#cb25-15" tabindex="-1"></a>   @ <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">275</span> [inlined]</span>
+<span id="cb25-16"><a href="#cb25-16" tabindex="-1"></a> [<span class="fl">5</span>] <span class="fu">*</span>(A<span class="op">::</span><span class="dt">Matrix{Int64}</span>, B<span class="op">::</span><span class="dt">Matrix{Int64}</span>)</span>
+<span id="cb25-17"><a href="#cb25-17" tabindex="-1"></a>   @ <span class="bu">LinearAlgebra</span> <span class="op">/</span>usr<span class="op">/</span>share<span class="op">/</span>julia<span class="op">/</span>stdlib<span class="op">/</span>v1<span class="fl">.7</span><span class="op">/</span><span class="bu">LinearAlgebra</span><span class="op">/</span>src<span class="op">/</span>matmul.jl<span class="op">:</span><span class="fl">153</span></span>
+<span id="cb25-18"><a href="#cb25-18" tabindex="-1"></a> [<span class="fl">6</span>] top<span class="op">-</span>level scope</span>
+<span id="cb25-19"><a href="#cb25-19" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">2</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -694,8 +693,8 @@ container types) using the function <code>eltype</code>:</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">eltype</span>([<span class="fl">1</span>, <span class="fl">2</span>])</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">eltype</span>([<span class="fl">1</span>, <span class="fl">2</span>])</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="dt">Int64</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -705,53 +704,53 @@ already saw one of them. Another are ranges:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="kw">ans</span>)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="dt">UnitRange</span>{<span class="dt">Int64</span>}</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">eltype</span>(<span class="kw">ans</span>)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Int64</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> (<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)[<span class="fl">9</span>]</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="fl">9</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="fl">10</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1</span></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="fl">3</span></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="fl">5</span></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fl">6</span></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="fl">7</span></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>  <span class="fl">8</span></span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="fl">9</span></span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a> <span class="fl">10</span></span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">:</span><span class="fl">10</span>)</span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="fl">4</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1</span></span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4</span></span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>  <span class="fl">7</span></span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a> <span class="fl">10</span></span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">:</span><span class="fl">10</span>)</span>
-<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="dt">StepRange</span>{<span class="dt">Int64</span>}</span>
-<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>)</span>
-<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">0.1</span></span>
-<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>))</span>
-<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="dt">StepRangeLen</span>{<span class="dt">Float64</span>, <span class="bu">Base</span>.TwicePrecision{<span class="dt">Float64</span>},</span>
-<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.TwicePrecision{<span class="dt">Float64</span>}, <span class="dt">Int64</span>}</span>
-<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>))</span>
-<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
-<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span><span class="fl">0.1</span></span>
-<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.0</span></span>
-<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="kw">ans</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="dt">UnitRange</span>{<span class="dt">Int64</span>}</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">eltype</span>(<span class="kw">ans</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="dt">Int64</span></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="op">&gt;</span> (<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)[<span class="fl">9</span>]</span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a><span class="fl">9</span></span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a><span class="fl">10</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a>  <span class="fl">1</span></span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a>  <span class="fl">2</span></span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a>  <span class="fl">3</span></span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a>  <span class="fl">4</span></span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a>  <span class="fl">5</span></span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a>  <span class="fl">6</span></span>
+<span id="cb27-21"><a href="#cb27-21" tabindex="-1"></a>  <span class="fl">7</span></span>
+<span id="cb27-22"><a href="#cb27-22" tabindex="-1"></a>  <span class="fl">8</span></span>
+<span id="cb27-23"><a href="#cb27-23" tabindex="-1"></a>  <span class="fl">9</span></span>
+<span id="cb27-24"><a href="#cb27-24" tabindex="-1"></a> <span class="fl">10</span></span>
+<span id="cb27-25"><a href="#cb27-25" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">:</span><span class="fl">10</span>)</span>
+<span id="cb27-27"><a href="#cb27-27" tabindex="-1"></a><span class="fl">4</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb27-28"><a href="#cb27-28" tabindex="-1"></a>  <span class="fl">1</span></span>
+<span id="cb27-29"><a href="#cb27-29" tabindex="-1"></a>  <span class="fl">4</span></span>
+<span id="cb27-30"><a href="#cb27-30" tabindex="-1"></a>  <span class="fl">7</span></span>
+<span id="cb27-31"><a href="#cb27-31" tabindex="-1"></a> <span class="fl">10</span></span>
+<span id="cb27-32"><a href="#cb27-32" tabindex="-1"></a></span>
+<span id="cb27-33"><a href="#cb27-33" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">:</span><span class="fl">10</span>)</span>
+<span id="cb27-34"><a href="#cb27-34" tabindex="-1"></a><span class="dt">StepRange</span>{<span class="dt">Int64</span>}</span>
+<span id="cb27-35"><a href="#cb27-35" tabindex="-1"></a></span>
+<span id="cb27-36"><a href="#cb27-36" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>)</span>
+<span id="cb27-37"><a href="#cb27-37" tabindex="-1"></a><span class="op">-</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">0.1</span></span>
+<span id="cb27-38"><a href="#cb27-38" tabindex="-1"></a></span>
+<span id="cb27-39"><a href="#cb27-39" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>))</span>
+<span id="cb27-40"><a href="#cb27-40" tabindex="-1"></a><span class="dt">StepRangeLen</span>{<span class="dt">Float64</span>, <span class="bu">Base</span>.TwicePrecision{<span class="dt">Float64</span>},</span>
+<span id="cb27-41"><a href="#cb27-41" tabindex="-1"></a><span class="bu">Base</span>.TwicePrecision{<span class="dt">Float64</span>}, <span class="dt">Int64</span>}</span>
+<span id="cb27-42"><a href="#cb27-42" tabindex="-1"></a></span>
+<span id="cb27-43"><a href="#cb27-43" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">collect</span>(<span class="fu">range</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, length<span class="op">=</span><span class="fl">3</span>))</span>
+<span id="cb27-44"><a href="#cb27-44" tabindex="-1"></a><span class="fl">3</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
+<span id="cb27-45"><a href="#cb27-45" tabindex="-1"></a> <span class="op">-</span><span class="fl">0.1</span></span>
+<span id="cb27-46"><a href="#cb27-46" tabindex="-1"></a>  <span class="fl">0.0</span></span>
+<span id="cb27-47"><a href="#cb27-47" tabindex="-1"></a>  <span class="fl">0.1</span></span></code></pre>
 </div>
 </div>
 </section><section id="structs"><h2 class="section-heading">Structs<a class="anchor" aria-label="anchor" href="#structs"></a>
@@ -762,10 +761,10 @@ points:</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">struct</span> Point{X}</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>         x<span class="op">::</span><span class="dt">X</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         y<span class="op">::</span><span class="dt">X</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">struct</span> Point{X}</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>         x<span class="op">::</span><span class="dt">X</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>         y<span class="op">::</span><span class="dt">X</span></span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>  <span class="kw">end</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="mutability">Mutability<a class="anchor" aria-label="anchor" href="#mutability"></a></h3>
@@ -773,16 +772,16 @@ points:</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> p <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span><span class="dt">{Int64}</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> p.x <span class="op">=</span> <span class="fl">3</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> setfield!<span class="op">:</span> immutable <span class="kw">struct</span> of <span class="kw">type</span> Point cannot be changed</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">setproperty!</span>(x<span class="op">::</span><span class="dt">Point{Int64}</span>, f<span class="op">::</span><span class="dt">Symbol</span>, v<span class="op">::</span><span class="dt">Int64</span>)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">Base</span> <span class="op">./</span><span class="bu">Base</span>.jl<span class="op">:</span><span class="fl">43</span></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a> [<span class="fl">2</span>] top<span class="op">-</span>level scope</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">3</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="op">&gt;</span> p <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="fu">Point</span><span class="dt">{Int64}</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="op">&gt;</span> p.x <span class="op">=</span> <span class="fl">3</span></span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>ERROR<span class="op">:</span> setfield!<span class="op">:</span> immutable <span class="kw">struct</span> of <span class="kw">type</span> Point cannot be changed</span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a> [<span class="fl">1</span>] <span class="fu">setproperty!</span>(x<span class="op">::</span><span class="dt">Point{Int64}</span>, f<span class="op">::</span><span class="dt">Symbol</span>, v<span class="op">::</span><span class="dt">Int64</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>   @ <span class="bu">Base</span> <span class="op">./</span><span class="bu">Base</span>.jl<span class="op">:</span><span class="fl">43</span></span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a> [<span class="fl">2</span>] top<span class="op">-</span>level scope</span>
+<span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">3</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
 <p>Putting the keyword <code>mutable</code> in front of the definition
 changes that:</p>
@@ -810,11 +809,11 @@ constructor.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Point</span>() <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">0</span>, <span class="fl">0</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>Point</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Point</span>()</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span><span class="dt">{Int64}</span>(<span class="fl">0</span>, <span class="fl">0</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Point</span>() <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">0</span>, <span class="fl">0</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>Point</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Point</span>()</span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a><span class="fu">Point</span><span class="dt">{Int64}</span>(<span class="fl">0</span>, <span class="fl">0</span>)</span></code></pre>
 </div>
 <p>In this case we get an additional constructor.</p>
 <p>When we define constructors as part of the struct definition, the
@@ -822,21 +821,21 @@ default constructor does not exist.</p>
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">struct</span> Foo</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>      x</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">Foo</span>() <span class="op">=</span> <span class="fu">new</span>(<span class="fl">0</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Foo</span>()</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Foo</span>(<span class="fl">0</span>)</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Foo</span>(<span class="fl">1</span>)</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">MethodError</span><span class="op">:</span> no method matching <span class="fu">Foo</span>(<span class="op">::</span><span class="dt">Int64</span>)</span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>Closest candidates are<span class="op">:</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Foo</span>() at <span class="bu">REPL</span>[<span class="fl">11</span>]<span class="op">:</span><span class="fl">3</span></span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a> [<span class="fl">1</span>] top<span class="op">-</span>level scope</span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">3</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">struct</span> Foo</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>      x</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>      <span class="fu">Foo</span>() <span class="op">=</span> <span class="fu">new</span>(<span class="fl">0</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Foo</span>()</span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a><span class="fu">Foo</span>(<span class="fl">0</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">Foo</span>(<span class="fl">1</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">MethodError</span><span class="op">:</span> no method matching <span class="fu">Foo</span>(<span class="op">::</span><span class="dt">Int64</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a>Closest candidates are<span class="op">:</span></span>
+<span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a>  <span class="fu">Foo</span>() at <span class="bu">REPL</span>[<span class="fl">11</span>]<span class="op">:</span><span class="fl">3</span></span>
+<span id="cb32-13"><a href="#cb32-13" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
+<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a> [<span class="fl">1</span>] top<span class="op">-</span>level scope</span>
+<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">3</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
 <p>Note, that we need to use a preexisting constructor to define an
 outer constructor, while we use the keyword <code>new</code> as if we
@@ -911,7 +910,7 @@ any links that you are not going to use.
   "identifier": "https://zedif.github.io/julia-introduction/instructor/03-types.html",
   "dateCreated": "2023-05-17",
   "dateModified": "2022-06-07",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

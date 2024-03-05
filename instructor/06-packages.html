@@ -299,13 +299,12 @@ are the distribution units of packages.</p>
 switch to package mode. The prompt changes from <code>julia&gt;</code>
 to <code>(@v1.9) pkg&gt;</code>. We can exit package mode by pressing
 <code>C-c</code>.</p>
-<div id="pkg.jl" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="pkg.jl" class="callout-inner">
-<h3 class="callout-title">Pkg.jl<a class="anchor" aria-label="anchor" href="#pkg.jl"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="pkg-jl">Pkg.jl<a class="anchor" aria-label="anchor" href="#pkg-jl"></a></h3>
 <div class="callout-content">
 <p>Package mode is implemented by the Julia package <a href="https://github.com/JuliaLang/Pkg.jl" class="external-link">Pkg.jl</a>. You can find <a href="https://pkgdocs.julialang.org/" class="external-link">Pkg.jl’s documentation</a>
 online.</p>
@@ -414,8 +413,8 @@ we are in the correct directory, by running <code>pwd()</code>:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp"</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="st">"/home/user/temp"</span></span></code></pre>
 </div>
 <p>Now, we go into package mode (press <code>]</code>) and generate a
 Julia package skeleton:</p>
@@ -430,10 +429,10 @@ to navigate Julia into the directory that was just created by pressing
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">cd</span>(<span class="st">"OurVectors"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">cd</span>(<span class="st">"OurVectors"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
 </div>
 <p>We will have a look at what was created in the shell (press
 <code>;</code>):</p>
@@ -472,11 +471,11 @@ function:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v) <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(v<span class="op">.^</span><span class="fl">2</span>))</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="co"># module</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="kw">module</span> OurVectors</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">length</span>(v) <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(v<span class="op">.^</span><span class="fl">2</span>))</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="kw">end</span> <span class="co"># module</span></span></code></pre>
 </div>
 <p>Now, we want to write tests for our function. Idiomatically, tests
 are run by evaluating the file <code>test/runtests.jl</code> of a Julia
@@ -485,12 +484,12 @@ package that comes bundled with Julia:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Test</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">OurVectors</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.<span class="fu">length</span>([<span class="fl">1</span>]) <span class="op">==</span> <span class="fl">1.0</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> OurVectors.<span class="fu">length</span>([<span class="fl">3</span>, <span class="fl">4</span>]) <span class="op">==</span> <span class="fl">5.0</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="pp">@test_throws</span> <span class="dt">MethodError</span> OurVectors.<span class="fu">length</span>([])</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">Test</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">OurVectors</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="pp">@test</span> OurVectors.<span class="fu">length</span>([<span class="fl">1</span>]) <span class="op">==</span> <span class="fl">1.0</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="pp">@test</span> OurVectors.<span class="fu">length</span>([<span class="fl">3</span>, <span class="fl">4</span>]) <span class="op">==</span> <span class="fl">5.0</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="pp">@test_throws</span> <span class="dt">MethodError</span> OurVectors.<span class="fu">length</span>([])</span></code></pre>
 </div>
 <p>To run the script we can use the package mode again. But before
 switching to it (by pressing <code>]</code>), we make sure that the
@@ -498,8 +497,8 @@ working directory of our REPL is the project directory:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">pwd</span>()</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="st">"/home/user/temp/OurVectors"</span></span></code></pre>
 </div>
 <p>This looks good. If we were in the wrong directory, we would use the
 function <code>cd</code> to change that.</p>
@@ -573,9 +572,9 @@ to the project, we first have look at <code>Project.toml</code>:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="er">…</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">deps</span><span class="kw">]</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Test</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
+<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="er">…</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="kw">[deps]</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="dt">Test</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
 </div>
 <p>The file got a new section, <code>[deps]</code>, listing
 dependencies. We added <code>Test</code>, so it shows up in the list
@@ -584,40 +583,40 @@ with its UUID.</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This file is machine-generated - editing it directly is not advised</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dt">julia_version</span> <span class="op">=</span> <span class="st">"1.9.0"</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="dt">manifest_format</span> <span class="op">=</span> <span class="st">"2.0"</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="dt">project_hash</span> <span class="op">=</span> <span class="st">"71d91126b5a1fb1020e1098d9d492de2a4438fd2"</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Base64</span><span class="kw">]]</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">InteractiveUtils</span><span class="kw">]]</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Markdown"</span><span class="op">]</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"b77e0a4c-d291-57a0-90e8-8db25a27a240"</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Logging</span><span class="kw">]]</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"56ddb016-857b-54e1-b83d-db4d58db5568"</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Markdown</span><span class="kw">]]</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Base64"</span><span class="op">]</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"d6f4376e-aef5-505a-96c1-9c027394607a"</span></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Random</span><span class="kw">]]</span></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"SHA"</span><span class="op">,</span> <span class="st">"Serialization"</span><span class="op">]</span></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"9a3f8284-a2c9-5f02-9a11-845980a1fd5c"</span></span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">SHA</span><span class="kw">]]</span></span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"ea8e919c-243c-51af-8825-aaa63cd721ce"</span></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.7.0"</span></span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Serialization</span><span class="kw">]]</span></span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"9e88b42a-f829-5b0c-bbe9-9e923198166b"</span></span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">deps</span><span class="kw">.</span><span class="dt">Test</span><span class="kw">]]</span></span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"InteractiveUtils"</span><span class="op">,</span> <span class="st">"Logging"</span><span class="op">,</span> <span class="st">"Random"</span><span class="op">,</span> <span class="st">"Serialization"</span><span class="op">]</span></span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
+<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># This file is machine-generated - editing it directly is not advised</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="dt">julia_version</span> <span class="op">=</span> <span class="st">"1.9.0"</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="dt">manifest_format</span> <span class="op">=</span> <span class="st">"2.0"</span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="dt">project_hash</span> <span class="op">=</span> <span class="st">"71d91126b5a1fb1020e1098d9d492de2a4438fd2"</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="kw">[[deps.Base64]]</span></span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"</span></span>
+<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a><span class="kw">[[deps.InteractiveUtils]]</span></span>
+<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Markdown"</span><span class="op">]</span></span>
+<span id="cb22-12"><a href="#cb22-12" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"b77e0a4c-d291-57a0-90e8-8db25a27a240"</span></span>
+<span id="cb22-13"><a href="#cb22-13" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" tabindex="-1"></a><span class="kw">[[deps.Logging]]</span></span>
+<span id="cb22-15"><a href="#cb22-15" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"56ddb016-857b-54e1-b83d-db4d58db5568"</span></span>
+<span id="cb22-16"><a href="#cb22-16" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" tabindex="-1"></a><span class="kw">[[deps.Markdown]]</span></span>
+<span id="cb22-18"><a href="#cb22-18" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Base64"</span><span class="op">]</span></span>
+<span id="cb22-19"><a href="#cb22-19" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"d6f4376e-aef5-505a-96c1-9c027394607a"</span></span>
+<span id="cb22-20"><a href="#cb22-20" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="#cb22-21" tabindex="-1"></a><span class="kw">[[deps.Random]]</span></span>
+<span id="cb22-22"><a href="#cb22-22" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"SHA"</span><span class="op">,</span> <span class="st">"Serialization"</span><span class="op">]</span></span>
+<span id="cb22-23"><a href="#cb22-23" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"9a3f8284-a2c9-5f02-9a11-845980a1fd5c"</span></span>
+<span id="cb22-24"><a href="#cb22-24" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" tabindex="-1"></a><span class="kw">[[deps.SHA]]</span></span>
+<span id="cb22-26"><a href="#cb22-26" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"ea8e919c-243c-51af-8825-aaa63cd721ce"</span></span>
+<span id="cb22-27"><a href="#cb22-27" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.7.0"</span></span>
+<span id="cb22-28"><a href="#cb22-28" tabindex="-1"></a></span>
+<span id="cb22-29"><a href="#cb22-29" tabindex="-1"></a><span class="kw">[[deps.Serialization]]</span></span>
+<span id="cb22-30"><a href="#cb22-30" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"9e88b42a-f829-5b0c-bbe9-9e923198166b"</span></span>
+<span id="cb22-31"><a href="#cb22-31" tabindex="-1"></a></span>
+<span id="cb22-32"><a href="#cb22-32" tabindex="-1"></a><span class="kw">[[deps.Test]]</span></span>
+<span id="cb22-33"><a href="#cb22-33" tabindex="-1"></a><span class="dt">deps</span> <span class="op">=</span> <span class="op">[</span><span class="st">"InteractiveUtils"</span><span class="op">,</span> <span class="st">"Logging"</span><span class="op">,</span> <span class="st">"Random"</span><span class="op">,</span> <span class="st">"Serialization"</span><span class="op">]</span></span>
+<span id="cb22-34"><a href="#cb22-34" tabindex="-1"></a><span class="dt">uuid</span> <span class="op">=</span> <span class="st">"8dfed614-e22c-5e08-85e1-65c5234f0b40"</span></span></code></pre>
 </div>
 <p>This file lists not only the explicitly installed dependencies, but
 the whole dependency tree.</p>
@@ -687,7 +686,7 @@ any links that you are not going to use.
   "identifier": "https://zedif.github.io/julia-introduction/instructor/06-packages.html",
   "dateCreated": "2023-05-17",
   "dateModified": "2023-05-17",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
