@@ -176,7 +176,7 @@ destructured (generic function with 1 method)
 ```
 
 Note that any additional elements of a tuple with be silently ignored, but we
-get an error, when the tuple is to short:
+get an error, when the tuple is too short:
 
 ```julia
 > destructured((1, 2, 3))
