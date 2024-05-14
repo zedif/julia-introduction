@@ -113,13 +113,6 @@ In Julia arguments are pass-by-sharing, also known as -by-pointer or
 pass-by-value if the values fit into a single register. But because of the
 immutability this is indistinguishable.
 
-We already saw that we can add type annotations to parameters:
-
-```julia
-> annotated(x::Int8) = x
-annotated (generic function with 1 method)
-```
-
 Julia also supports optional arguments:
 
 ```julia
