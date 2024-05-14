@@ -162,7 +162,7 @@ Keyword parameters are defined after the other parameters separated by `;`. They
 can have default values as well. Keyword parameters are not involved in method
 dispatch.
 
-Another, less common feature, is restructuring for tuple parameters:
+Another, less common feature, is destructuring for tuple parameters:
 
 ```julia
 > destructured((a, b)) = a + b
