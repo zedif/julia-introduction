@@ -122,7 +122,7 @@ with_optional (generic function with 2 methods)
 > with_optional(3)
 3
 
-> with_optional(1)
+> with_optional()
 1
 ```
 
