@@ -113,13 +113,6 @@ In Julia arguments are pass-by-sharing, also known as -by-pointer or
 pass-by-value if the values fit into a single register. But because of the
 immutability this is indistinguishable.
 
-We already saw that we can add type annotations to parameters:
-
-```julia
-> annotated(x::Int8) = x
-annotated (generic function with 1 method)
-```
-
 Julia also supports optional arguments:
 
 ```julia
@@ -129,7 +122,7 @@ with_optional (generic function with 2 methods)
 > with_optional(3)
 3
 
-> with_optional(1)
+> with_optional()
 1
 ```
 
@@ -169,7 +162,7 @@ Keyword parameters are defined after the other parameters separated by `;`. They
 can have default values as well. Keyword parameters are not involved in method
 dispatch.
 
-Another, less common feature, is restructuring for tuple parameters:
+Another, less common feature, is destructuring for tuple parameters:
 
 ```julia
 > destructured((a, b)) = a + b
@@ -183,7 +176,7 @@ destructured (generic function with 1 method)
 ```
 
 Note that any additional elements of a tuple with be silently ignored, but we
-get an error, when the tuple is to short:
+get an error, when the tuple is too short:
 
 ```julia
 > destructured((1, 2, 3))
@@ -209,7 +202,6 @@ For short, one-off functions Julia implements anonymous functions:
 3-element Vector{Int64}:
  2
  3
- 4
 ```
 
 There is also a long form:
