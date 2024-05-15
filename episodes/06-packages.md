@@ -4,8 +4,7 @@ teaching: 0
 exercises: 0
 ---
 
-While the module is an organizational unit within a project, packages are the
-distribution units of packages.
+While the module is an organizational unit within a project, packages are the distribution units of Julia.
 
 ## Dependency Management
 
