@@ -302,8 +302,8 @@ are the distribution units of Julia.</p>
 </h2>
 <hr class="half-width"><p>To install a package, we type <code>]</code> in the Julia REPL to
 switch to package mode. The prompt changes from <code>julia&gt;</code>
-to <code>(@v1.9) pkg&gt;</code>. We can exit package mode by pressing
-<code>C-c</code>.</p>
+to <code>(@v1.10) pkg&gt;</code>. We can exit package mode by pressing
+<code>C-c C-c</code> or <code>&lt;Backspace&gt;</code>.</p>
 <div id="pkg.jl" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -318,100 +318,101 @@ online.</p>
 </div>
 </div>
 <p>The prompt in the package mode tells us which environment is
-currently active (<code>@v1.9</code>). The default environment is named
+currently active (<code>@v1.10</code>). The default environment is named
 after the running Julia version. We can install packages into this
-environment for general experimentation. Our projects have their own
-environments, as we will see in a bit.</p>
+environment for general experimentation. Our projects will have their
+own environments.</p>
 <p>First, let us have a look at the status of the current
 environment:</p>
-<pre class="shell"><code>(@v1.9) pkg&gt; status
-  Installing known registries into `~/.julia`
-Status `~/.julia/environments/v1.9/Project.toml` (empty project)</code></pre>
+<pre class="shell"><code>(@v1.10) pkg&gt; status
+Status `~/.julia/environments/v1.10/Project.toml` (empty project)</code></pre>
 <p>This shows us the location of the Project.toml that describes the
 environment. It also lists explicitly installed packages, in our case
 currently none.</p>
 <p>To install a package we run the command <code>add</code>:</p>
-<pre class="shell"><code>(@v1.9) pkg&gt; add Memoize
+<pre class="shell"><code>(@v1.10) pkg&gt; add Memoize
     Updating registry at `~/.julia/registries/General.toml`
-    Installed MacroTools ─ v0.5.10
-    Updating `~/.julia/environments/v1.9/Project.toml`
+    Installed Memoize ---- v0.4.4
+    Updating `~/.julia/environments/v1.10/Project.toml`
   [c03570c3] + Memoize v0.4.4
-    Updating `~/.julia/environments/v1.9/Manifest.toml`
-  [1914dd2f] + MacroTools v0.5.10
+    Updating `~/.julia/environments/v1.10/Manifest.toml`
+  [1914dd2f] + MacroTools v0.5.13
   [c03570c3] + Memoize v0.4.4
   [2a0f44e3] + Base64
   [d6f4376e] + Markdown
   [9a3f8284] + Random
   [ea8e919c] + SHA v0.7.0
-  [9e88b42a] + Serialization
 Precompiling project...
    2 dependencies successfully precompiled in 2 seconds
-(@v1.9) pkg&gt; status
-Status `~/.julia/environments/v1.9/Project.toml`
+(@v1.10) pkg&gt; status
+Status `~/.julia/environments/v1.10/Project.toml`
     [c03570c3] Memoize v0.4.4</code></pre>
 <p>The command updates two files, <code>Project.toml</code> and
-<code>Manifest.toml</code>, and seems to install seven packages, six of
-those probably dependencies of <code>Memoize</code>. Now
-<code>status</code> shows us that we have installed <code>Memoize</code>
-(but tells us nothing about its dependencies).</p>
+<code>Manifest.toml</code>, and seems to install six packages, five of
+those dependencies of <code>Memoize</code>. Now <code>status</code>
+shows us that we have installed <code>Memoize</code> (but tells us
+nothing about its dependencies).</p>
 <p>We can update a package using the <code>update</code> command:</p>
-<pre class="shell"><code>(@v1.9) pkg&gt; update Memoize
-    Updating registry at `~/.julia/registries/General.toml`
-  No Changes to `~/.julia/environments/v1.9/Project.toml`
-  No Changes to `~/.julia/environments/v1.9/Manifest.toml`</code></pre>
+<pre class="shell"><code>(@v1.10) pkg&gt; update Memoize
+n    Updating registry at `~/.julia/registries/General.toml`
+  No Changes to `~/.julia/environments/v1.10/Project.toml`
+  No Changes to `~/.julia/environments/v1.10/Manifest.toml`</code></pre>
 <p>And we can remove installed packages again with <code>rm</code>:</p>
-<pre class="shell"><code>    Updating `~/.julia/environments/v1.9/Project.toml`
+<pre class="shell"><code>(@v1.10) pkg&gt; rm Memoize
+    Updating `~/.julia/environments/v1.10/Project.toml`
   [c03570c3] - Memoize v0.4.4
-    Updating `~/.julia/environments/v1.9/Manifest.toml`
-  [1914dd2f] - MacroTools v0.5.10
+    Updating `~/.julia/environments/v1.10/Manifest.toml`
+  [1914dd2f] - MacroTools v0.5.13
   [c03570c3] - Memoize v0.4.4
   [2a0f44e3] - Base64
   [d6f4376e] - Markdown
   [9a3f8284] - Random
-  [ea8e919c] - SHA v0.7.0
-  [9e88b42a] - Serialization</code></pre>
+  [ea8e919c] - SHA v0.7.0</code></pre>
 <p>To import a package, we need to know what packages there are. There
 is a <a href="https://github.com/JuliaRegistries/General" class="external-link">general
 package registry</a> which can be searched through multiple front-ends,
 for example <a href="https://juliahub.com/ui/Packages" class="external-link uri">https://juliahub.com/ui/Packages</a> .</p>
 <p>If we want to install a package that is not in the general (or any
 other) registry, we can point to a git source instead:</p>
-<pre class="shell"><code>(@v1.9) pkg&gt; add https://github.com/JuliaLang/Example.jl#master
+<pre class="shell"><code>(@v1.10) pkg&gt; add https://github.com/JuliaLang/Example.jl#master
      Cloning git-repo `https://github.com/JuliaLang/Example.jl`
     Updating git-repo `https://github.com/JuliaLang/Example.jl`
    Resolving package versions...
-    Updating `~/.julia/environments/v1.9/Project.toml`
+    Updating `~/.julia/environments/v1.10/Project.toml`
   [7876af07] + Example v0.5.4 `https://github.com/JuliaLang/Example.jl#master`
-    Updating `~/.julia/environments/v1.9/Manifest.toml`
+    Updating `~/.julia/environments/v1.10/Manifest.toml`
   [7876af07] + Example v0.5.4 `https://github.com/JuliaLang/Example.jl#master`
 Precompiling project...
-   1 dependency successfully precompiled in 0 seconds (20 already precompiled)</code></pre>
+   1 dependency successfully precompiled in 0 seconds</code></pre>
 <p>All commands discussed here have a lot more options. Particularly
-important might be the ability to install specific versions or branches
-of packages. The shell provides documentation for every command when
-running <code>help &lt;command&gt;</code>, for example:</p>
-<pre class="shell"><code>(@v1.9) pkg&gt; help update
+important might be the ability to install specific versions packages or
+branches of repositories containing packages. The shell provides
+documentation for every command when running
+<code>help &lt;command&gt;</code>, for example:</p>
+<pre class="shell"><code>(@v1.10) pkg&gt; help update
   [up|update] [-p|--project]  [opts] pkg[=uuid] [@version] ...
   [up|update] [-m|--manifest] [opts] pkg[=uuid] [@version] ...
 
   opts: --major | --minor | --patch | --fixed
         --preserve=&lt;all/direct/none&gt;
 
-  Update pkg within the constraints of the indicated version specifications. These specifications are of the
-  form @1, @1.2 or @1.2.3, allowing any version with a prefix that matches, or ranges thereof, such as
-  @1.2-3.4.5. In --project mode, package specifications only match project packages, while in --manifest mode
-  they match any manifest package. Bound level options force the following packages to be upgraded only within
-  the current major, minor, patch version; if the --fixed upgrade level is given, then the following packages
-  will not be upgraded at all.
+  Update pkg within the constraints of the indicated version specifications. These
+  specifications are of the form @1, @1.2 or @1.2.3, allowing any version with a
+  prefix that matches, or ranges thereof, such as @1.2-3.4.5. In --project mode,
+  package specifications only match project packages, while in --manifest mode they
+  match any manifest package. Bound level options force the following packages to
+  be upgraded only within the current major, minor, patch version; if the --fixed
+  upgrade level is given, then the following packages will not be upgraded at all.
 
-  After any package updates the project will be precompiled. For more information see pkg&gt; ?precompile.</code></pre>
+  After any package updates the project will be precompiled. For more information
+  see pkg&gt; ?precompile.</code></pre>
 </section><section id="creating-packages"><h2 class="section-heading">Creating Packages<a class="anchor" aria-label="anchor" href="#creating-packages"></a>
 </h2>
 <hr class="half-width"><p>After seeing how to use a package, we will have a look into creating
 one.</p>
 <p>Using the shell in the Julia REPL, activated by pressing
-<code>;</code>, we navigate to the folder in which, we want to create
-our project. For example</p>
+<code>;</code>, we navigate to the folder in which we want to create our
+project. For example</p>
 <pre class="shell"><code>shell&gt; cd ~/temp/
 /home/user/temp</code></pre>
 <p>We leave the shell again by pressing <code>C-c</code> and check that
@@ -424,7 +425,7 @@ we are in the correct directory, by running <code>pwd()</code>:</p>
 </div>
 <p>Now, we go into package mode (press <code>]</code>) and generate a
 Julia package skeleton:</p>
-<pre class="shell"><code>(@v1.9) pkg&gt; generate OurVectors
+<pre class="shell"><code>(@v1.10) pkg&gt; generate OurVectors
   Generating  project OurVectors:
     OurVectors/Project.toml
     OurVectors/src/OurVectors.jl</code></pre>
@@ -446,7 +447,8 @@ to navigate Julia into the directory that was just created by pressing
 .:
 Project.toml  src/
 
-./src:</code></pre>
+./src:
+OurVectors.jl</code></pre>
 <p>Julia generated two files for us. <code>Project.toml</code> is the
 project configuration file in TOML Format, while
 <code>OurVectors.jl</code> in the subdirectory <code>src</code> is an
@@ -469,7 +471,7 @@ module OurVectors
 
 greet() = print("Hello World!")
 
-end # module</code></pre>
+end # module OurVectors</code></pre>
 </section><section id="tests"><h2 class="section-heading">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
 </h2>
 <hr class="half-width"><p>We edit the source file to contain our <code>length</code>
@@ -510,7 +512,7 @@ working directory of our REPL is the project directory:</p>
 function <code>cd</code> to change that.</p>
 <p>In package mode, we first have to make our project the current
 environment. To do that, we run</p>
-<pre class="shell"><code>(@v1.9) pkg&gt; activate .
+<pre class="shell"><code>(@v1.10) pkg&gt; activate .
   Activating project at `~/temp/OurVectors`
 
 (OurVectors) pkg&gt;</code></pre>
@@ -528,7 +530,7 @@ ERROR: LoadError: ArgumentError: Package Test not found in current path:
 
 Stacktrace:
  [1] include(fname::String)
-   @ Base.MainInclude ./client.jl:451
+   @ Base.MainInclude ./client.jl:489
  [2] top-level scope
    @ none:6
 in expression starting at /home/user/temp/OurVectors/test/runtests.jl:1
