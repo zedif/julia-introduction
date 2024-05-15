@@ -282,7 +282,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Foreign Function Interface</h1>
-        <p>Last updated on 2023-05-17 |
+        <p>Last updated on 2024-05-15 |
         
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/07-ffi.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -302,7 +302,7 @@ We will have a look at the interfaces for C and Python.</p>
 <p>Before we continue, we return to the default environment in our Julia
 REPL:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; activate
-  Activating project at `~/.julia/environments/v1.9`</code></pre>
+  Activating project at `~/.julia/environments/v1.10`</code></pre>
 <section id="c-interface"><h2 class="section-heading">C Interface<a class="anchor" aria-label="anchor" href="#c-interface"></a>
 </h2>
 <hr class="half-width"><p>To call a C function we can either use the function
@@ -355,12 +355,12 @@ follows</p>
 </h2>
 <hr class="half-width"><p>To interface with python we can use the <code>PyCall</code> package.
 First, we need to install it to the current repository:</p>
-<pre class="shell"><code>(@v1.9) pkg&gt; add PyCall
-    Installed Preferences ----- v1.4.0
-     Updating `~/.julia/environments/v1.9/Project.toml`
-  [438e738f] + PyCall v1.93.1
-    Updating `~/.julia/environments/v1.9/Manifest.toml`
-  [8f4d0f93] + Conda v1.8.0
+<pre class="shell"><code>(@v1.10) pkg&gt; add PyCall
+    Installed PrecompileTools ----- v1.2.1
+     Updating `~/.julia/environments/v1.10/Project.toml`
+  [438e738f] + PyCall v1.96.4
+    Updating `~/.julia/environments/v1.10/Manifest.toml`
+  [8f4d0f93] + Conda v1.10.0
   …</code></pre>
 <p>pThen we can import any installed python library:</p>
 <div class="codewrapper sourceCode" id="cb7">
@@ -474,7 +474,7 @@ any links that you are not going to use.
   "url": "https://zedif.github.io/julia-introduction/instructor/07-ffi.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/07-ffi.html",
   "dateCreated": "2024-05-15",
-  "dateModified": "2023-05-17",
+  "dateModified": "2024-05-15",
   "datePublished": "2024-05-15"
 }
 
