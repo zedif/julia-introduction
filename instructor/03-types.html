@@ -645,10 +645,25 @@ defining traits of the Julia programming language.</p>
 <span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a> <span class="fl">1</span></span>
 <span id="cb23-9"><a href="#cb23-9" tabindex="-1"></a> <span class="fl">2</span></span>
 <span id="cb23-10"><a href="#cb23-10" tabindex="-1"></a></span>
-<span id="cb23-11"><a href="#cb23-11" tabindex="-1"></a><span class="op">&gt;</span> A <span class="op">*</span> b</span>
+<span id="cb23-11"><a href="#cb23-11" tabindex="-1"></a><span class="op">&gt;</span> b<span class="op">+</span>b</span>
 <span id="cb23-12"><a href="#cb23-12" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
 <span id="cb23-13"><a href="#cb23-13" tabindex="-1"></a> <span class="fl">2</span></span>
-<span id="cb23-14"><a href="#cb23-14" tabindex="-1"></a> <span class="fl">1</span></span></code></pre>
+<span id="cb23-14"><a href="#cb23-14" tabindex="-1"></a> <span class="fl">4</span></span>
+<span id="cb23-15"><a href="#cb23-15" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" tabindex="-1"></a><span class="op">&gt;</span> A<span class="op">-</span>A</span>
+<span id="cb23-17"><a href="#cb23-17" tabindex="-1"></a><span class="fl">2</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb23-18"><a href="#cb23-18" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">0</span></span>
+<span id="cb23-19"><a href="#cb23-19" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">0</span></span>
+<span id="cb23-20"><a href="#cb23-20" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" tabindex="-1"></a><span class="op">&gt;</span> A <span class="op">*</span> b</span>
+<span id="cb23-22"><a href="#cb23-22" tabindex="-1"></a><span class="fl">2</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb23-23"><a href="#cb23-23" tabindex="-1"></a> <span class="fl">2</span></span>
+<span id="cb23-24"><a href="#cb23-24" tabindex="-1"></a> <span class="fl">1</span></span>
+<span id="cb23-25"><a href="#cb23-25" tabindex="-1"></a></span>
+<span id="cb23-26"><a href="#cb23-26" tabindex="-1"></a><span class="op">&gt;</span> A<span class="op">*</span>A</span>
+<span id="cb23-27"><a href="#cb23-27" tabindex="-1"></a><span class="fl">2</span><span class="op">×</span><span class="fl">2</span> <span class="dt">Matrix</span>{<span class="dt">Int64</span>}<span class="op">:</span></span>
+<span id="cb23-28"><a href="#cb23-28" tabindex="-1"></a> <span class="fl">1</span>  <span class="fl">0</span></span>
+<span id="cb23-29"><a href="#cb23-29" tabindex="-1"></a> <span class="fl">0</span>  <span class="fl">1</span></span></code></pre>
 </div>
 <p>Julia also supports a special syntax, the dot-operator, to
 element-wise apply functions to arrays:</p>
