@@ -156,7 +156,7 @@ true
 1
 ```
 
-There are types for complex and rational numbers that are parameterized on
+There are types for complex and rational numbers that are parameterised on
 subtypes of `Real` and `Integer` respectively:
 
 ```julia
