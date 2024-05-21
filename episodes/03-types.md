@@ -311,7 +311,7 @@ We have 0-dimensional arrays (scalars):
 
 And any higher dimensional arrays are just called arrays:
 
-```
+```julia
 > zeros(Int8, (2, 2, 2))
 2×2×3 Array{Int8, 3}:
 [:, :, 1] =
@@ -321,6 +321,88 @@ And any higher dimensional arrays are just called arrays:
 [:, :, 2] =
  0  0
  0  0
+```
+
+Initialising arrays can be done with and without comma:
+```julia
+> [1, 2]
+2-element Vector{Int64}:
+ 1
+ 2
+> typeof([1, 2])
+Vector{Int64} (alias for Array{Int64, 1})
+
+> [1 2]
+1×2 Matrix{Int64}:
+ 1  2
+> typeof([1 2])
+Matrix{Int64} (alias for Array{Int64, 2})
+```
+
+One is effectively the transpose of the other:
+```julia
+> transpose([1 2])
+2×1 transpose(::Matrix{Int64}) with eltype Int64:
+ 1
+ 2
+```
+
+This has further consequences for arrays:
+```julia
+# all commas
+> [[0, 1], [2,3]]
+2-element Vector{Vector{Int64}}:
+ [0, 1]
+ [2, 3]
+> typeof([[0, 1], [2, 3]])
+Vector{Vector{Int64}} (alias for Array{Array{Int64, 1}, 1})
+
+# inner commas
+> [[0, 1] [2, 3]]
+2×2 Matrix{Int64}:
+ 0  2
+ 1  3
+> typeof([[0, 1] [2, 3]])
+Matrix{Int64} (alias for Array{Int64, 2})
+
+# outer commas
+> [[0 1], [2 3]]
+2-element Vector{Matrix{Int64}}:
+ [0 1]
+ [2 3]
+> typeof([[0 1], [2 3]])
+Vector{Matrix{Int64}} (alias for Array{Array{Int64, 2}, 1})
+
+# no commas
+> [[0 1] [2 3]]
+1×4 Matrix{Int64}:
+ 0  1  2  3
+> typeof([[0 1] [2 3]])
+Matrix{Int64} (alias for Array{Int64, 2})
+
+# ... which is the same as this:
+> [0 1 2 3]
+1×4 Matrix{Int64}:
+ 0  1  2  3
+> typeof([0 1 2 3])
+Matrix{Int64} (alias for Array{Int64, 2})
+
+# ... but is not the same as:
+> [[0 1 2 3]]
+1-element Vector{Matrix{Int64}}:
+ [0 1 2 3]
+> typeof([[0 1 2 3]])
+Vector{Matrix{Int64}} (alias for Array{Array{Int64, 2}, 1})
+
+# and finally, it is also different from this:
+> [0, 1, 2, 3]
+4-element Vector{Int64}:
+ 0
+ 1
+ 2
+ 3
+> typeof([0, 1, 2, 3])
+Vector{Int64} (alias for Array{Int64, 1})
 ```
 
 ### Working with arrays
