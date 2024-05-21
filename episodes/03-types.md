@@ -173,7 +173,7 @@ Complex(true, false)
 -1 * 0im
 ```
 
-Finally, Julia has a type for represent the exact values of irrational
+Finally, Julia has a type to represent the exact values of irrational
 constants:
 
 ```julia
