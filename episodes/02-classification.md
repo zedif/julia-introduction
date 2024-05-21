@@ -30,7 +30,7 @@ Julia is dynamically typed by default. This puts it in the company of Python and
 distinguishes it from Java and C++.
 
 Even though it is dynamically typed by default, it does allow programmers to
-specify the type of a value, for example for method parameters or method return
+specify the type of a variable, for example for method parameters or method return
 types. This is mainly necessary to make use of method dispatch based on argument
 types, a topic we will get to in a later episode. It also helps to ensure that
 no unintended uses of functions work. And, in some cases, it can [improve
