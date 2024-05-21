@@ -462,7 +462,7 @@ functions to arrays:
  5.0
 ```
 
-With the `@.` notation we can make every function call in an expression be applied
+With the `@.` notation we can turn every function call into an expression that is applied
 element-wise:
 
 ```julia
