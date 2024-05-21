@@ -99,7 +99,7 @@ We can use `supertypes` to get the full inheritance chain of a type as a tuple
 of types.
 
 ```
-> supertypes(Int64
+> supertypes(Int64)
 (Int64, Signed, Integer, Real, Number, Any)
 ```
 
@@ -156,7 +156,7 @@ true
 1
 ```
 
-There are types for complex and rational numbers that are parameterized on
+There are types for complex and rational numbers that are parameterised on
 subtypes of `Real` and `Integer` respectively:
 
 ```julia
@@ -173,7 +173,7 @@ Complex(true, false)
 -1 * 0im
 ```
 
-Finally, Julia has a type for represent the exact values of irrational
+Finally, Julia has a type to represent the exact values of irrational
 constants:
 
 ```julia

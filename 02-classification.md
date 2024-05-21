@@ -20,7 +20,7 @@ In this episode we will place Julia within the world of programming languages.
 
 ## High-Level
 
-Julia is a high-level language, that is, it abstract away the details of the
+Julia is a high-level language, that is, it abstracts away the details of the
 hardware that runs software written in the language. Other high-level languages
 are, for example, Java and Python.
 
@@ -30,7 +30,7 @@ Julia is dynamically typed by default. This puts it in the company of Python and
 distinguishes it from Java and C++.
 
 Even though it is dynamically typed by default, it does allow programmers to
-specify the type of a value, for example for method parameters or method return
+specify the type of a variable, for example for method parameters or method return
 types. This is mainly necessary to make use of method dispatch based on argument
 types, a topic we will get to in a later episode. It also helps to ensure that
 no unintended uses of functions work. And, in some cases, it can [improve
@@ -111,7 +111,7 @@ julia> code_native(foo, (Float64,))
 ; └
 ```
 
-Since Julia always complies and never evaluates, the compiler is sometimes
+Since Julia always compiles and never evaluates, the compiler is sometimes
 called a just-ahead-of-time compiler.
 
 ## High-performance
@@ -119,9 +119,9 @@ called a just-ahead-of-time compiler.
 The [intention behind developing
 Julia](https://julialang.org/blog/2012/02/why-we-created-julia/) was to create a
 fast dynamic language. And so it comes as no surprise that high-performance
-software can be written in Julia. The language is, by design, particularly well
+software can be written in Julia. The language is by design particularly well
 suited for dealing with (large) arrays of numbers. This makes it a good language
-for writing code for numerical analysis, optimization, and many forms of machine
+for writing code for numerical analysis, optimisation, and many forms of machine
 learning.
 
 [Benchmarks on the language’s website](https://julialang.org/benchmarks/) place
