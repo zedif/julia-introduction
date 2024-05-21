@@ -347,7 +347,7 @@ One is effectively the transpose of the other:
  2
 ```
 
-This has further consequences for arrays:
+This has further consequences for multidimensional arrays:
 ```julia
 # all commas
 > [[0, 1], [2,3]]
