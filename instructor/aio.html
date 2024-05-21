@@ -320,7 +320,7 @@
         
 <section id="aio-01-introduction"><p>Content from <a href="01-introduction.html">Introduction</a></p>
 <hr>
-<p>Last updated on 2022-05-23 |
+<p>Last updated on 2024-05-21 |
         
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/01-introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 5 minutes</p>
@@ -352,9 +352,8 @@
 </div>
 </div>
 </div>
-<p>This lesson is and introduction to the Julia programming language for
-persons who already have experience in programming other programming
-languages.</p>
+<p>This lesson is an introduction to the Julia programming language for
+persons who already have experience in other programming languages.</p>
 <p>We start by placing Julia within the world of all programming
 languages by looking at properties usually used to classify them.</p>
 <p>Then we go through the language types and other important constructs.
@@ -390,7 +389,7 @@ commands in the form of strings we type.</p>
 </div>
 </div></section><section id="aio-02-classification"><p>Content from <a href="02-classification.html">Programming Language Classification</a></p>
 <hr>
-<p>Last updated on 2022-05-23 |
+<p>Last updated on 2024-05-21 |
         
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/02-classification.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
@@ -427,16 +426,16 @@ languages.</p>
 <section id="high-level"><h2 class="section-heading">High-Level<a class="anchor" aria-label="anchor" href="#high-level"></a>
 </h2>
 <hr class="half-width">
-<p>Julia is a high-level language, that is, it abstract away the details
-of the hardware that runs software written in the language. Other
-high-level languages are, for example, Java and Python.</p>
+<p>Julia is a high-level language, that is, it abstracts away the
+details of the hardware that runs software written in the language.
+Other high-level languages are, for example, Java and Python.</p>
 </section><section id="dynamic"><h2 class="section-heading">Dynamic<a class="anchor" aria-label="anchor" href="#dynamic"></a>
 </h2>
 <hr class="half-width">
 <p>Julia is dynamically typed by default. This puts it in the company of
 Python and distinguishes it from Java and C++.</p>
 <p>Even though it is dynamically typed by default, it does allow
-programmers to specify the type of a value, for example for method
+programmers to specify the type of a variable, for example for method
 parameters or method return types. This is mainly necessary to make use
 of method dispatch based on argument types, a topic we will get to in a
 later episode. It also helps to ensure that no unintended uses of
@@ -518,7 +517,7 @@ argument types using the function <code>code_native</code>:</p>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>        nopw    <span class="op">%</span>cs<span class="op">:</span>(<span class="op">%</span>rax,<span class="op">%</span>rax)</span>
 <span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>; └</span></code></pre>
 </div>
-<p>Since Julia always complies and never evaluates, the compiler is
+<p>Since Julia always compiles and never evaluates, the compiler is
 sometimes called a just-ahead-of-time compiler.</p>
 </section><section id="high-performance"><h2 class="section-heading">High-performance<a class="anchor" aria-label="anchor" href="#high-performance"></a>
 </h2>
@@ -526,9 +525,9 @@ sometimes called a just-ahead-of-time compiler.</p>
 <p>The <a href="https://julialang.org/blog/2012/02/why-we-created-julia/" class="external-link">intention
 behind developing Julia</a> was to create a fast dynamic language. And
 so it comes as no surprise that high-performance software can be written
-in Julia. The language is, by design, particularly well suited for
-dealing with (large) arrays of numbers. This makes it a good language
-for writing code for numerical analysis, optimization, and many forms of
+in Julia. The language is by design particularly well suited for dealing
+with (large) arrays of numbers. This makes it a good language for
+writing code for numerical analysis, optimisation, and many forms of
 machine learning.</p>
 <p><a href="https://julialang.org/benchmarks/" class="external-link">Benchmarks on the
 language’s website</a> place its performance close to that of languages
@@ -542,7 +541,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-03-types"><p>Content from <a href="03-types.html">Types</a></p>
 <hr>
-<p>Last updated on 2022-06-07 |
+<p>Last updated on 2024-05-21 |
         
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/03-types.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
@@ -654,7 +653,7 @@ It is an ancestor of every data type and so every value is of type
 <code>Any</code>.</p>
 <p>We can use <code>supertypes</code> to get the full inheritance chain
 of a type as a tuple of types.</p>
-<pre><code>&gt; supertypes(Int64
+<pre><code>&gt; supertypes(Int64)
 (Int64, Signed, Integer, Real, Number, Any)</code></pre>
 </section><section id="number-types"><h2 class="section-heading">Number Types<a class="anchor" aria-label="anchor" href="#number-types"></a>
 </h2>
@@ -711,7 +710,7 @@ integer type:</p>
 <span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="fl">1</span></span></code></pre>
 </div>
 <p>There are types for complex and rational numbers that are
-parameterized on subtypes of <code>Real</code> and <code>Integer</code>
+parameterised on subtypes of <code>Real</code> and <code>Integer</code>
 respectively:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -728,8 +727,8 @@ respectively:</p>
 <span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="op">&gt;</span> <span class="cn">im</span><span class="op">*</span><span class="cn">im</span></span>
 <span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span> <span class="op">*</span> <span class="fl">0im</span></span></code></pre>
 </div>
-<p>Finally, Julia has a type for represent the exact values of
-irrational constants:</p>
+<p>Finally, Julia has a type to represent the exact values of irrational
+constants:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2115,7 +2114,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/aio.html",
-  "dateCreated": "2024-05-15",
+  "dateCreated": "2024-05-21",
   "dateModified": "2024-05-21",
   "datePublished": "2024-05-21"
 }
