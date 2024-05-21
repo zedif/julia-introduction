@@ -20,7 +20,7 @@ In this episode we will place Julia within the world of programming languages.
 
 ## High-Level
 
-Julia is a high-level language, that is, it abstract away the details of the
+Julia is a high-level language, that is, it abstracts away the details of the
 hardware that runs software written in the language. Other high-level languages
 are, for example, Java and Python.
 
