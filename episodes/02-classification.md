@@ -111,7 +111,7 @@ julia> code_native(foo, (Float64,))
 ; └
 ```
 
-Since Julia always complies and never evaluates, the compiler is sometimes
+Since Julia always compiles and never evaluates, the compiler is sometimes
 called a just-ahead-of-time compiler.
 
 ## High-performance
