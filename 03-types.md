@@ -193,7 +193,7 @@ There are types for strings and characters:
 String
 ```
 
-```
+```julia
 > typeof("Hello"[3])
 Char
 ```
