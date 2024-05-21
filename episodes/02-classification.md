@@ -119,9 +119,9 @@ called a just-ahead-of-time compiler.
 The [intention behind developing
 Julia](https://julialang.org/blog/2012/02/why-we-created-julia/) was to create a
 fast dynamic language. And so it comes as no surprise that high-performance
-software can be written in Julia. The language is, by design, particularly well
+software can be written in Julia. The language is by design particularly well
 suited for dealing with (large) arrays of numbers. This makes it a good language
-for writing code for numerical analysis, optimization, and many forms of machine
+for writing code for numerical analysis, optimisation, and many forms of machine
 learning.
 
 [Benchmarks on the language’s website](https://julialang.org/benchmarks/) place
