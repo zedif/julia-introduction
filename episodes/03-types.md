@@ -99,7 +99,7 @@ We can use `supertypes` to get the full inheritance chain of a type as a tuple
 of types.
 
 ```
-> supertypes(Int64
+> supertypes(Int64)
 (Int64, Signed, Integer, Real, Number, Any)
 ```
 
