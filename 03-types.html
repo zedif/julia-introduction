@@ -516,7 +516,7 @@ constants:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In Julia indexing starts with 1 instead of the more common 0. So, for
 example, to get the second element of an array, one would use the index
@@ -774,8 +774,8 @@ element-wise apply functions to arrays:</p>
 <span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a> <span class="fl">4.0</span></span>
 <span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a> <span class="fl">5.0</span></span></code></pre>
 </div>
-<p>With the <code>@.</code> notation we can make every function call in
-an expression be applied element-wise:</p>
+<p>With the <code>@.</code> notation we can turn every function call
+into an expression that is applied element-wise:</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
