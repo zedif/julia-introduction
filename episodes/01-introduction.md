@@ -16,7 +16,7 @@ exercises: 0
 
 :::
 
-This lesson is and introduction to the Julia programming language for persons
+This lesson is an introduction to the Julia programming language for persons
 who already have experience in programming other programming languages.
 
 We start by placing Julia within the world of all programming languages by
