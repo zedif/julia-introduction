@@ -338,10 +338,25 @@ Julia supports matrix operations with the usual operators:
  1
  2
 
+> b+b
+2-element Vector{Int64}:
+ 2
+ 4
+
+> A-A
+2×2 Matrix{Int64}:
+ 0  0
+ 0  0
+
 > A * b
 2-element Vector{Int64}:
  2
  1
+
+> A*A
+2×2 Matrix{Int64}:
+ 1  0
+ 0  1
 ```
 
 Julia also supports a special syntax, the dot-operator, to element-wise apply
