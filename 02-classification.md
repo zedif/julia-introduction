@@ -31,13 +31,13 @@ distinguishes it from Java and C++.
 
 Even though it is dynamically typed by default, it does allow programmers to
 specify the type of a variable, for example for method parameters or method return
-types. This is mainly necessary to make use of method dispatch based on argument
-types, a topic we will get to in a later episode. It also helps to ensure that
-no unintended uses of functions work. And, in some cases, it can [improve
-performance](https://docs.julialang.org/en/v1/manual/types/#Type-Declarations).
+types.
+This is mainly necessary to make use of method dispatch based on argument
+types.
+It also helps to ensure that no unintended uses of functions (seem to) work.
+And, in some cases, it can [improve performance](https://docs.julialang.org/en/v1/manual/types/#Type-Declarations).
 
-We will give it a try and define two methods, one with and one without
-specifying the parameter type:
+We will give it a try and define two methods, one with and one without specifying the parameter type:
 
 ```julia
 > identity(x) = x
