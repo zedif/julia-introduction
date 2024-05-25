@@ -407,7 +407,7 @@ Vector{Int64} (alias for Array{Int64, 1})
 
 ### Working with arrays
 
-Julia supports matrix operations with the usual operators:
+Julia supports matrix operations:
 
 ```julia
 > A = [[0, 1] [1, 0]]
