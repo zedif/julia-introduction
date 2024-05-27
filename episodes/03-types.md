@@ -276,6 +276,34 @@ own name:
 -1
 ```
 
+## Dictionaries
+
+Close to named tuples, but without the limitation of fixed length are dictionaries:
+
+```julia
+> person = Dict("first name" => "Albert", "last name" => "Einstein", "age" => 44)
+Dict{String, Any} with 3 entries:
+  "first name" => "Albert"
+  "age"        => 44
+  "last name"  => "Einstein"
+```
+As seen from this example: key types can be mixed.
+However, unlike tuples, the order of keys is not preserved and you cannot get the entries by index:
+```julia
+> person[1]
+ERROR: KeyError: key 1 not found
+Stacktrace:
+ [1] getindex(h::Dict{String, Any}, key::Int64)
+   @ Base ./dict.jl:498
+ [2] top-level scope
+   @ REPL[77]:1
+```
+But this works:
+```julia
+> person["first name"]
+"Albert"
+```
+
 ## Arrays
 
 Arrays and associated features are arguably one of the most important defining
