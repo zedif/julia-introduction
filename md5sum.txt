@@ -13,6 +13,7 @@
 "episodes/07-modules.md" "5f68b8f9955b7436426646c3c00c6dec" "site/built/07-modules.md" "2024-05-27"
 "episodes/08-packages.md" "94a47d945c462955d873ea8de6a34fb8" "site/built/08-packages.md" "2024-05-27"
 "episodes/09-ffi.md" "18b961aa4b22f237f269b270e3e20ade" "site/built/09-ffi.md" "2024-05-27"
+"episodes/10-further-steps.md" "8c6ce0e96354cdbbd51120d4a72eddc7" "site/built/10-further-steps.md" "2024-05-27"
 "instructors/instructor-notes.md" "60b93493cf1da06dfd63255d73854461" "site/built/instructor-notes.md" "2022-04-22"
 "learners/setup.md" "f51423bbacfff52586f6c3ee10abe690" "site/built/setup.md" "2022-05-16"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2022-04-22"
