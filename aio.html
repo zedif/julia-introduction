@@ -231,7 +231,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-loops_and_conditionals.html">5. Loops</a>
+        <a href="05-loops_and_conditionals.html">5. Loops and Conditionals</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -1618,7 +1618,7 @@ operators:</p>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</div></section><section id="aio-05-loops_and_conditionals"><p>Content from <a href="05-loops_and_conditionals.html">Loops</a></p>
+</div></section><section id="aio-05-loops_and_conditionals"><p>Content from <a href="05-loops_and_conditionals.html">Loops and Conditionals</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
         
@@ -1635,6 +1635,7 @@ any links that you are not going to use.
 <h3 class="card-title">Questions</h3>
 <ul>
 <li>What basic loop constructs does Julia offer?</li>
+<li>What is the syntax for conditionals in Julia?</li>
 </ul>
 </div>
 </div>
@@ -1699,10 +1700,63 @@ Python:</p>
 <p><code>&lt;iterable&gt;</code> can be anything that can be iterated
 over and <code>&lt;variable&gt;</code> will, one by one, take values
 from that iterable, e.g., an array.</p>
+</div>
+<div class="section level1">
+<h1 id="conditionals">Conditionals<a class="anchor" aria-label="anchor" href="#conditionals"></a>
+</h1>
+<div class="section level2">
+<h2 id="using-if">using <code>if</code>
+<a class="anchor" aria-label="anchor" href="#using-if"></a>
+</h2>
+<p>The probalbly most-used syntax for a conditional in programming uses
+the <code>if</code> keyword and Julia does the same. The general syntax
+of an <code>if</code> conditional is as follows:</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="cf">if</span> <span class="op">&lt;</span>condition <span class="fl">1</span><span class="op">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>    <span class="op">&lt;</span><span class="cf">do</span> something<span class="op">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="cf">elseif</span> <span class="op">&lt;</span>condition <span class="fl">2</span><span class="op">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    <span class="op">&lt;</span><span class="cf">do</span> something <span class="cf">else</span><span class="op">&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>    <span class="op">&lt;</span><span class="cf">do</span> something entirely different<span class="op">&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="cf">end</span></span></code></pre>
+</div>
+<p>The blocks <code>elseif</code> and <code>else</code> are optional,
+also as usual.</p>
+</div>
+<div class="section level2">
+<h2 id="using-the-ternary-operator">using the ternary operator<a class="anchor" aria-label="anchor" href="#using-the-ternary-operator"></a>
+</h2>
+<p>Conditionals can also be written differently in a number of other
+programming languages, usung ternary operators, like this:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>a ? b <span class="op">:</span> c</span></code></pre>
+</div>
+<p>which is equivalent to</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="cf">if</span> a</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>    b</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>    c</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="cf">end</span></span></code></pre>
+</div>
+<p>Note that <code>?</code> binds rather strongly, so usually you will
+have to enclose the expression within parentheses:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>(<span class="fl">4</span> <span class="op">&gt;</span> <span class="fl">0</span>) ? <span class="st">"larger than 0"</span> <span class="op">:</span> <span class="st">"equal to or less than zero"</span></span></code></pre>
+</div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
+</div>
 </div></section><section id="aio-06-generic-functions"><p>Content from <a href="06-generic-functions.html">Generic Functions</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
