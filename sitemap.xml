@@ -13,13 +13,28 @@
     <loc>https://zedif.github.io/julia-introduction/04-generic-functions.html</loc>
   </url>
   <url>
+    <loc>https://zedif.github.io/julia-introduction/04-operators.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/05-generic-functions.html</loc>
+  </url>
+  <url>
     <loc>https://zedif.github.io/julia-introduction/05-modules.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/06-modules.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/06-packages.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/07-ffi.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/07-packages.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/08-ffi.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/404.html</loc>
@@ -52,13 +67,28 @@
     <loc>https://zedif.github.io/julia-introduction/instructor/04-generic-functions.html</loc>
   </url>
   <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/04-operators.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/05-generic-functions.html</loc>
+  </url>
+  <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/05-modules.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/06-modules.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/06-packages.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/07-ffi.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/07-packages.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/08-ffi.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/404.html</loc>
