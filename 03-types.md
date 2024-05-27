@@ -304,6 +304,19 @@ But this works:
 "Albert"
 ```
 
+Also, dictionaries are not fixed in length:
+```julia
+> person["profession"] = "scientist"
+"scientist"
+
+> person
+Dict{String, Any} with 4 entries:
+  "first name" => "Albert"
+  "profession" => "scientist"
+  "age"        => 44
+  "last name"  => "Einstein"
+```
+
 ## Arrays
 
 Arrays and associated features are arguably one of the most important defining
