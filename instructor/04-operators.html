@@ -296,11 +296,108 @@
 
         
 
-<p>TODO</p>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>What basic operators/operations does Julia define?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>SOME OBJECTIVE</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<p>Julia, like most other languages, defines a core set of basic
+arithmetic and bitwise operators for its primitive data types. Most of
+them are similar to most other languages, but there are some operators
+that might differ, like the division operator, which which is also
+differently defined between other languages or even language versions
+(like in Python 2 vs. 3).</p>
+<div class="section level1">
+<h1 id="arithmetic-operators">Arithmetic Operators<a class="anchor" aria-label="anchor" href="#arithmetic-operators"></a></h1>
+<p>The following table lists the basic arithmetic operators which are
+defined on all primitive numeric data types:</p>
+<p>Julia respects the usual mathematical ordering of operators,
+e.g.:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">2</span><span class="op">+</span><span class="fl">3</span><span class="op">*</span><span class="fl">4</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fl">14</span></span></code></pre>
+</div>
+<p>and</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">3</span><span class="op">*</span><span class="fl">2</span><span class="op">^</span><span class="fl">2</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fl">12</span></span></code></pre>
+</div>
+</div>
+<div class="section level1">
+<h1 id="boolean-operators">Boolean Operators<a class="anchor" aria-label="anchor" href="#boolean-operators"></a></h1>
+<p>Boolean operators work on the <code>Bool</code> type:</p>
+<p>Note that while these operations do not work on integers:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> <span class="fl">0</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>ERROR<span class="op">:</span> <span class="dt">TypeError</span><span class="op">:</span> non<span class="op">-</span>boolean (<span class="dt">Int64</span>) used <span class="kw">in</span> boolean context</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>Stacktrace<span class="op">:</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a> [<span class="fl">1</span>] top<span class="op">-</span>level scope</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">38</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
+</div>
+<p><code>Bool</code> is an <code>Integer</code> type and thus, boolean
+values can be treated as integers (<code>false</code> as <code>0</code>
+and <code>true</code> as <code>1</code>) where necessary:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="fl">1</span> <span class="op">+</span> <span class="cn">true</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fl">2</span></span></code></pre>
+</div>
+</div>
+<div class="section level1">
+<h1 id="bitwise-operators">Bitwise Operators<a class="anchor" aria-label="anchor" href="#bitwise-operators"></a></h1>
+<p>Bitwise operators work on all primitive integer types:</p>
+</div>
+<div class="section level1">
+<h1 id="assigning-operators">Assigning operators<a class="anchor" aria-label="anchor" href="#assigning-operators"></a></h1>
+<p>binary arithmetic and bitwise operators can be appended by an equal
+sign to produce an operator that assigns the result of the operation to
+the left operand, e.g.:</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="op">&gt;</span> a <span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fl">1</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="op">&gt;</span> a <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fl">2</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="op">&gt;</span> a</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="fl">2</span></span></code></pre>
+</div>
+</div>
+<div class="section level1">
+<h1 id="numeric-comparisons">Numeric Comparisons<a class="anchor" aria-label="anchor" href="#numeric-comparisons"></a></h1>
+<p>Comparisons work like in most other programming languages, with the
+possible extension to allow also non-ASCII versions of some
+operators:</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
+</div>
 
 
 
