@@ -1282,6 +1282,71 @@ differently defined between other languages or even language versions
 </h1>
 <p>The following table lists the basic arithmetic operators which are
 defined on all primitive numeric data types:</p>
+<table class="table">
+<colgroup>
+<col width="37%">
+<col width="40%">
+<col width="21%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">Expression</th>
+<th align="left">Description</th>
+<th align="left">Notes</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>-a</code></td>
+<td align="left">additive inverse</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><code>a + b</code></td>
+<td align="left">addition</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>a - b</code></td>
+<td align="left">subtraction</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><code>a * b</code></td>
+<td align="left">multiplication</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>a / b</code></td>
+<td align="left">division</td>
+<td align="left">division of integers always returns a floating point
+number</td>
+</tr>
+<tr class="even">
+<td align="center"><code>a \ b</code></td>
+<td align="left">inverse divide</td>
+<td align="left">same as <code>b/a</code>
+</td>
+</tr>
+<tr class="odd">
+<td align="center"><code class="sourceCode julia">a <span class="op">÷</span> b</code></td>
+<td align="left">integer division</td>
+<td align="left">rounded towards zero; within Julia
+<code>\div&lt;TAB&gt;</code> produces the <code class="sourceCode julia"><span class="op">÷</span></code> character,
+otherwise use <code>div(a,b)</code>
+</td>
+</tr>
+<tr class="even">
+<td align="center"><code>a % b</code></td>
+<td align="left">remainder of <code class="sourceCode julia">a<span class="op">÷</span>b</code>
+</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>a ^ b</code></td>
+<td align="left">a to the power of b</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
 <p>Julia respects the usual mathematical ordering of operators,
 e.g.:</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -1302,6 +1367,26 @@ e.g.:</p>
 <h1 id="boolean-operators">Boolean Operators<a class="anchor" aria-label="anchor" href="#boolean-operators"></a>
 </h1>
 <p>Boolean operators work on the <code>Bool</code> type:</p>
+<table class="table">
+<thead><tr class="header">
+<th align="center">Expression</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>!a</code></td>
+<td align="left">logical negation</td>
+</tr>
+<tr class="even">
+<td align="center"><code>a &amp;&amp; b</code></td>
+<td align="left">logical and</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>a || b</code></td>
+<td align="left">logical or</td>
+</tr>
+</tbody>
+</table>
 <p>Note that while these operations do not work on integers:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1326,6 +1411,62 @@ and <code>true</code> as <code>1</code>) where necessary:</p>
 <h1 id="bitwise-operators">Bitwise Operators<a class="anchor" aria-label="anchor" href="#bitwise-operators"></a>
 </h1>
 <p>Bitwise operators work on all primitive integer types:</p>
+<table class="table">
+<colgroup>
+<col width="37%">
+<col width="40%">
+<col width="21%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">Expression</th>
+<th align="left">Description</th>
+<th align="left">Notes</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>~a</code></td>
+<td align="left">bitwise negation (not)</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><code>a &amp; b</code></td>
+<td align="left">bitwise and</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>a | b</code></td>
+<td align="left">bitwise or</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><code>a ⊻ b</code></td>
+<td align="left">bitwise xor</td>
+<td align="left">exclusive or; type <code>\xor&lt;TAB&gt;</code>
+</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>a ⊼ b</code></td>
+<td align="left">bitwise nand</td>
+<td align="left">not and; type <code>\nand&lt;TAB&gt;</code>
+</td>
+</tr>
+<tr class="even">
+<td align="center"><code>a &gt;&gt;&gt; b</code></td>
+<td align="left">logical bitwise shift right</td>
+<td align="left">does not preserve sign</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>a &gt;&gt; b</code></td>
+<td align="left">arithmetic bitwise shift right</td>
+<td align="left">preserves sign</td>
+</tr>
+<tr class="even">
+<td align="center"><code>a &lt;&lt; b</code></td>
+<td align="left">logical/arithmetic bitwise shift left</td>
+<td align="left">does not necessarily preserve sign (overflow)</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section level1">
 <h1 id="assigning-operators">Assigning operators<a class="anchor" aria-label="anchor" href="#assigning-operators"></a>
@@ -1352,6 +1493,54 @@ the left operand, e.g.:</p>
 <p>Comparisons work like in most other programming languages, with the
 possible extension to allow also non-ASCII versions of some
 operators:</p>
+<table class="table">
+<thead><tr class="header">
+<th align="center">Operator</th>
+<th align="left">Description</th>
+<th align="left">Notes</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>===</code></td>
+<td align="left">equality</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">
+<code>!=</code> or <code>≠</code>
+</td>
+<td align="left">inequality</td>
+<td align="left">type <code>\ne&lt;TAB&gt;</code> to get
+<code>≠</code>
+</td>
+</tr>
+<tr class="odd">
+<td align="center">
+<code>&lt;</code>, <code>&gt;</code>
+</td>
+<td align="left">less than, greater than</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">
+<code>&lt;=</code> or <code>≤</code>
+</td>
+<td align="left">less than or equal</td>
+<td align="left">type <code>\leq&lt;TAB&gt;</code> to get
+<code>≤</code>
+</td>
+</tr>
+<tr class="odd">
+<td align="center">
+<code>&gt;=</code> or <code>≥</code>
+</td>
+<td align="left">greater than or equal</td>
+<td align="left">type <code>\geq&lt;TAB&gt;</code> to get
+<code>≥</code>
+</td>
+</tr>
+</tbody>
+</table>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
