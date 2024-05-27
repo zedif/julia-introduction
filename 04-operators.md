@@ -111,5 +111,5 @@ Comparisons work like in most other programming languages, with the possible ext
 | ```!=``` or ```≠``` | inequality | type ```\ne<TAB>``` to get ```≠``` |
 | ```<```, ```>``` | less than, greater than ||
 | ```<=``` or ```≤``` | less than or equal | type ```\leq<TAB>``` to get ```≤``` |
-| ```>=``` or ```≥``` | greather than or equal | type ```\geq<TAB>``` to get ```≥``` |
+| ```>=``` or ```≥``` | greater than or equal | type ```\geq<TAB>``` to get ```≥``` |
 
