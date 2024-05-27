@@ -1,5 +1,5 @@
 ---
-title: "Loops"
+title: "Loops and Conditionals"
 teaching: 20
 exercises: 0
 ---
@@ -7,6 +7,7 @@ exercises: 0
 ::: questions
 
 - What basic loop constructs does Julia offer?
+- What is the syntax for conditionals in Julia?
 
 :::
 
@@ -55,4 +56,42 @@ The equvalent `for` loop to the previous example for a `while` loop would look l
 ```
 
 `<iterable>` can be anything that can be iterated over and `<variable>` will, one by one, take values from that iterable, e.g., an array.
+
+# Conditionals
+
+## using `if`
+
+The probalbly most-used syntax for a conditional in programming uses the `if` keyword and Julia does the same.
+The general syntax of an `if` conditional is as follows:
+```julia
+if <condition 1>
+    <do something>
+elseif <condition 2>
+    <do something else>
+else
+    <do something entirely different>
+end
+```
+
+The blocks `elseif` and `else` are optional, also as usual.
+
+## using the ternary operator
+
+Conditionals can also be written differently in a number of other programming languages, usung ternary operators, like this:
+
+```julia
+a ? b : c
+```
+which is equivalent to
+```julia
+if a
+    b
+else
+    c
+end
+```
+Note that `?` binds rather strongly, so usually you will have to enclose the expression within parentheses:
+```julia
+(4 > 0) ? "larger than 0" : "equal to or less than zero"
+```
 
