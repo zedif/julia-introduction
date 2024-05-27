@@ -25,15 +25,15 @@ The following table lists the basic arithmetic operators which are defined on al
 
 | Expression | Description | Notes |
 |:----------:|:------------|:------|
-| `-a`   | additive inverse ||
-| `a + b`  | addition ||
-| `a - b`  | subtraction ||
-| `a * b`  | multiplication ||
-| `a / b`  | division | division of integers always returns a floating point number |
-| `a \ b`  | inverse divide | same as `b/a` |
-| `a ÷ b`  | integer division | rounded towards zero; within Julia `\div<TAB>` produces the `÷` character, otherwise use `div(a,b)` |
-| `a % b`  | remainder of `a÷b` ||
-| `a ^ b`  | a to the power of b ||
+| ```-a```   | additive inverse ||
+| ```a + b```  | addition ||
+| ```a - b```  | subtraction ||
+| ```a * b```  | multiplication ||
+| ```a / b```  | division | division of integers always returns a floating point number |
+| ```a \ b```  | inverse divide | same as ```b/a``` |
+| ```a ÷ b```  | integer division | rounded towards zero; within Julia ```\div<TAB>``` produces the ```÷``` character, otherwise use ```div(a,b)``` |
+| ```a % b```  | remainder of ```a÷b``` ||
+| ```a ^ b```  | a to the power of b ||
 
 Julia respects the usual mathematical ordering of operators, e.g.:
 
@@ -41,9 +41,7 @@ Julia respects the usual mathematical ordering of operators, e.g.:
 > 2+3*4
 14
 ```
-
 and
-
 ```julia
 > 3*2^2
 12
@@ -55,12 +53,11 @@ Boolean operators work on the ```Bool``` type:
 
 | Expression | Description |
 |:----------:|:------------|
-| `!a`   | logical negation |
-| `a && b` | logical and |
-| `a \|\| b` | logical or |
+| ```!a```   | logical negation |
+| ```a && b``` | logical and |
+| ```a \|\| b``` | logical or |
 
 Note that while these operations do not work on integers:
-
 ```julia
 > 1 && 0
 ERROR: TypeError: non-boolean (Int64) used in boolean context
@@ -68,9 +65,7 @@ Stacktrace:
  [1] top-level scope
    @ REPL[38]:1
 ```
-
-`Bool` is an `Integer` type and thus, boolean values can be treated as integers (`false` as `0` and `true` as `1`) where necessary:
-
+```Bool``` is an ```Integer``` type and thus, boolean values can be treated as integers (```false``` as ```0``` and ```true``` as ```1```) where necessary:
 ```julia
 > 1 + true
 2
@@ -83,19 +78,18 @@ Bitwise operators work on all primitive integer types:
 
 | Expression | Description | Notes |
 |:----------:|:------------|:------|
-| `~a`     | bitwise negation (not) ||
-| `a & b`  | bitwise and ||
-| `a \| b`  | bitwise or ||
-| `a ⊻ b`  | bitwise xor | exclusive or; type `\xor<TAB>` |
-| `a ⊼ b`  | bitwise nand | not and; type `\nand<TAB>` |
-| `a >>> b`| logical bitwise shift right | does not preserve sign |
-| `a >> b` | arithmetic bitwise shift right | preserves sign |
-| `a << b` | logical/arithmetic bitwise shift left | does not necessarily preserve sign (overflow) |
+| ```~a```     | bitwise negation (not) ||
+| ```a & b```  | bitwise and ||
+| ```a \| b```  | bitwise or ||
+| ```a ⊻ b```  | bitwise xor | exclusive or; type ```\xor<TAB>``` |
+| ```a ⊼ b```  | bitwise nand | not and; type ```\nand<TAB>``` |
+| ```a >>> b```| logical bitwise shift right | does not preserve sign |
+| ```a >> b``` | arithmetic bitwise shift right | preserves sign |
+| ```a << b``` | logical/arithmetic bitwise shift left | does not necessarily preserve sign (overflow) |
 
 # Assigning operators
 
 binary arithmetic and bitwise operators can be appended by an equal sign to produce an operator that assigns the result of the operation to the left operand, e.g.:
-
 ```julia
 > a = 1
 1
@@ -113,8 +107,9 @@ Comparisons work like in most other programming languages, with the possible ext
 
 | Operator   | Description | Notes |
 |:----------:|:------------|:------|
-| `===`  | equality ||
-| `!=` or `≠` | inequality | type `\ne<TAB>` to get `≠` |
-| `<`, `>` | less than, greater than ||
-| `<=` or `≤` | less than or equal | type `\leq<TAB>` to get `≤` |
-| `>=` or `≥` | greater than or equal | type `\geq<TAB>` to get `≥` |
+| ```===```  | equality ||
+| ```!=``` or ```≠``` | inequality | type ```\ne<TAB>``` to get ```≠``` |
+| ```<```, ```>``` | less than, greater than ||
+| ```<=``` or ```≤``` | less than or equal | type ```\leq<TAB>``` to get ```≤``` |
+| ```>=``` or ```≥``` | greater than or equal | type ```\geq<TAB>``` to get ```≥``` |
+
