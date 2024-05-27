@@ -31,8 +31,8 @@ The following table lists the basic arithmetic operators which are defined on al
 | `a * b`  | multiplication ||
 | `a / b`  | division | division of integers always returns a floating point number |
 | `a \ b`  | inverse divide | same as `b/a` |
-| `a ÷ b`  | integer division | rounded towards zero; within Julia `\div<TAB>` produces the `÷` character, otherwise use `div(a,b)` |
-| `a % b`  | remainder of `a÷b` ||
+| `a ÷ b`{.julia}  | integer division | rounded towards zero; within Julia `\div<TAB>` produces the `÷`{.julia} character, otherwise use `div(a,b)` |
+| `a % b`  | remainder of `a÷b`{.julia} ||
 | `a ^ b`  | a to the power of b ||
 
 Julia respects the usual mathematical ordering of operators, e.g.:
