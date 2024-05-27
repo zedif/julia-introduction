@@ -19,7 +19,13 @@
     <loc>https://zedif.github.io/julia-introduction/05-generic-functions.html</loc>
   </url>
   <url>
+    <loc>https://zedif.github.io/julia-introduction/05-loops.html</loc>
+  </url>
+  <url>
     <loc>https://zedif.github.io/julia-introduction/05-modules.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/06-generic-functions.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/06-modules.html</loc>
@@ -31,10 +37,19 @@
     <loc>https://zedif.github.io/julia-introduction/07-ffi.html</loc>
   </url>
   <url>
+    <loc>https://zedif.github.io/julia-introduction/07-modules.html</loc>
+  </url>
+  <url>
     <loc>https://zedif.github.io/julia-introduction/07-packages.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/08-ffi.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/08-packages.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/09-ffi.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/404.html</loc>
@@ -73,7 +88,13 @@
     <loc>https://zedif.github.io/julia-introduction/instructor/05-generic-functions.html</loc>
   </url>
   <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/05-loops.html</loc>
+  </url>
+  <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/05-modules.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/06-generic-functions.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/06-modules.html</loc>
@@ -85,10 +106,19 @@
     <loc>https://zedif.github.io/julia-introduction/instructor/07-ffi.html</loc>
   </url>
   <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/07-modules.html</loc>
+  </url>
+  <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/07-packages.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/08-ffi.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/08-packages.html</loc>
+  </url>
+  <url>
+    <loc>https://zedif.github.io/julia-introduction/instructor/09-ffi.html</loc>
   </url>
   <url>
     <loc>https://zedif.github.io/julia-introduction/instructor/404.html</loc>
