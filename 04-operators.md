@@ -57,7 +57,7 @@ Boolean operators work on the ```Bool``` type:
 |:----------:|:------------|
 | `!a`   | logical negation |
 | `a && b` | logical and |
-| `a \|\| b` | logical or |
+| `a || b` | logical or |
 
 Note that while these operations do not work on integers:
 
@@ -85,7 +85,7 @@ Bitwise operators work on all primitive integer types:
 |:----------:|:------------|:------|
 | `~a`     | bitwise negation (not) ||
 | `a & b`  | bitwise and ||
-| `a \| b`  | bitwise or ||
+| `a | b`  | bitwise or ||
 | `a ⊻ b`  | bitwise xor | exclusive or; type `\xor<TAB>` |
 | `a ⊼ b`  | bitwise nand | not and; type `\nand<TAB>` |
 | `a >>> b`| logical bitwise shift right | does not preserve sign |
