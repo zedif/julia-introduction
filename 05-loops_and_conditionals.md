@@ -26,6 +26,7 @@ We only cover two basic loop types here: `while` and `for` loops, and both are s
 ```julia
 while <condition>
     <do something>
+end
 ```
 
 For example, the following prints the first few squares:
@@ -77,7 +78,7 @@ The blocks `elseif` and `else` are optional, also as usual.
 
 ## using the ternary operator
 
-Conditionals can also be written differently in a number of other programming languages, usung ternary operators, like this:
+Conditionals can also be written differently in a number of other programming languages, using ternary operators, like this:
 
 ```julia
 a ? b : c
