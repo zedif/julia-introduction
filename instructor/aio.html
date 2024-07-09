@@ -43,7 +43,7 @@
             <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
           </abbr>
         </span>
-        
+
       </div>
     </div>
     <div class="selector-container">
@@ -74,7 +74,7 @@
           </ul>
 </li>
       </div>
-      
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Instructor View <i data-feather="chevron-down"></i>
@@ -210,7 +210,7 @@
 <!--div.sidenav-view-selector -->
             </div>
 <!--/div.col -->
-      
+
             <hr>
 </div>
 <!--/div.mobile-row -->
@@ -232,7 +232,7 @@
         <a href="index.html">Summary and Schedule</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -244,7 +244,7 @@
         <a href="01-introduction.html">1. Introduction</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -256,7 +256,7 @@
         <a href="02-classification.html">2. Programming Language Classification</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -268,7 +268,7 @@
         <a href="03-types.html">3. Types</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -280,7 +280,7 @@
         <a href="04-operators.html">4. Operators</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -292,7 +292,7 @@
         <a href="05-loops_and_conditionals.html">5. Loops and Conditionals</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -304,7 +304,7 @@
         <a href="06-generic-functions.html">6. Generic Functions</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -316,7 +316,7 @@
         <a href="07-modules.html">7. Modules</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -328,7 +328,7 @@
         <a href="08-packages.html">8. Packages</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -340,7 +340,7 @@
         <a href="09-ffi.html">9. Foreign Function Interface</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -352,7 +352,7 @@
         <a href="10-further-steps.html">10. Further Steps</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -390,11 +390,11 @@
             </div>
             <hr class="half-width resources">
 <a href="../instructor/aio.html">See all in one page</a>
-            
+
 
             <hr class="d-none d-sm-block d-md-none">
 <div class="d-grid gap-1">
-            
+
             </div>
           </div>
 <!-- /div.accordion -->
@@ -415,7 +415,7 @@
 <section id="aio-01-introduction"><p>Content from <a href="01-introduction.html">Introduction</a></p>
 <hr>
 <p>Last updated on 2024-05-21 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/01-introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 5 minutes</p>
 <div class="text-end">
@@ -484,7 +484,7 @@ commands in the form of strings we type.</p>
 </div></section><section id="aio-02-classification"><p>Content from <a href="02-classification.html">Programming Language Classification</a></p>
 <hr>
 <p>Last updated on 2024-05-25 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/02-classification.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
 <div class="text-end">
@@ -517,13 +517,15 @@ commands in the form of strings we type.</p>
 </div>
 <p>In this episode we will place Julia within the world of programming
 languages.</p>
-<section id="high-level"><h2 class="section-heading">High-Level<a class="anchor" aria-label="anchor" href="#high-level"></a>
+<section><h2 class="section-heading" id="high-level">High-Level<a class="anchor" aria-label="anchor" href="#high-level"></a>
+<a class="anchor" aria-label="anchor" href="#high-level"></a>
 </h2>
 <hr class="half-width">
 <p>Julia is a high-level language, that is, it abstracts away the
 details of the hardware that runs software written in the language.
 Other high-level languages are, for example, Java and Python.</p>
-</section><section id="dynamic"><h2 class="section-heading">Dynamic<a class="anchor" aria-label="anchor" href="#dynamic"></a>
+</section><section><h2 class="section-heading" id="dynamic">Dynamic<a class="anchor" aria-label="anchor" href="#dynamic"></a>
+<a class="anchor" aria-label="anchor" href="#dynamic"></a>
 </h2>
 <hr class="half-width">
 <p>Julia is dynamically typed by default. This puts it in the company of
@@ -562,11 +564,13 @@ without specifying the parameter type:</p>
 <span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a> [<span class="fl">1</span>] top<span class="op">-</span>level scope</span>
 <span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">6</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
-</section><section id="garbage-collected"><h2 class="section-heading">Garbage Collected<a class="anchor" aria-label="anchor" href="#garbage-collected"></a>
+</section><section><h2 class="section-heading" id="garbage-collected">Garbage Collected<a class="anchor" aria-label="anchor" href="#garbage-collected"></a>
+<a class="anchor" aria-label="anchor" href="#garbage-collected"></a>
 </h2>
 <hr class="half-width">
 <p>Julia uses garbage collection for memory management.</p>
-</section><section id="compiled"><h2 class="section-heading">Compiled<a class="anchor" aria-label="anchor" href="#compiled"></a>
+</section><section><h2 class="section-heading" id="compiled">Compiled<a class="anchor" aria-label="anchor" href="#compiled"></a>
+<a class="anchor" aria-label="anchor" href="#compiled"></a>
 </h2>
 <hr class="half-width">
 <p>Julia is a compiled programming language. However, functions are
@@ -612,7 +616,8 @@ argument types using the function <code>code_native</code>:</p>
 </div>
 <p>Since Julia always compiles and never evaluates, the compiler is
 sometimes called a just-ahead-of-time compiler.</p>
-</section><section id="high-performance"><h2 class="section-heading">High-performance<a class="anchor" aria-label="anchor" href="#high-performance"></a>
+</section><section><h2 class="section-heading" id="high-performance">High-performance<a class="anchor" aria-label="anchor" href="#high-performance"></a>
+<a class="anchor" aria-label="anchor" href="#high-performance"></a>
 </h2>
 <hr class="half-width">
 <p>The <a href="https://julialang.org/blog/2012/02/why-we-created-julia/" class="external-link">intention
@@ -628,14 +633,14 @@ like C or Rust.</p>
 <p>With <a href="https://juliagpu.org/cuda/" class="external-link">CUDA.jl</a> there is an
 officially supported library that allows to write code for Nvidia GPUs
 directly in Julia.</p>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-03-types"><p>Content from <a href="03-types.html">Types</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/03-types.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
 <div class="text-end">
@@ -688,7 +693,8 @@ integer to a floating point number.</p>
 </div>
 </div>
 </div>
-<section id="types-and-type-hierarchy"><h2 class="section-heading">Types and Type Hierarchy<a class="anchor" aria-label="anchor" href="#types-and-type-hierarchy"></a>
+<section><h2 class="section-heading" id="types-and-type-hierarchy">Types and Type Hierarchy<a class="anchor" aria-label="anchor" href="#types-and-type-hierarchy"></a>
+<a class="anchor" aria-label="anchor" href="#types-and-type-hierarchy"></a>
 </h2>
 <hr class="half-width">
 <p>Every value in Julia has a type. We can determine the type of a value
@@ -748,7 +754,8 @@ It is an ancestor of every data type and so every value is of type
 of a type as a tuple of types.</p>
 <pre><code>&gt; supertypes(Int64)
 (Int64, Signed, Integer, Real, Number, Any)</code></pre>
-</section><section id="number-types"><h2 class="section-heading">Number Types<a class="anchor" aria-label="anchor" href="#number-types"></a>
+</section><section><h2 class="section-heading" id="number-types">Number Types<a class="anchor" aria-label="anchor" href="#number-types"></a>
+<a class="anchor" aria-label="anchor" href="#number-types"></a>
 </h2>
 <hr class="half-width">
 <p>Julia provides various common number types.</p>
@@ -831,7 +838,8 @@ constants:</p>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">typeof</span>(<span class="cn">pi</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="dt">Irrational</span>{<span class="op">:</span><span class="cn">π</span>}</span></code></pre>
 </div>
-</section><section id="strings"><h2 class="section-heading">Strings<a class="anchor" aria-label="anchor" href="#strings"></a>
+</section><section><h2 class="section-heading" id="strings">Strings<a class="anchor" aria-label="anchor" href="#strings"></a>
+<a class="anchor" aria-label="anchor" href="#strings"></a>
 </h2>
 <hr class="half-width">
 <p>There are types for strings and characters:</p>
@@ -865,7 +873,7 @@ constants:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>In Julia indexing starts with 1 instead of the more common 0. So, for
 example, to get the second element of an array, one would use the index
@@ -880,7 +888,8 @@ example, to get the second element of an array, one would use the index
 </div>
 </div>
 </div>
-</section><section id="named-tuples"><h2 class="section-heading">(Named) Tuples<a class="anchor" aria-label="anchor" href="#named-tuples"></a>
+</section><section><h2 class="section-heading" id="named-tuples">(Named) Tuples<a class="anchor" aria-label="anchor" href="#named-tuples"></a>
+<a class="anchor" aria-label="anchor" href="#named-tuples"></a>
 </h2>
 <hr class="half-width">
 <p>Julia features a type for tuples, similar to tuples in C++ and Python
@@ -937,7 +946,8 @@ element has its own name:</p>
 <span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="op">&gt;</span> v.y</span>
 <span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="op">-</span><span class="fl">1</span></span></code></pre>
 </div>
-</section><section id="dictionaries"><h2 class="section-heading">Dictionaries<a class="anchor" aria-label="anchor" href="#dictionaries"></a>
+</section><section><h2 class="section-heading" id="dictionaries">Dictionaries<a class="anchor" aria-label="anchor" href="#dictionaries"></a>
+<a class="anchor" aria-label="anchor" href="#dictionaries"></a>
 </h2>
 <hr class="half-width">
 <p>Close to named tuples, but without the limitation of fixed length are
@@ -986,7 +996,8 @@ entries by index:</p>
 <span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a>  <span class="st">"age"</span>        <span class="op">=&gt;</span> <span class="fl">44</span></span>
 <span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a>  <span class="st">"last name"</span>  <span class="op">=&gt;</span> <span class="st">"Einstein"</span></span></code></pre>
 </div>
-</section><section id="arrays"><h2 class="section-heading">Arrays<a class="anchor" aria-label="anchor" href="#arrays"></a>
+</section><section><h2 class="section-heading" id="arrays">Arrays<a class="anchor" aria-label="anchor" href="#arrays"></a>
+<a class="anchor" aria-label="anchor" href="#arrays"></a>
 </h2>
 <hr class="half-width">
 <p>Arrays and associated features are arguably one of the most important
@@ -1270,7 +1281,8 @@ already saw one of them. Another are ranges:</p>
 <span id="cb34-47"><a href="#cb34-47" tabindex="-1"></a>  <span class="fl">0.1</span></span></code></pre>
 </div>
 </div>
-</section><section id="structs"><h2 class="section-heading">Structs<a class="anchor" aria-label="anchor" href="#structs"></a>
+</section><section><h2 class="section-heading" id="structs">Structs<a class="anchor" aria-label="anchor" href="#structs"></a>
+<a class="anchor" aria-label="anchor" href="#structs"></a>
 </h2>
 <hr class="half-width">
 <p>Structs are what allows us to define our own types in Julia. In our
@@ -1362,20 +1374,21 @@ outer constructor, while we use the keyword <code>new</code> as if we
 were calling the default constructor when defining inner
 constructors.</p>
 </div>
-</section><section id="more-types"><h2 class="section-heading">More Types<a class="anchor" aria-label="anchor" href="#more-types"></a>
+</section><section><h2 class="section-heading" id="more-types">More Types<a class="anchor" aria-label="anchor" href="#more-types"></a>
+<a class="anchor" aria-label="anchor" href="#more-types"></a>
 </h2>
 <hr class="half-width">
 <p>The Julia language provides a lot more types; for example
 <code>CartesianIndex</code>, <code>IOStream</code>, or
 <code>Atomic{T}</code>. We again refer to the documentation.</p>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-04-operators"><p>Content from <a href="04-operators.html">Operators</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/04-operators.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
 <div class="text-end">
@@ -1676,14 +1689,14 @@ operators:</p>
 </tr>
 </tbody>
 </table>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </div></section><section id="aio-05-loops_and_conditionals"><p>Content from <a href="05-loops_and_conditionals.html">Loops and Conditionals</a></p>
 <hr>
 <p>Last updated on 2024-05-28 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/05-loops_and_conditionals.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
 <div class="text-end">
@@ -1816,15 +1829,15 @@ have to enclose the expression within parentheses:</p>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>(<span class="fl">4</span> <span class="op">&gt;</span> <span class="fl">0</span>) ? <span class="st">"larger than 0"</span> <span class="op">:</span> <span class="st">"equal to or less than zero"</span></span></code></pre>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </div>
 </div></section><section id="aio-06-generic-functions"><p>Content from <a href="06-generic-functions.html">Generic Functions</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/06-generic-functions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
 <div class="text-end">
@@ -1861,7 +1874,8 @@ functions.</li>
 generic functions. A generic function is implemented by zero or more
 methods. When a (generic) function is called, a method that best fits to
 the provided arguments is selected and executed.</p>
-<section id="methods"><h2 class="section-heading">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
+<section><h2 class="section-heading" id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
+<a class="anchor" aria-label="anchor" href="#methods"></a>
 </h2>
 <hr class="half-width">
 <p>In the case of Julia the method is chosen based on the number of
@@ -1952,7 +1966,8 @@ types. In the case of Julia this happens at runtime and thus allows to
 add further methods to a generic functions in a running image of a Julia
 process.</p>
 </div>
-</section><section id="arguments"><h2 class="section-heading">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a>
+</section><section><h2 class="section-heading" id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a>
+<a class="anchor" aria-label="anchor" href="#arguments"></a>
 </h2>
 <hr class="half-width">
 <p>In Julia arguments are pass-by-sharing, also known as -by-pointer or
@@ -2041,7 +2056,8 @@ ignored, but we get an error, when the tuple is too short:</p>
 <span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a> [<span class="fl">3</span>] top<span class="op">-</span>level scope</span>
 <span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>   @ <span class="bu">REPL</span>[<span class="fl">5</span>]<span class="op">:</span><span class="fl">1</span></span></code></pre>
 </div>
-</section><section id="anonymous-functions"><h2 class="section-heading">Anonymous Functions<a class="anchor" aria-label="anchor" href="#anonymous-functions"></a>
+</section><section><h2 class="section-heading" id="anonymous-functions">Anonymous Functions<a class="anchor" aria-label="anchor" href="#anonymous-functions"></a>
+<a class="anchor" aria-label="anchor" href="#anonymous-functions"></a>
 </h2>
 <hr class="half-width">
 <p>For short, one-off functions Julia implements anonymous
@@ -2084,7 +2100,8 @@ clean:</p>
 <span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a> <span class="cn">nothing</span></span>
 <span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a> <span class="cn">nothing</span></span></code></pre>
 </div>
-</section><section id="function-composition"><h2 class="section-heading">Function Composition<a class="anchor" aria-label="anchor" href="#function-composition"></a>
+</section><section><h2 class="section-heading" id="function-composition">Function Composition<a class="anchor" aria-label="anchor" href="#function-composition"></a>
+<a class="anchor" aria-label="anchor" href="#function-composition"></a>
 </h2>
 <hr class="half-width">
 <p>Julia has an operator, <code>∘</code>, for function composition. You
@@ -2107,14 +2124,14 @@ concrete value is the operator <code>|&gt;</code>:</p>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="op">&gt;</span> [<span class="fl">2</span>, <span class="fl">2</span>] <span class="op">|&gt;</span> sum <span class="op">|&gt;</span> sqrt</span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fl">2.0</span></span></code></pre>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-07-modules"><p>Content from <a href="07-modules.html">Modules</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/07-modules.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
 <div class="text-end">
@@ -2266,7 +2283,8 @@ defaults, <code>using</code> can be modified to only import specific
 names (including the module itself) and <code>import</code> can be
 modified to import additional names. In both cases the imported entities
 can be renamed using the keyword <code>as</code>.</p>
-<section id="bare-modules-and-standard-modules"><h2 class="section-heading">Bare modules and standard modules<a class="anchor" aria-label="anchor" href="#bare-modules-and-standard-modules"></a>
+<section><h2 class="section-heading" id="bare-modules-and-standard-modules">Bare modules and standard modules<a class="anchor" aria-label="anchor" href="#bare-modules-and-standard-modules"></a>
+<a class="anchor" aria-label="anchor" href="#bare-modules-and-standard-modules"></a>
 </h2>
 <hr class="half-width">
 <p>Whenever we create a module, the modules <code>Core</code> and
@@ -2278,14 +2296,14 @@ distribution comes with further standard modules; among them
 <code>Test</code>. In addition, <code>Base</code> has several
 submodules, e.g. <code>Base.Threads</code>.</p>
 <p><code>Main</code> is the top level module of a Julia process.</p>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-08-packages"><p>Content from <a href="08-packages.html">Packages</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/08-packages.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
 <div class="text-end">
@@ -2293,7 +2311,8 @@ any links that you are not going to use.
         </div>
 <p>While the module is an organizational unit within a project, packages
 are the distribution units of Julia.</p>
-<section id="dependency-management"><h2 class="section-heading">Dependency Management<a class="anchor" aria-label="anchor" href="#dependency-management"></a>
+<section><h2 class="section-heading" id="dependency-management">Dependency Management<a class="anchor" aria-label="anchor" href="#dependency-management"></a>
+<a class="anchor" aria-label="anchor" href="#dependency-management"></a>
 </h2>
 <hr class="half-width">
 <p>To install a package, we type <code>]</code> in the Julia REPL to
@@ -2402,7 +2421,8 @@ documentation for every command when running
 
   After any package updates the project will be precompiled. For more information
   see pkg&gt; ?precompile.</code></pre>
-</section><section id="creating-packages"><h2 class="section-heading">Creating Packages<a class="anchor" aria-label="anchor" href="#creating-packages"></a>
+</section><section><h2 class="section-heading" id="creating-packages">Creating Packages<a class="anchor" aria-label="anchor" href="#creating-packages"></a>
+<a class="anchor" aria-label="anchor" href="#creating-packages"></a>
 </h2>
 <hr class="half-width">
 <p>After seeing how to use a package, we will have a look into creating
@@ -2469,7 +2489,8 @@ module OurVectors
 greet() = print("Hello World!")
 
 end # module OurVectors</code></pre>
-</section><section id="tests"><h2 class="section-heading">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
+</section><section><h2 class="section-heading" id="tests">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
+<a class="anchor" aria-label="anchor" href="#tests"></a>
 </h2>
 <hr class="half-width">
 <p>We edit the source file to contain our <code>length</code>
@@ -2571,7 +2592,8 @@ minute. But first, we try to again run the tests:</p>
      Testing Running tests...
      Testing OurVectors tests passed</code></pre>
 <p>Now the test suite runs and our tests passed.</p>
-</section><section id="tracking-dependencies"><h2 class="section-heading">Tracking Dependencies<a class="anchor" aria-label="anchor" href="#tracking-dependencies"></a>
+</section><section><h2 class="section-heading" id="tracking-dependencies">Tracking Dependencies<a class="anchor" aria-label="anchor" href="#tracking-dependencies"></a>
+<a class="anchor" aria-label="anchor" href="#tracking-dependencies"></a>
 </h2>
 <hr class="half-width">
 <p>Getting back to the file that changed, when we add <code>Test</code>
@@ -2630,14 +2652,14 @@ the whole dependency tree.</p>
 <p>When we added the <code>Test</code> package, we did not specify a
 version. If we had done that, this would be recorded in
 <code>Manifest.toml</code>.</p>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-09-ffi"><p>Content from <a href="09-ffi.html">Foreign Function Interface</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/09-ffi.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
 <div class="text-end">
@@ -2650,7 +2672,8 @@ We will have a look at the interfaces for C and Python.</p>
 REPL:</p>
 <pre class="shell"><code>(OurVectors) pkg&gt; activate
   Activating project at `~/.julia/environments/v1.10`</code></pre>
-<section id="c-interface"><h2 class="section-heading">C Interface<a class="anchor" aria-label="anchor" href="#c-interface"></a>
+<section><h2 class="section-heading" id="c-interface">C Interface<a class="anchor" aria-label="anchor" href="#c-interface"></a>
+<a class="anchor" aria-label="anchor" href="#c-interface"></a>
 </h2>
 <hr class="half-width">
 <p>To call a C function we can either use the function
@@ -2699,7 +2722,8 @@ follows</p>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="op">&gt;</span> <span class="pp">@ccall</span> <span class="st">"libglib-2.0"</span>.<span class="fu">g_basename</span>(<span class="st">"/usr/bin/bash"</span><span class="op">::</span><span class="dt">Cstring</span>)<span class="op">::</span><span class="dt">Cstring</span></span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">Cstring</span>(<span class="bn">0x00007f26ff113e81</span>)</span></code></pre>
 </div>
-</section><section id="pycall"><h2 class="section-heading">PyCall<a class="anchor" aria-label="anchor" href="#pycall"></a>
+</section><section><h2 class="section-heading" id="pycall">PyCall<a class="anchor" aria-label="anchor" href="#pycall"></a>
+<a class="anchor" aria-label="anchor" href="#pycall"></a>
 </h2>
 <hr class="half-width">
 <p>To interface with python we can use the <code>PyCall</code> package.
@@ -2756,20 +2780,21 @@ Python version and installed packages.</p>
 <span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="st">"""</span></span>
 <span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="fl">2022</span><span class="op">-</span><span class="fl">06</span><span class="op">-</span><span class="fl">03</span> <span class="fl">14</span><span class="op">:</span><span class="fl">38</span><span class="op">:</span><span class="fl">05.903444</span></span></code></pre>
 </div>
-</section><section id="rcall"><h2 class="section-heading">RCall<a class="anchor" aria-label="anchor" href="#rcall"></a>
+</section><section><h2 class="section-heading" id="rcall">RCall<a class="anchor" aria-label="anchor" href="#rcall"></a>
+<a class="anchor" aria-label="anchor" href="#rcall"></a>
 </h2>
 <hr class="half-width">
 <p>A similar package exists for R with <code>RCall</code>. It even gives
 access to an R-REPL from within the Julia REPL, similar to package and
 shell mode.</p>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-10-further-steps"><p>Content from <a href="10-further-steps.html">Further Steps</a></p>
 <hr>
 <p>Last updated on 2024-05-27 |
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/episodes/10-further-steps.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 5 minutes</p>
 <div class="text-end">
@@ -2802,18 +2827,18 @@ topic.</p></section>
 <div class="col-md-6">
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
-        
+
         <a href="https://github.com/zedif/julia-introduction/edit/main/README.md" class="external-link">Edit on GitHub</a>
-        
+
 	
         | <a href="https://github.com/zedif/julia-introduction/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/zedif/julia-introduction/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/zedif/julia-introduction/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:philipp.matthias.schaefer@uni-jena.de">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
-        
+
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
-        
+
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
 			</div>
@@ -2838,8 +2863,8 @@ topic.</p></section>
   "url": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "identifier": "https://zedif.github.io/julia-introduction/instructor/aio.html",
   "dateCreated": "2024-07-02",
-  "dateModified": "2024-07-02",
-  "datePublished": "2024-07-02"
+  "dateModified": "2024-07-09",
+  "datePublished": "2024-07-09"
 }
 
   </script><script>
